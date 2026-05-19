@@ -1,17 +1,208 @@
 ---
-
+import '../styles/global.css';
+// Wir importieren das Logo direkt als Asset
+import logoImage from '../assets/wissen/logo.png';
+// Wir laden Astros offizielle, optimierte Image-Komponente
+import { Image } from 'astro:assets';
 ---
 
-<html lang="en">
+<html lang="de">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>BV Brambauer 13/45 e.V. | Offizielle Website</title>
 	</head>
-	<body>
-		<h1>Astro</h1>
+	<body class="bg-gray-50 text-gray-900 font-sans">
+
+		<nav class="bg-white text-gray-900 sticky top-0 z-50 shadow-sm border-b border-gray-100">
+			<div class="max-w-6xl mx-auto px-4 py-2 flex justify-between items-center">
+				<div class="flex items-center space-x-4">
+					<Image 
+						src={logoImage} 
+						alt="BV Brambauer-Lünen Logo" 
+						class="w-12 h-auto object-contain"
+						quality="max"
+					/>
+					<span class="font-black text-xl tracking-tight text-black">BV Brambauer <span class="text-red-600">13/45</span></span>
+				</div>
+				<div class="hidden md:flex space-x-6 font-semibold text-sm uppercase tracking-wider">
+					<a href="#" class="text-red-600">Startseite</a>
+					<a href="#" class="text-gray-600 hover:text-red-600 transition">Aktuelles</a>
+					<a href="#" class="text-gray-600 hover:text-red-600 transition">Senioren</a>
+					<a href="#" class="text-gray-600 hover:text-red-600 transition">Junioren</a>
+					<a href="#" class="text-gray-600 hover:text-red-600 transition">Der Verein</a>
+				</div>
+			</div>
+		</nav>
+
+		<header class="relative bg-gradient-to-r from-black to-gray-900 text-white py-24 px-4 overflow-hidden">
+			<div class="absolute inset-0 opacity-10 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]"></div>
+			
+			<div class="relative max-w-4xl mx-auto text-center">
+				<span class="bg-red-600 text-white text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full">Kreisliga A2 Dortmund</span>
+				<h1 class="text-4xl md:text-6xl font-black tracking-tight mt-4 mb-6 uppercase">
+					Tradition. Leidenschaft. <br><span class="text-red-500">Brambauer!</span>
+				</h1>
+				<p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-8">
+					Willkommen auf der neuen Heimat des BV Brambauer 13/45. Hier schlägt das fußballerische Herz von Lünen.
+				</p>
+				<div class="flex flex-col sm:flex-row justify-center gap-4">
+					<a href="#spiele" class="bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-3 rounded shadow transition text-center">Nächste Spiele</a>
+					<a href="#news" class="bg-transparent border-2 border-white hover:bg-white hover:text-black font-bold px-6 py-3 rounded transition text-center">Zum aktuellen Spielbericht</a>
+				</div>
+			</div>
+		</header>
+
+		<section class="bg-white border-b border-gray-200 py-8 shadow-sm">
+			<div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+				<div>
+					<p class="text-sm uppercase text-gray-500 font-semibold tracking-wider">Gegründet</p>
+					<p class="text-3xl font-black text-black mt-1">1913 / 2007</p>
+				</div>
+				<div class="border-y md:border-y-0 md:border-x border-gray-200 py-4 md:py-0">
+					<p class="text-sm uppercase text-gray-500 font-semibold tracking-wider">Heimat</p>
+					<p class="text-3xl font-black text-red-600 mt-1">Glückauf-Arena</p>
+				</div>
+				<div>
+					<p class="text-sm uppercase text-gray-500 font-semibold tracking-wider">Vereinsfarben</p>
+					<p class="text-3xl font-black text-black mt-1">Schwarz-Weiß-Rot</p>
+				</div>
+			</div>
+		</section>
+
+		<main id="news" class="max-w-6xl mx-auto px-4 py-16">
+			<div class="flex justify-between items-end mb-10">
+				<div>
+					<h2 class="text-3xl font-black tracking-tight uppercase">Aktuelle News & Berichte</h2>
+					<p class="text-gray-600 mt-1">Direkt vom Platz und aus dem Vereinsleben</p>
+				</div>
+				<a href="#" class="text-red-600 hover:text-red-700 font-bold text-sm uppercase tracking-wider hidden sm:block">Alle News ansehen →</a>
+			</div>
+
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+				<article class="bg-white rounded-lg shadow overflow-hidden border border-gray-200 flex flex-col">
+					<div class="h-48 bg-gray-300 flex items-center justify-center text-gray-500 italic">
+						[Bild: Spielszene]
+					</div>
+					<div class="p-6 flex-1 flex flex-col justify-between">
+						<div>
+							<div class="flex gap-2 text-xs font-semibold text-gray-500 mb-2">
+								<span>1. Mannschaft</span>
+								<span>•</span>
+								<span>Vor 2 Tagen</span>
+							</div>
+							<h3 class="text-xl font-bold text-gray-900 mb-2 hover:text-red-600 transition">
+								Heimsieg in der Glückauf-Arena! 3:1 gegen den Verfolger
+							</h3>
+							<p class="text-gray-600 line-clamp-3 text-sm">
+								In einem packenden Spiel zeigte unsere Erste absolute Willensstärke. Nach einem frühen Rückstand drehte das Team in der zweiten Halbzeit völlig auf...
+							</p>
+						</div>
+						<a href="#" class="text-red-600 hover:text-red-700 font-bold text-sm mt-4 inline-block">Weiterlesen →</a>
+					</div>
+				</article>
+
+				<article class="bg-white rounded-lg shadow overflow-hidden border border-gray-200 flex flex-col">
+					<div class="h-48 bg-gray-300 flex items-center justify-center text-gray-500 italic">
+						[Bild: Jugendtraining]
+					</div>
+					<div class="p-6 flex-1 flex flex-col justify-between">
+						<div>
+							<div class="flex gap-2 text-xs font-semibold text-gray-500 mb-2">
+								<span>Jugend</span>
+								<span>•</span>
+								<span>15. Mai 2026</span>
+							</div>
+							<h3 class="text-xl font-bold text-gray-900 mb-2 hover:text-red-600 transition">
+								Erfolgreicher Turniertag der E-Junioren
+							</h3>
+							<p class="text-gray-600 line-clamp-3 text-sm">
+								Unsere Kids hatten jede Menge Spaß und konnten sich gegen starke Konkurrenz aus dem Kreis beweisen. Ein großer Dank geht an alle mitgereisten Eltern!
+							</p>
+						</div>
+						<a href="#" class="text-red-600 hover:text-red-700 font-bold text-sm mt-4 inline-block">Weiterlesen →</a>
+					</div>
+				</article>
+
+				<article class="bg-white rounded-lg shadow overflow-hidden border border-gray-200 flex flex-col">
+					<div class="h-48 bg-gray-300 flex items-center justify-center text-gray-500 italic">
+						[Bild: Jahreshauptversammlung]
+					</div>
+					<div class="p-6 flex-1 flex flex-col justify-between">
+						<div>
+							<div class="flex gap-2 text-xs font-semibold text-gray-500 mb-2">
+								<span>Verein</span>
+								<span>•</span>
+								<span>10. Mai 2026</span>
+							</div>
+							<h3 class="text-xl font-bold text-gray-900 mb-2 hover:text-red-600 transition">
+								Einladung zur Jahreshauptversammlung
+							</h3>
+							<p class="text-gray-600 line-clamp-3 text-sm">
+								Der Vorstand lädt alle Mitglieder herzlich zur diesjährigen Versammlung im Vereinsheim ein. Auf der Tagesordnung stehen wichtige Weichenstellungen...
+							</p>
+						</div>
+						<a href="#" class="text-red-600 hover:text-red-700 font-bold text-sm mt-4 inline-block">Weiterlesen →</a>
+					</div>
+				</article>
+			</div>
+		</main>
+
+		<section id="spiele" class="bg-gray-900 text-white py-16">
+			<div class="max-w-4xl mx-auto px-4">
+				<div class="text-center mb-12">
+					<h2 class="text-3xl font-black tracking-tight uppercase">Die nächsten Termine</h2>
+					<p class="text-gray-400 mt-1">Unterstütze unsere Teams am Spielfeldrand!</p>
+				</div>
+
+				<div class="space-y-4">
+					<div class="bg-gray-800 border border-gray-700 rounded-lg p-6 flex flex-col md:flex-row justify-between items-center gap-4">
+						<div class="text-center md:text-left">
+							<span class="bg-red-600 text-white text-xs font-bold uppercase px-2 py-0.5 rounded">1. Mannschaft</span>
+							<p class="text-gray-400 text-sm mt-1">Sonntag, 24. Mai – 15:00 Uhr</p>
+						</div>
+						<div class="flex items-center space-x-4 text-lg font-bold">
+							<span class="text-right">BV Brambauer 13/45</span>
+							<span class="text-red-500">VS</span>
+							<span class="text-left text-gray-400">Gegner-Team (A)</span>
+						</div>
+						<div class="text-sm text-gray-400 font-medium bg-gray-700 px-4 py-2 rounded">
+							Heimspiel (Glückauf-Arena)
+						</div>
+					</div>
+
+					<div class="bg-gray-800 border border-gray-700 rounded-lg p-6 flex flex-col md:flex-row justify-between items-center gap-4">
+						<div class="text-center md:text-left">
+							<span class="bg-gray-600 text-white text-xs font-bold uppercase px-2 py-0.5 rounded">2. Mannschaft</span>
+							<p class="text-gray-400 text-sm mt-1">Sonntag, 24. Mai – 13:00 Uhr</p>
+						</div>
+						<div class="flex items-center space-x-4 text-lg font-bold">
+							<span class="text-right">BV Brambauer II</span>
+							<span class="text-red-500">VS</span>
+							<span class="text-left text-gray-400">Gegner-Team II (A)</span>
+						</div>
+						<div class="text-sm text-gray-400 font-medium bg-gray-700 px-4 py-2 rounded">
+							Heimspiel (Glückauf-Arena)
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<footer class="bg-black text-gray-400 py-12 border-t border-gray-800">
+			<div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
+				<p class="text-sm">
+					&copy; 2026 BV Brambauer 13/45 e.V. Alle Rechte vorbehalten.
+				</p>
+				<div class="flex space-x-6 text-sm">
+					<a href="#" class="hover:text-white transition">Impressum</a>
+					<a href="#" class="hover:text-white transition">Datenschutz</a>
+					<a href="#" class="hover:text-white transition">Kontakt</a>
+				</div>
+			</div>
+		</footer>
+
 	</body>
 </html>

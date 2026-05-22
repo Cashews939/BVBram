@@ -1,0 +1,73 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout title="Vereinsgeschichte & Chronik">
+	
+	<header class="relative bg-zinc-900 text-white py-20 px-4 overflow-hidden border-b-8 border-red-600">
+		<div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+		<div class="relative max-w-4xl mx-auto text-center">
+			<h1 class="text-4xl md:text-6xl font-black uppercase tracking-tighter">Tradition seit <span class="text-red-600">1913</span></h1>
+			<p class="text-lg md:text-xl text-gray-400 mt-4 font-medium">Vom tiefen Schacht der Zeche Minister Achenbach bis zum Kunstrasen der Glückauf-Arena.</p>
+		</div>
+	</header>
+
+	<main class="flex-grow">
+		
+		<section class="max-w-6xl mx-auto px-4 py-16 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+			<div>
+				<h2 class="text-3xl font-black uppercase text-zinc-900 mb-6 border-l-8 border-red-600 pl-4">Glück auf! Die Anfänge</h2>
+				<div class="space-y-4 text-gray-700 leading-relaxed text-lg">
+					<p>Alles begann im Mai 1913 in der Gaststätte <strong>„Glückauf“</strong>. Bergleute der Zeche Minister Achenbach gründeten den BV Brambauer, um nach der harten Schicht unter Tage ihrer Leidenschaft für das Leder nachzugehen.</p>
+					<p>Fußball in Brambauer war von Anfang an <strong>Malocher-Sport</strong>. Der Zusammenhalt im Schacht übertrug sich direkt auf den Ascheplatz. Die Vereinsfarben Schwarz-Weiß-Rot standen für die Identität eines ganzen Ortsteils.</p>
+				</div>
+			</div>
+			<div class="bg-gray-200 rounded-2xl h-80 flex items-center justify-center text-gray-400 italic shadow-inner">
+				[Historisches Foto: Zeche Minister Achenbach]
+			</div>
+		</section>
+
+		<section class="bg-zinc-100 py-16 border-y border-gray-200">
+			<div class="max-w-6xl mx-auto px-4">
+				<h2 class="text-center text-3xl font-black uppercase mb-12">Meilensteine der Geschichte</h2>
+				
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+					<div class="bg-white p-8 rounded-xl shadow-sm border-b-4 border-red-600">
+						<span class="text-4xl font-black text-red-600">1962</span>
+						<h3 class="text-xl font-bold mt-2 uppercase">Das goldene Jahr</h3>
+						<p class="text-gray-600 mt-3 text-sm">Der BVB wird Vize-Westfalenmeister nach einem packenden Endspiel gegen Arminia Bielefeld vor tausenden Zuschauern.</p>
+					</div>
+					<div class="bg-white p-8 rounded-xl shadow-sm border-b-4 border-zinc-900">
+						<span class="text-4xl font-black text-zinc-900">2007</span>
+						<h3 class="text-xl font-bold mt-2 uppercase">Die große Fusion</h3>
+						<p class="text-gray-600 mt-3 text-sm">BV Brambauer 13 und FC Brambauer 45 bündeln ihre Kräfte. Die Geburtsstunde des heutigen BV Brambauer 13/45 e.V.</p>
+					</div>
+					<div class="bg-white p-8 rounded-xl shadow-sm border-b-4 border-red-600">
+						<span class="text-4xl font-black text-red-600">2024</span>
+						<h3 class="text-xl font-bold mt-2 uppercase">Moderne Arena</h3>
+						<p class="text-gray-600 mt-3 text-sm">Abschluss der großen Sanierung der Glückauf-Arena. Heute Heimat für über 10 Mannschaften und hunderte Talente.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="max-w-4xl mx-auto px-4 py-20 text-center">
+			<h2 class="text-3xl font-black uppercase mb-6">Zwei Wurzeln – Eine Leidenschaft</h2>
+			<p class="text-xl text-gray-600 leading-relaxed">
+				Über Jahrzehnte prägte die Rivalität zwischen dem "13er" und dem "45er" den Fußball in Lünen-Brambauer. Doch die Vernunft siegte: Um den Standort langfristig zu sichern und der Jugend eine Perspektive zu bieten, verschmolzen beide Traditionsstränge zu einer starken Einheit.
+			</p>
+			<div class="mt-10 flex justify-center items-center space-x-8">
+				<div class="text-center">
+					<div class="w-20 h-20 bg-zinc-200 rounded-full mb-2 mx-auto flex items-center justify-center font-bold text-gray-400">13</div>
+					<span class="text-xs font-bold uppercase tracking-widest text-gray-400">BV 13</span>
+				</div>
+				<div class="text-2xl font-black text-red-600">+</div>
+				<div class="text-center">
+					<div class="w-20 h-20 bg-zinc-200 rounded-full mb-2 mx-auto flex items-center justify-center font-bold text-gray-400">45</div>
+					<span class="text-xs font-bold uppercase tracking-widest text-gray-400">FC 45</span>
+				</div>
+			</div>
+		</section>
+
+	</main>
+</MainLayout>

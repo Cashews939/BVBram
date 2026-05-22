@@ -1,0 +1,125 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout title="Kontakt">
+	
+	<header class="bg-zinc-900 text-white py-12 px-4 border-b-4 border-red-600">
+		<div class="max-w-6xl mx-auto">
+			<h1 class="text-3xl md:text-5xl font-black uppercase tracking-tight">Kontakt</h1>
+			<p class="text-gray-400 mt-2 text-sm md:text-base">Hast du Fragen? Schreib uns einfach eine Nachricht!</p>
+		</div>
+	</header>
+
+	<main class="max-w-6xl mx-auto px-4 py-12 flex-grow">
+		<div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+			
+			<div class="lg:col-span-2 bg-white rounded-xl shadow-sm border border-gray-200 p-6 md:p-8">
+				<h2 class="text-2xl font-bold text-black uppercase mb-6">Nachricht senden</h2>
+				
+				<form action="#" method="POST" class="space-y-6">
+					
+					<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+						<div>
+							<label for="name" class="block text-xs font-bold uppercase text-gray-500 mb-2">Dein Name</label>
+							<input 
+								type="text" 
+								id="name" 
+								name="name" 
+								required 
+								placeholder="Max Mustermann"
+								class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-red-600 focus:bg-white transition"
+							/>
+						</div>
+						<div>
+							<label for="email" class="block text-xs font-bold uppercase text-gray-500 mb-2">E-Mail-Adresse</label>
+							<input 
+								type="email" 
+								id="email" 
+								name="email" 
+								required 
+								placeholder="max@beispiel.de"
+								class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-red-600 focus:bg-white transition"
+							/>
+						</div>
+					</div>
+
+					<div>
+						<label for="category" class="block text-xs font-bold uppercase text-gray-500 mb-2">Anliegen / Bereich</label>
+						<select 
+							id="category" 
+							name="category"
+							class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-red-600 focus:bg-white transition appearance-none"
+						>
+							<option value="allgemein">Allgemeine Anfrage</option>
+							<option value="junioren">Jugendfußball (Junioren)</option>
+							<option value="senioren">Herrenfußball (Senioren)</option>
+							<option value="sponsoring">Sponsoring & Partner</option>
+							<option value="mitgliedschaft">Mitgliedschaft</option>
+						</select>
+					</div>
+
+					<div>
+						<label for="message" class="block text-xs font-bold uppercase text-gray-500 mb-2">Deine Nachricht</label>
+						<textarea 
+							id="message" 
+							name="message" 
+							rows="5" 
+							required 
+							placeholder="Wie können wir dir helfen?..."
+							class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-red-600 focus:bg-white transition resize-none"
+						></textarea>
+					</div>
+
+					<div class="flex items-start">
+						<input 
+							type="checkbox" 
+							id="privacy" 
+							name="privacy" 
+							required 
+							class="mt-1 h-4 w-4 rounded border-gray-300 text-red-600 focus:ring-red-500"
+						/>
+						<label for="privacy" class="ml-3 text-xs text-gray-500 leading-normal">
+							Ich stimme zu, dass meine Angaben aus dem Kontaktformular zur Beantwortung meiner Anfrage erhoben und verarbeitet werden. Die Daten werden nach abgeschlossener Bearbeitung gelöscht. Hinweis: Sie können Ihre Einwilligung jederzeit für die Zukunft per E-Mail an info@bv-brambauer.de widerrufen. Detaillierte Informationen finden Sie in unserer <a href="/datenschutz" class="text-red-600 hover:underline">Datenschutzerklärung</a>.
+						</label>
+					</div>
+
+					<div>
+						<button 
+							type="submit" 
+							class="w-full sm:w-auto bg-zinc-900 hover:bg-red-600 text-white font-bold px-8 py-3.5 rounded-lg shadow transition uppercase tracking-wider text-sm cursor-pointer"
+						>
+							Nachricht absenden
+						</button>
+					</div>
+
+				</form>
+			</div>
+
+			<div class="space-y-6">
+				<div class="bg-zinc-900 text-white rounded-xl p-6 md:p-8 space-y-6">
+					<h3 class="text-xl font-bold uppercase border-b border-zinc-700 pb-3">Direktkontakt</h3>
+					
+					<div class="space-y-1">
+						<p class="text-xs uppercase font-bold text-gray-400">Anschrift Arena</p>
+						<p class="font-medium text-sm md:text-base">Glückauf-Arena</p>
+						<p class="text-gray-300 text-sm">Am Freibad 10</p>
+						<p class="text-gray-300 text-sm">44536 Lünen-Brambauer</p>
+					</div>
+
+					<div class="space-y-1">
+						<p class="text-xs uppercase font-bold text-gray-400">E-Mail Geschäftsstelle</p>
+						<p class="text-sm md:text-base"><a href="mailto:info@bv-brambauer.de" class="text-red-400 hover:underline">info@bv-brambauer.de</a></p>
+					</div>
+				</div>
+
+				<div class="bg-red-50 border border-red-100 rounded-xl p-6 text-sm text-gray-700">
+					<p class="font-bold text-red-800 mb-1">Spielbetrieb & Probetraining</p>
+					Du möchtest dir oder deinem Kind ein Training anschauen? Wähle im Formular einfach den passenden Bereich (Senioren/Junioren) aus, damit deine Frage direkt beim richtigen sportlichen Leiter landet!
+				</div>
+			</div>
+
+		</div>
+	</main>
+
+</MainLayout>

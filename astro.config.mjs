@@ -1,13 +1,11 @@
 import { defineConfig } from 'astro/config';
+import tailwind from '@astrojs/tailwind';
 import react from '@astrojs/react';
-import keystatic from '@keystatic/astro';
-import tailwindv4 from '@tailwindcss/vite'; // Das neue Plugin laden
+import vercel from '@astrojs/vercel';
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [react(), keystatic()],
-  output: 'server',
-  vite: {
-    plugins: [tailwindv4()], // Tailwind v4 direkt in den Compiler schieben
-  },
+  integrations: [tailwind(), react()],
+  output: 'server', // Das sagt Astro, dass wir dynamische Live-Inhalte nutzen
+  adapter: vercel()  // Das sagt Astro, dass der Server auf Vercel läuft
 });

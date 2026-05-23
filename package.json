@@ -4,21 +4,23 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "keystatic-astro-cli build && astro build",
+    "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
     "@astrojs/react": "^4.2.0",
+    "@astrojs/tailwind": "^6.0.2",
     "@astrojs/vercel": "^10.0.7",
     "@keystatic/astro": "^5.0.0",
     "@keystatic/core": "^0.3.0",
+    "@tailwindcss/postcss": "^4.3.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "astro": "^6.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "tailwindcss": "^4.0.0"
+    "tailwindcss": "^3.4.19"
   },
   "overrides": {
     "@keystatic/astro": {

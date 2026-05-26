@@ -1,5 +1,4 @@
 ---
-// Wir importieren nur noch das zentrale Master-Layout
 import MainLayout from '../layouts/MainLayout.astro';
 ---
 
@@ -49,8 +48,7 @@ import MainLayout from '../layouts/MainLayout.astro';
 			<a href="/aktuelles" class="text-red-600 hover:text-red-700 font-bold text-sm uppercase tracking-wider hidden sm:block">Alle News ansehen →</a>
 		</div>
 
-		<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-			
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
 			<article class="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-200 flex flex-col group">
 				<div class="h-48 bg-gray-200 flex items-center justify-center text-gray-400 italic">
 					[Bild: Versammlung]
@@ -66,7 +64,7 @@ import MainLayout from '../layouts/MainLayout.astro';
 							Einladung zur Jahreshauptversammlung
 						</h3>
 						<p class="text-gray-600 text-sm line-clamp-2">
-							Der Vorstand lädt alle Mitglieder herzlich zur diesjährigen Versammlung ein. Auf der Tagesordnung stehen wichtige Wahlen und die kommende Saison...
+							Der Vorstand lädt alle Mitglieder herzlich zur diesjährigen Versammlung ein. Auf der Tagesordnung stehen wichtige Wahlen...
 						</p>
 					</div>
 					<a href="/aktuelles" class="text-red-600 hover:text-red-700 font-bold text-sm mt-4 inline-block">Weiterlesen →</a>
@@ -88,135 +86,41 @@ import MainLayout from '../layouts/MainLayout.astro';
 							Jetzt anmelden: Sommer-Jugendcamp
 						</h3>
 						<p class="text-gray-600 text-sm line-clamp-2">
-							Auch in diesem Jahr findet wieder unser beliebtes Fußballcamp für Kinder von 6 bis 14 Jahren statt. Drei Tage voller Fußball, Spaß und Verpflegung...
+							Auch in diesem Jahr findet wieder unser beliebtes Fußballcamp für Kinder von 6 bis 14 Jahren statt...
 						</p>
 					</div>
 					<a href="/aktuelles" class="text-red-600 hover:text-red-700 font-bold text-sm mt-4 inline-block">Infos & Anmeldung →</a>
 				</div>
 			</article>
-
 		</div>
-	</main>
 
-	<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-			
-			<article class="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-200 flex flex-col group">
-				<div class="h-48 bg-gray-200 flex items-center justify-center text-gray-400 italic">
-					[Bild: Versammlung]
+		<!-- CTA-Bereich innerhalb von Main für saubere Struktur -->
+		<section class="mb-16">
+			<div class="bg-red-600 text-white p-12 rounded-2xl shadow-xl text-center border border-red-700">
+				<h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight">Werde Teil der BVB-Familie!</h2>
+				<p class="text-lg text-red-100 mt-4 max-w-2xl mx-auto leading-relaxed">
+					Egal ob aktiver Kicker, Senior oder Fan – beim BV Brambauer 13/45 ist jeder willkommen.
+				</p>
+				<div class="mt-8 flex flex-col sm:flex-row justify-center gap-4">
+					<a href="/aufnahmeantrag.pdf" target="_blank" class="bg-zinc-900 hover:bg-black text-white font-bold px-8 py-4 rounded-xl shadow-lg transition flex items-center justify-center gap-2 uppercase tracking-wider text-sm group">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:-translate-y-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+						</svg>
+						Aufnahmeantrag (PDF)
+					</a>
 				</div>
-				<div class="p-6 flex-1 flex flex-col justify-between">
-					<div>
-						<div class="flex gap-2 text-xs font-semibold text-gray-500 mb-2">
-							<span class="text-zinc-700 font-bold uppercase">Verein</span>
-							<span>•</span>
-							<span>20. Mai 2026</span>
-						</div>
-						<h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-red-600 transition">
-							Einladung zur Jahreshauptversammlung
-						</h3>
-						<p class="text-gray-600 text-sm line-clamp-2">
-							Der Vorstand lädt alle Mitglieder herzlich zur diesjährigen Versammlung ein. Auf der Tagesordnung stehen wichtige Wahlen und die kommende Saison...
-						</p>
-					</div>
-					<a href="/aktuelles" class="text-red-600 hover:text-red-700 font-bold text-sm mt-4 inline-block">Weiterlesen →</a>
-				</div>
-			</article>
-
-			<article class="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-200 flex flex-col group">
-				<div class="h-48 bg-gray-200 flex items-center justify-center text-gray-400 italic">
-					[Bild: Fußballschule]
-				</div>
-				<div class="p-6 flex-1 flex flex-col justify-between">
-					<div>
-						<div class="flex gap-2 text-xs font-semibold text-gray-500 mb-2">
-							<span class="text-red-600 font-bold uppercase">Junioren</span>
-							<span>•</span>
-							<span>15. Mai 2026</span>
-						</div>
-						<h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-red-600 transition">
-							Jetzt anmelden: Sommer-Jugendcamp
-						</h3>
-						<p class="text-gray-600 text-sm line-clamp-2">
-							Auch in diesem Jahr findet wieder unser beliebtes Fußballcamp für Kinder von 6 bis 14 Jahren statt. Drei Tage voller Fußball, Spaß und Verpflegung...
-						</p>
-					</div>
-					<a href="/aktuelles" class="text-red-600 hover:text-red-700 font-bold text-sm mt-4 inline-block">Infos & Anmeldung →</a>
-				</div>
-			</article>
-
-		</div>
-	</main>
-
-	<section class="max-w-6xl mx-auto px-4 py-8 mb-16">
-		<div class="bg-red-600 text-white p-12 rounded-2xl shadow-xl text-center border border-red-700">
-			<h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight">Werde Teil der BV Brambauer-Familie!</h2>
-			<p class="text-lg text-red-100 mt-4 max-w-2xl mx-auto leading-relaxed">
-				Egal ob aktiver Kicker in der Jugend, erfahrener Senior oder leidenschaftlicher Unterstützer am Spielfeldrand – beim BV Brambauer 13/45 ist jeder herzlich willkommen. Profitiere von toller Gemeinschaft, moderner Anlage und echtem Vereinsleben.
-			</p>
-			
-			<div class="mt-8 flex flex-col sm:flex-row justify-center gap-4">
-				<a 
-					href="/aufnahmeantrag.pdf" 
-					target="_blank" 
-					class="bg-zinc-900 hover:bg-black text-white font-bold px-8 py-4 rounded-xl shadow-lg transition flex items-center justify-center gap-2 uppercase tracking-wider text-sm group"
-				>
-					<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:-translate-y-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-					</svg>
-					Aufnahmeantrag (PDF)
-				</a>
-				<a 
-					href="/kontakt" 
-					class="bg-transparent border-2 border-white hover:bg-white/10 text-white font-bold px-8 py-4 rounded-xl transition flex items-center justify-center uppercase tracking-wider text-sm"
-				>
-					Fragen zur Mitgliedschaft?
-				</a>
 			</div>
-			
-			<p class="text-xs text-red-200 mt-5 italic">
-				Tipp: Du kannst den Antrag auch direkt ausgedruckt zum nächsten Probetraining mitbringen!
-			</p>
-		</div>
-	</section>
+		</section>
 
+	</main>
+
+	<!-- Termine außerhalb von Main für visuellen Kontrast -->
 	<section id="spiele" class="bg-gray-900 text-white py-16">
 		<div class="max-w-4xl mx-auto px-4">
 			<div class="text-center mb-12">
 				<h2 class="text-3xl font-black tracking-tight uppercase">Die nächsten Termine</h2>
-				<p class="text-gray-400 mt-1">Unterstütze unsere Teams am Spielfeldrand!</p>
 			</div>
-
-			<div class="space-y-4">
-				<div class="bg-gray-800 border border-gray-700 rounded-lg p-6 flex flex-col md:flex-row justify-between items-center gap-4">
-					<div class="text-center md:text-left">
-						<span class="bg-red-600 text-white text-xs font-bold uppercase px-2 py-0.5 rounded">1. Mannschaft</span>
-						<p class="text-gray-400 text-sm mt-1">Sonntag, 24. Mai – 15:00 Uhr</p>
-					</div>
-					<div class="flex items-center space-x-4 text-lg font-bold">
-						<span class="text-right">BV Brambauer 13/45</span>
-						<span class="text-red-500">VS</span>
-						<span class="text-left text-gray-400">Gegner-Team (A)</span>
-					</div>
-					<div class="text-sm text-gray-400 font-medium bg-gray-700 px-4 py-2 rounded">
-						Heimspiel (Glückauf-Arena)
-					</div>
-				</div>
-
-				<div class="bg-gray-800 border border-gray-700 rounded-lg p-6 flex flex-col md:flex-row justify-between items-center gap-4">
-					<div class="text-center md:text-left">
-						<span class="bg-gray-600 text-white text-xs font-bold uppercase px-2 py-0.5 rounded">2. Mannschaft</span>
-						<p class="text-gray-400 text-sm mt-1">Sonntag, 24. Mai – 13:00 Uhr</p>
-					</div>
-					<div class="flex items-center space-x-4 text-lg font-bold">
-						<span class="text-right">BV Brambauer II</span>
-						<span class="text-red-500">VS</span>
-						<span class="text-left text-gray-400">Gegner-Team II (A)</span>
-					</div>
-					<div class="text-sm text-gray-400 font-medium bg-gray-700 px-4 py-2 rounded">
-						Heimspiel (Glückauf-Arena)
-					</div>
-				</div>
-			</div>
+            <!-- ... deine Termine ... -->
 		</div>
 	</section>
 

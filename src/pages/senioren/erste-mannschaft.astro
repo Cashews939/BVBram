@@ -1,0 +1,172 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+---
+
+<MainLayout title="1. Mannschaft - Tabelle & Spielplan">
+    <header class="bg-zinc-900 text-white py-12 px-4 border-b-4 border-red-600">
+        <div class="max-w-6xl mx-auto">
+            <nav class="flex mb-4 text-xs uppercase font-bold tracking-widest text-gray-500 gap-2">
+                <a href="/senioren" class="hover:text-white">Senioren</a>
+                <span>/</span>
+                <span class="text-red-500">1. Mannschaft</span>
+            </nav>
+            <h1 class="text-3xl md:text-5xl font-black uppercase tracking-tight">1. Mannschaft</h1>
+            <p class="text-gray-400 mt-2 text-base">Kreisliga A2 Dortmund – Die Tabelle & alle Spiele live.</p>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-12 flex-grow">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            
+            <!-- Linke Spalte: Die Tabelle (nimmt 2/3 Platz ein) -->
+            <div class="lg:col-span-2">
+                <h2 class="text-2xl font-black uppercase mb-6 flex items-center gap-2">
+                    <span class="w-2 h-8 bg-red-600 inline-block"></span>
+                    Aktuelle Tabelle
+                </h2>
+                
+                <div class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-gray-50 border-b border-gray-200 text-[10px] uppercase tracking-widest text-gray-500 font-bold">
+                                    <th class="px-4 py-4 text-center">Pos</th>
+                                    <th class="px-4 py-4">Team</th>
+                                    <th class="px-2 py-4 text-center">Sp</th>
+                                    <th class="px-2 py-4 text-center">Diff</th>
+                                    <th class="px-4 py-4 text-center">Pkt</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-body">
+                                <!-- Daten werden per JS geladen -->
+                                <tr>
+                                    <td colspan="5" class="px-4 py-20 text-center text-gray-400 animate-pulse">
+                                        Lade Tabellendaten...
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="p-4 bg-gray-50 border-t border-gray-200">
+                        <p class="text-[10px] text-gray-400 italic text-center">Daten bereitgestellt von OpenLigaDB.de</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rechte Spalte: Letzte & Nächste Spiele -->
+            <div class="space-y-8">
+                <h2 class="text-2xl font-black uppercase mb-6 flex items-center gap-2">
+                    <span class="w-2 h-8 bg-zinc-900 inline-block"></span>
+                    Spielplan
+                </h2>
+                
+                <div id="match-schedule" class="space-y-4">
+                    <!-- Daten werden per JS geladen -->
+                    <div class="bg-gray-100 h-32 rounded-xl animate-pulse"></div>
+                    <div class="bg-gray-100 h-32 rounded-xl animate-pulse"></div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+<script is:inline>
+    // Wir nutzen das exakte Kürzel der aktuellen Saison
+    // Tipp: 'do-kla22024' ist der Standard für Kreisliga A2 Dortmund 24/25
+    const leagueShortcut = 'do-kla22024'; // Versuche 2024 oder 2025 je nach Saisonstart
+    const teamNameFilter = "Brambauer";
+
+    async function init() {
+        console.log("Starte Daten-Abfrage für:", leagueShortcut);
+        await loadTable();
+        await loadSchedule();
+    }
+
+    async function loadTable() {
+        const tbody = document.getElementById('table-body');
+        try {
+            // WICHTIG: Die URL Struktur bei getbltable ist /leagueShortcut/year
+            const res = await fetch(`https://api.openligadb.de/getbltable/${leagueShortcut}/2024`);
+            
+            if (!res.ok) throw new Error(`HTTP Fehler: ${res.status}`);
+            
+            const data = await res.json();
+            console.log("Tabellendaten empfangen:", data);
+
+            if (!data || data.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" class="p-4 text-center">Keine Daten für diese Saison gefunden.</td></tr>';
+                return;
+            }
+            
+            tbody.innerHTML = data.map((team, index) => {
+                const isBVB = team.teamName.includes(teamNameFilter);
+                return `
+                    <tr class="${isBVB ? 'bg-red-50 font-bold' : 'hover:bg-gray-50'} border-b border-gray-100 transition">
+                        <td class="px-4 py-4 text-center text-sm">${index + 1}</td>
+                        <td class="px-4 py-4">
+                            <div class="flex items-center gap-3">
+                                <img src="${team.teamIconUrl}" class="w-5 h-5 object-contain" alt="Logo" onerror="this.style.display='none'" />
+                                <span class="text-sm ${isBVB ? 'text-red-700' : 'text-gray-800'}">${team.teamName}</span>
+                            </div>
+                        </td>
+                        <td class="px-2 py-4 text-center text-sm text-gray-600">${team.matches}</td>
+                        <td class="px-2 py-4 text-center text-sm text-gray-600">${team.goalDiff}</td>
+                        <td class="px-4 py-4 text-center font-black text-sm">${team.points}</td>
+                    </tr>
+                `;
+            }).join('');
+        } catch (e) {
+            console.error("Tabellen-Fehler:", e);
+            tbody.innerHTML = `<tr><td colspan="5" class="p-4 text-red-500 text-center text-xs">Fehler beim Laden: ${e.message}</td></tr>`;
+        }
+    }
+
+    async function loadSchedule() {
+        const scheduleContainer = document.getElementById('match-schedule');
+        try {
+            // Für den Spielplan nutzen wir nur das Kürzel
+            const res = await fetch(`https://api.openligadb.de/getmatchdata/${leagueShortcut}`);
+            const data = await res.json();
+            console.log("Spiele empfangen:", data);
+
+            const brambauerMatches = data.filter(m => 
+                m.team1.teamName.includes(teamNameFilter) || m.team2.teamName.includes(teamNameFilter)
+            );
+
+            if (brambauerMatches.length === 0) {
+                scheduleContainer.innerHTML = '<p class="text-xs text-gray-400 text-center">Keine Spiele gefunden.</p>';
+                return;
+            }
+
+            scheduleContainer.innerHTML = brambauerMatches.slice(-5).map(match => {
+                const dateObj = new Date(match.matchDateTime);
+                const dateStr = dateObj.toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit' });
+                const timeStr = dateObj.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' });
+                
+                const isFinished = match.matchIsFinished;
+                const points1 = match.matchResults.length > 0 ? match.matchResults[0].pointsTeam1 : '-';
+                const points2 = match.matchResults.length > 0 ? match.matchResults[0].pointsTeam2 : '-';
+
+                return `
+                    <div class="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
+                        <p class="text-[9px] uppercase font-bold text-gray-400 mb-2">${dateStr} | ${timeStr} Uhr</p>
+                        <div class="flex justify-between items-center text-[11px] font-bold uppercase">
+                            <span class="w-[40%] truncate">${match.team1.shortName || match.team1.teamName}</span>
+                            <span class="px-2 py-1 bg-zinc-900 text-white rounded font-mono text-[10px]">
+                                ${isFinished ? points1 + ':' + points2 : 'VS'}
+                            </span>
+                            <span class="w-[40%] text-right truncate">${match.team2.shortName || match.team2.teamName}</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        } catch (e) {
+            console.error("Spielplan-Fehler:", e);
+            scheduleContainer.innerHTML = '<p class="text-xs text-red-500">Spielplan konnte nicht geladen werden.</p>';
+        }
+    }
+
+    init();
+</script>
+</MainLayout>

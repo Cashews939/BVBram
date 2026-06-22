@@ -1,158 +1,188 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
+import { Image } from 'astro:assets';
 
-// Wir lassen das Frontmatter (oben) fast leer, da die Action jetzt im Browser passiert.
+// 1. Hier importierst du deine statischen Bilder
+import bildVersammlung from '../assets/images/logogarage.jpeg'; 
+import bildCamp from '../assets/images/kinder-feld.jpeg'; 
 ---
 
 <MainLayout title="Aktuelles & News">
-	
-	<header class="bg-zinc-900 text-white py-12 px-4 border-b-4 border-red-600">
-		<div class="max-w-6xl mx-auto text-center md:text-left">
-			<h1 class="text-3xl md:text-5xl font-black uppercase tracking-tight">Aktuelles & News</h1>
-			<p class="text-gray-400 mt-2 text-sm md:text-base">Immer auf dem Laufenden bleiben – vom Spielfeld bis zum Vereinsheim.</p>
-		</div>
-	</header>
+    
+    <header class="bg-zinc-900 text-white py-12 px-4 border-b-4 border-red-600">
+        <div class="max-w-6xl mx-auto text-center md:text-left">
+            <h1 class="text-3xl md:text-5xl font-black uppercase tracking-tight">Aktuelles & News</h1>
+            <p class="text-gray-400 mt-2 text-sm md:text-base">Immer auf dem Laufenden bleiben – vom Spielfeld bis zum Vereinsheim.</p>
+        </div>
+    </header>
 
-	<main class="max-w-6xl mx-auto px-4 py-12 flex-grow">
-		
-		<!-- LIVE MATCHCENTER CONTAINER -->
-		<section class="mb-12 bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-			<div class="flex items-center space-x-2 mb-4">
-				<span class="w-3 h-3 bg-red-600 rounded-full animate-pulse"></span>
-				<h2 class="text-xs font-black uppercase tracking-wider text-gray-500">Live-Matchcenter (Kreisliga A2)</h2>
-			</div>
+    <main class="max-w-6xl mx-auto px-4 py-12 flex-grow">
+        
+        <!-- LIVE MATCHCENTER CONTAINER -->
+        <section class="mb-12 bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+            <div class="flex items-center space-x-2 mb-4">
+                <span class="w-3 h-3 bg-red-600 rounded-full animate-pulse"></span>
+                <h2 class="text-xs font-black uppercase tracking-wider text-gray-500">Live-Matchcenter (Kreisliga A2)</h2>
+            </div>
 
-			<div id="match-content">
-				<!-- Hier wird per JavaScript entweder das Spiel oder der Fallback eingeblendet -->
-				<div class="animate-pulse flex flex-col items-center py-8">
-					<div class="h-4 w-32 bg-gray-200 rounded mb-4"></div>
-					<div class="h-10 w-64 bg-gray-200 rounded"></div>
-				</div>
-			</div>
-		</section>
-		
-		<div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-			<div class="lg:col-span-2 space-y-10">
-				<h2 class="text-xl font-black uppercase border-b-2 border-red-600 inline-block pb-1 mb-4">Wichtige Meldungen</h2>
+            <div id="match-content">
+                <!-- Hier wird per JavaScript entweder das Spiel oder der Fallback eingeblendet -->
+                <div class="animate-pulse flex flex-col items-center py-8">
+                    <div class="h-4 w-32 bg-gray-200 rounded mb-4"></div>
+                    <div class="h-10 w-64 bg-gray-200 rounded"></div>
+                </div>
+            </div>
+        </section>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            <div class="lg:col-span-2 space-y-10">
+                <h2 class="text-xl font-black uppercase border-b-2 border-red-600 inline-block pb-1 mb-4">Wichtige Meldungen</h2>
 
-				<article class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden flex flex-col md:flex-row group">
-					<div class="md:w-1/3 bg-gray-200 h-48 md:h-auto flex items-center justify-center text-gray-400 italic overflow-hidden">
-						<span class="group-hover:scale-110 transition-transform duration-500">[Bild: Versammlung]</span>
-					</div>
-					<div class="p-6 md:w-2/3 flex flex-col justify-between">
-						<div>
-							<div class="flex items-center gap-3 mb-3">
-								<span class="bg-zinc-100 text-zinc-600 text-[10px] font-bold uppercase px-2 py-1 rounded">Verein</span>
-								<span class="text-gray-400 text-xs font-medium">20. Mai 2026</span>
-							</div>
-							<h3 class="text-xl font-bold text-black mb-3 group-hover:text-red-600 transition">Einladung zur Jahreshauptversammlung</h3>
-							<p class="text-gray-600 text-sm leading-relaxed line-clamp-3">
-								Der Vorstand lädt alle Mitglieder herzlich zur diesjährigen Versammlung ein. Auf der Tagesordnung stehen wichtige Wahlen und die Planung der kommenden Saison in der Glückauf-Arena...
-							</p>
-						</div>
-						<a href="#" class="mt-4 text-red-600 font-bold text-sm uppercase tracking-wider hover:translate-x-1 transition-transform inline-block">Weiterlesen →</a>
-					</div>
-				</article>
+                <!-- News-Meldung 1: Jahreshauptversammlung -->
+                <article class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden flex flex-col md:flex-row group">
+                    <!-- Bild-Container mit echtem Bild und Hover-Effekt -->
+                    <div class="md:w-1/3 h-48 md:h-auto relative overflow-hidden bg-gray-100 flex items-center justify-center">
+                        <Image 
+                            src={bildVersammlung} 
+                            alt="Jahreshauptversammlung des BV Brambauer" 
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            width={400}
+                            height={300}
+                        />
+                    </div>
+                    <div class="p-6 md:w-2/3 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-3 mb-3">
+                                <span class="bg-zinc-100 text-zinc-600 text-[10px] font-bold uppercase px-2 py-1 rounded">Verein</span>
+                                <span class="text-gray-400 text-xs font-medium">20. Mai 2026</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-black mb-3 group-hover:text-red-600 transition">Einladung zur Jahreshauptversammlung</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed line-clamp-3">
+                                Der Vorstand lädt alle Mitglieder herzlich zur diesjährigen Versammlung ein. Auf der Tagesordnung stehen wichtige Wahlen und die Planung der kommenden Saison in der Glückauf-Arena...
+                            </p>
+                        </div>
+                        <a href="#" class="mt-4 text-red-600 font-bold text-sm uppercase tracking-wider hover:translate-x-1 transition-transform inline-block">Weiterlesen →</a>
+                    </div>
+                </article>
 
-				<article class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden flex flex-col md:flex-row group">
-					<div class="md:w-1/3 bg-gray-200 h-48 md:h-auto flex items-center justify-center text-gray-400 italic overflow-hidden">
-						<span class="group-hover:scale-110 transition-transform duration-500">[Bild: Fußballschule]</span>
-					</div>
-					<div class="p-6 md:w-2/3 flex flex-col justify-between">
-						<div>
-							<div class="flex items-center gap-3 mb-3">
-								<span class="bg-red-50 text-red-600 text-[10px] font-bold uppercase px-2 py-1 rounded">Junioren</span>
-								<span class="text-gray-400 text-xs font-medium">15. Mai 2026</span>
-							</div>
-							<h3 class="text-xl font-bold text-black mb-3 group-hover:text-red-600 transition">Jetzt anmelden: Sommer-Jugendcamp</h3>
-							<p class="text-gray-600 text-sm leading-relaxed line-clamp-3">
-								Auch in diesem Jahr findet wieder unser beliebtes Fußballcamp für Kinder von 6 bis 14 Jahren statt. Drei Tage voller Fußball, Spaß und Verpflegung...
-							</p>
-						</div>
-						<a href="#" class="mt-4 text-red-600 font-bold text-sm uppercase tracking-wider hover:translate-x-1 transition-transform inline-block">Infos & Anmeldung →</a>
-					</div>
-				</article>
-			</div>
+                <!-- News-Meldung 2: Sommer-Jugendcamp -->
+                <article class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden flex flex-col md:flex-row group">
+                    <!-- Bild-Container mit echtem Bild und Hover-Effekt -->
+                    <div class="md:w-1/3 h-48 md:h-auto relative overflow-hidden bg-gray-100 flex items-center justify-center">
+                        <Image 
+                            src={bildCamp} 
+                            alt="Kinder laufen auf das Spielfeld" 
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            width={400}
+                            height={300}
+                        />
+                    </div>
+                    <div class="p-6 md:w-2/3 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-3 mb-3">
+                                <span class="bg-red-50 text-red-600 text-[10px] font-bold uppercase px-2 py-1 rounded">Junioren</span>
+                                <span class="text-gray-400 text-xs font-medium">15. Mai 2026</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-black mb-3 group-hover:text-red-600 transition">Jetzt anmelden: Sommer-Jugendcamp</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed line-clamp-3">
+                                Auch in diesem Jahr findet wieder unser beliebtes Fußballcamp für Kinder von 6 bis 14 Jahren statt. Drei Tage voller Fußball, Spaß und Verpflegung...
+                            </p>
+                        </div>
+                        <a href="#" class="mt-4 text-red-600 font-bold text-sm uppercase tracking-wider hover:translate-x-1 transition-transform inline-block">Infos & Anmeldung →</a>
+                    </div>
+                </article>
+            </div>
 
-			<div class="space-y-12">
-				<section>
+            <div class="space-y-12">
+                <section>
 					<h2 class="text-xl font-black uppercase border-b-2 border-red-600 inline-block pb-1 mb-6">Instagram Live</h2>
-					<div class="bg-gray-50 border border-gray-200 rounded-xl p-6 min-h-[400px] flex flex-col items-center justify-center text-center">
-						<div class="text-red-600 text-4xl mb-4"><i class="fa-brands fa-instagram"></i></div>
-						<p class="text-gray-500 text-sm font-medium">Hier wird das Social-Media-Widget eingebunden.</p>
-						<p class="text-gray-400 text-xs mt-2 italic">Alle Posts von @bv_brambauer erscheinen hier automatisch.</p>
+					<div class="bg-gradient-to-br from-purple-600 via-pink-500 to-yellow-500 rounded-xl p-0.5 shadow-md transform hover:scale-[1.02] transition-transform duration-300">
+						<div class="bg-white rounded-[10px] p-8 flex flex-col items-center justify-center text-center min-h-[400px]">
+							<div class="text-transparent bg-clip-text bg-gradient-to-tr from-purple-600 to-pink-500 text-5xl mb-4">
+								<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+							</div>
+							<h3 class="text-xl font-bold text-gray-900 mb-2">@bv_brambauer</h3>
+							<p class="text-gray-600 text-sm max-w-xs mb-6">
+								Verpasse keine Storys, Matchday-Poster und exklusive Einblicke direkt vom Spielfeld!
+							</p>
+							<a 
+								href="https://www.instagram.com/bv_brambauer/?hl=de" 
+								target="_blank" 
+								rel="noopener noreferrer" 
+								class="bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white font-bold text-sm uppercase tracking-wider px-6 py-3 rounded-lg shadow transition duration-300"
+							>
+								Auf Instagram folgen
+							</a>
+						</div>
 					</div>
 				</section>
-			</div>
-		</div>
-	</main>
+            </div>
+        </div>
+    </main>
 
-	<!-- SCRIPT FÜR LIVE-DATEN -->
-	<script>
-		async function loadMatchData() {
-			const container = document.getElementById('match-content');
-			// Wir nutzen do-kla2-2024 für die aktuelle Saison in der OpenLigaDB
-			const leagueShortcut = 'do-kla2-2024'; 
-			
-			try {
-				const response = await fetch(`https://api.openligadb.de/getmatchdata/${leagueShortcut}`);
-				if (!response.ok) throw new Error('API Fehler');
-				
-				const spiele = await response.json();
-				// Wir suchen nach Brambauer
-				const spiel = spiele.find(s => 
-					s.team1.teamName.toLowerCase().includes('brambauer') || 
-					s.team2.teamName.toLowerCase().includes('brambauer')
-				);
+    <!-- SCRIPT FÜR LIVE-DATEN -->
+    <script>
+        async function loadMatchData() {
+            const container = document.getElementById('match-content');
+            const leagueShortcut = 'do-kla2-2024'; 
+            
+            try {
+                const response = await fetch(`https://api.openligadb.de/getmatchdata/${leagueShortcut}`);
+                if (!response.ok) throw new Error('API Fehler');
+                
+                const spiele = await response.json();
+                const spiel = spiele.find(s => 
+                    s.team1.teamName.toLowerCase().includes('brambauer') || 
+                    s.team2.teamName.toLowerCase().includes('brambauer')
+                );
 
-				if (spiel) {
-					const ergebnis = spiel.matchResults && spiel.matchResults.length > 0 
-						? `${spiel.matchResults[0].pointsTeam1}:${spiel.matchResults[0].pointsTeam2}` 
-						: "VS";
-					
-					container.innerHTML = `
-						<div class="max-w-2xl mx-auto bg-gray-900 text-white rounded-xl p-6 shadow-md text-center">
-							<p class="text-[10px] uppercase tracking-widest text-gray-400 font-bold mb-3">
-								${spiel.group.groupName || "Spieltag"}
-							</p>
-							<div class="flex justify-between items-center text-base md:text-xl font-black px-4">
-								<span class="w-2/5 text-right uppercase truncate">${spiel.team1.teamName}</span>
-								<span class="w-1/5 bg-red-600 text-white px-3 py-1.5 rounded font-mono text-base tracking-widest mx-2">
-									${ergebnis}
-								</span>
-								<span class="w-2/5 text-left uppercase truncate">${spiel.team2.teamName}</span>
-							</div>
-							<p class="text-xs text-gray-400 mt-4 italic">
-								${spiel.matchIsFinished ? "Spiel beendet" : "Match läuft oder angesetzt"}
-							</p>
-						</div>
-					`;
-				} else {
-					showFallback(container);
-				}
-			} catch (e) {
-				console.error('Matchcenter konnte nicht geladen werden', e);
-				showFallback(container);
-			}
-		}
+                if (spiel) {
+                    const ergebnis = spiel.matchResults && spiel.matchResults.length > 0 
+                        ? `${spiel.matchResults[0].pointsTeam1}:${spiel.matchResults[0].pointsTeam2}` 
+                        : "VS";
+                    
+                    container.innerHTML = `
+                        <div class="max-w-2xl mx-auto bg-gray-900 text-white rounded-xl p-6 shadow-md text-center">
+                            <p class="text-[10px] uppercase tracking-widest text-gray-400 font-bold mb-3">
+                                ${spiel.group.groupName || "Spieltag"}
+                            </p>
+                            <div class="flex justify-between items-center text-base md:text-xl font-black px-4">
+                                <span class="w-2/5 text-right uppercase truncate">${spiel.team1.teamName}</span>
+                                <span class="w-1/5 bg-red-600 text-white px-3 py-1.5 rounded font-mono text-base tracking-widest mx-2">
+                                    ${ergebnis}
+                                </span>
+                                <span class="w-2/5 text-left uppercase truncate">${spiel.team2.teamName}</span>
+                            </div>
+                            <p class="text-xs text-gray-400 mt-4 italic">
+                                ${spiel.matchIsFinished ? "Spiel beendet" : "Match läuft oder angesetzt"}
+                            </p>
+                        </div>
+                    `;
+                } else {
+                    showFallback(container);
+                }
+            } catch (e) {
+                console.error('Matchcenter konnte nicht geladen werden', e);
+                showFallback(container);
+            }
+        }
 
-		function showFallback(container) {
-			container.innerHTML = `
-				<div class="max-w-2xl mx-auto bg-gray-50 border border-gray-200 rounded-xl p-6 text-center">
-					<p class="text-[10px] uppercase tracking-widest text-gray-400 font-bold mb-2">Letztes Meisterschaftsspiel</p>
-					<div class="flex justify-between items-center text-sm md:text-base font-bold text-gray-800 px-4">
-						<span class="w-2/5 text-right truncate">BV Westfalia Wickede</span>
-						<span class="w-1/5 bg-zinc-900 text-white text-xs px-2 py-1 rounded mx-2 font-mono">1 : 2</span>
-						<span class="w-2/5 text-left truncate text-red-600">BV Brambauer 13/45</span>
-					</div>
-					<p class="text-[11px] text-green-600 font-bold mt-4 flex items-center justify-center gap-1">
-						<i class="fa-solid fa-check"></i> Dreier eingefahren! Brambauer jubelt bei den Schwarz-Weißen.
-					</p>
-				</div>
-			`;
-		}
+        function showFallback(container) {
+            container.innerHTML = `
+                <div class="max-w-2xl mx-auto bg-gray-50 border border-gray-200 rounded-xl p-6 text-center">
+                    <p class="text-[10px] uppercase tracking-widest text-gray-400 font-bold mb-2">Letztes Meisterschaftsspiel</p>
+                    <div class="flex justify-between items-center text-sm md:text-base font-bold text-gray-800 px-4">
+                        <span class="w-2/5 text-right truncate">BV Westfalia Wickede</span>
+                        <span class="w-1/5 bg-zinc-900 text-white text-xs px-2 py-1 rounded mx-2 font-mono">1 : 2</span>
+                        <span class="w-2/5 text-left truncate text-red-600">BV Brambauer 13/45</span>
+                    </div>
+                    <p class="text-[11px] text-green-600 font-bold mt-4 flex items-center justify-center gap-1">
+                        <i class="fa-solid fa-check"></i> Dreier eingefahren! Brambauer jubelt bei den Schwarz-Weißen.
+                    </p>
+                </div>
+            `;
+        }
 
-		// Initial laden
-		loadMatchData();
-	</script>
+        loadMatchData();
+    </script>
 </MainLayout>

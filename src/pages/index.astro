@@ -1,127 +1,165 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
+import { Image } from 'astro:assets';
+
+// 1. Hier importierst du deine statischen Bilder aus deinem Assets-Ordner
+import stadionBild from '../assets/images/stadion.jpeg'; 
+// import vereinsLogo from '../assets/images/logo.png'; // Falls du das Logo hier nutzen willst
+import bildVersammlung from '../assets/images/logogarage.jpeg'; // Beispielname für News 1
+import bildCamp from '../assets/images/kinder-feld.jpeg'; // Beispielname für News 2
 ---
 
 <MainLayout title="Startseite">
 
-	<header class="relative bg-gradient-to-r from-black to-gray-900 text-white py-24 px-4 overflow-hidden">
-		<div class="absolute inset-0 opacity-10 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]"></div>
-		
-		<div class="relative max-w-4xl mx-auto text-center">
-			<span class="bg-red-600 text-white text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full">Kreisliga A2 Dortmund</span>
-			<h1 class="text-4xl md:text-6xl font-black tracking-tight mt-4 mb-6 uppercase">
-				Tradition. Leidenschaft. <br><span class="text-red-500">Brambauer!</span>
-			</h1>
-			<p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-8">
-				Willkommen auf der neuen Heimat des BV Brambauer 13/45. Hier schlägt das fußballerische Herz von Lünen.
-			</p>
-			<div class="flex flex-col sm:flex-row justify-center gap-4">
-				<a href="/senioren" class="bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-3 rounded shadow transition text-center">Zu den Mannschaften</a>
-				<a href="/aktuelles" class="bg-transparent border-2 border-white hover:bg-white hover:text-black font-bold px-6 py-3 rounded transition text-center">Aktuelle News</a>
-			</div>
-		</div>
-	</header>
+    <!-- HEADER / HERO: Jetzt mit echtem Stadion-Hintergrundbild -->
+    <header class="relative bg-black text-white py-24 px-4 overflow-hidden">
+        <!-- Das Stadionbild absolut im Hintergrund positioniert -->
+        <div class="absolute inset-0 z-0">
+            <Image 
+                src={stadionBild} 
+                alt="Die Glückauf-Arena des BV Brambauer" 
+                class="w-full h-full object-cover opacity-25"
+                priority
+            />
+            <!-- Subtiler Farbverlauf über dem Bild für bessere Lesbarkeit des Textes -->
+            <div class="absolute inset-0 bg-gradient-to-r from-black via-transparent to-gray-900 opacity-80"></div>
+            <!-- Dein bestehendes Punkt-Muster -->
+            <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        </div>
+        
+        <!-- Inhalt über dem Hintergrund (z-10 stellt sicher, dass der Text oben liegt) -->
+        <div class="relative z-10 max-w-4xl mx-auto text-center">
+            <!-- Optionales Vereinslogo über dem Titel -->
+            <!-- <div class="flex justify-center mb-4">
+                <Image src={vereinsLogo} alt="BV Brambauer Logo" class="h-20 w-auto" />
+            </div> -->
+            
+            <span class="bg-red-600 text-white text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full">Kreisliga A2 Dortmund</span>
+            <h1 class="text-4xl md:text-6xl font-black tracking-tight mt-4 mb-6 uppercase">
+                Tradition. Leidenschaft. <br><span class="text-red-500">Brambauer!</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-8">
+                Willkommen auf der neuen Heimat des BV Brambauer 13/45. Hier schlägt das fußballerische Herz von Lünen.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="/senioren" class="bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-3 rounded shadow transition text-center">Zu den Mannschaften</a>
+                <a href="/aktuelles" class="bg-transparent border-2 border-white hover:bg-white hover:text-black font-bold px-6 py-3 rounded transition text-center">Aktuelle News</a>
+            </div>
+        </div>
+    </header>
 
-	<section class="bg-white border-b border-gray-200 py-8 shadow-sm">
-		<div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-			<div>
-				<p class="text-sm uppercase text-gray-500 font-semibold tracking-wider">Gegründet</p>
-				<p class="text-3xl font-black text-black mt-1">1913 / 2007</p>
-			</div>
-			<div class="border-y md:border-y-0 md:border-x border-gray-200 py-4 md:py-0">
-				<p class="text-sm uppercase text-gray-500 font-semibold tracking-wider">Heimat</p>
-				<p class="text-3xl font-black text-red-600 mt-1">Glückauf-Arena</p>
-			</div>
-			<div>
-				<p class="text-sm uppercase text-gray-500 font-semibold tracking-wider">Vereinsfarben</p>
-				<p class="text-3xl font-black text-black mt-1">Schwarz-Weiß-Rot</p>
-			</div>
-		</div>
-	</section>
+    <section class="bg-white border-b border-gray-200 py-8 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div>
+                <p class="text-sm uppercase text-gray-500 font-semibold tracking-wider">Gegründet</p>
+                <p class="text-3xl font-black text-black mt-1">1913 / 2007</p>
+            </div>
+            <div class="border-y md:border-y-0 md:border-x border-gray-200 py-4 md:py-0">
+                <p class="text-sm uppercase text-gray-500 font-semibold tracking-wider">Heimat</p>
+                <p class="text-3xl font-black text-red-600 mt-1">Glückauf-Arena</p>
+            </div>
+            <div>
+                <p class="text-sm uppercase text-gray-500 font-semibold tracking-wider">Vereinsfarben</p>
+                <p class="text-3xl font-black text-black mt-1">Schwarz-Weiß-Rot</p>
+            </div>
+        </div>
+    </section>
 
-	<main id="news" class="max-w-6xl mx-auto px-4 py-16">
-		<div class="flex justify-between items-end mb-10">
-			<div>
-				<h2 class="text-3xl font-black tracking-tight uppercase">Letzte Updates</h2>
-				<p class="text-gray-600 mt-1">Direkt vom Platz und aus dem Vereinsleben</p>
-			</div>
-			<a href="/aktuelles" class="text-red-600 hover:text-red-700 font-bold text-sm uppercase tracking-wider hidden sm:block">Alle News ansehen →</a>
-		</div>
+    <main id="news" class="max-w-6xl mx-auto px-4 py-16">
+        <div class="flex justify-between items-end mb-10">
+            <div>
+                <h2 class="text-3xl font-black tracking-tight uppercase">Letzte Updates</h2>
+                <p class="text-gray-600 mt-1">Direkt vom Platz und aus dem Vereinsleben</p>
+            </div>
+            <a href="/aktuelles" class="text-red-600 hover:text-red-700 font-bold text-sm uppercase tracking-wider hidden sm:block">Alle News ansehen →</a>
+        </div>
 
-		<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-			<article class="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-200 flex flex-col group">
-				<div class="h-48 bg-gray-200 flex items-center justify-center text-gray-400 italic">
-					[Bild: Versammlung]
-				</div>
-				<div class="p-6 flex-1 flex flex-col justify-between">
-					<div>
-						<div class="flex gap-2 text-xs font-semibold text-gray-500 mb-2">
-							<span class="text-zinc-700 font-bold uppercase">Verein</span>
-							<span>•</span>
-							<span>20. Mai 2026</span>
-						</div>
-						<h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-red-600 transition">
-							Einladung zur Jahreshauptversammlung
-						</h3>
-						<p class="text-gray-600 text-sm line-clamp-2">
-							Der Vorstand lädt alle Mitglieder herzlich zur diesjährigen Versammlung ein. Auf der Tagesordnung stehen wichtige Wahlen...
-						</p>
-					</div>
-					<a href="/aktuelles" class="text-red-600 hover:text-red-700 font-bold text-sm mt-4 inline-block">Weiterlesen →</a>
-				</div>
-			</article>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            <!-- News-Karte 1 mit echtem Bild -->
+            <article class="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-200 flex flex-col group">
+                <div class="h-48 relative overflow-hidden bg-gray-100">
+                    <Image 
+                        src={bildVersammlung} 
+                        alt="Jahreshauptversammlung des BV Brambauer" 
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        width={600}
+                        height={300}
+                    />
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                        <div class="flex gap-2 text-xs font-semibold text-gray-500 mb-2">
+                            <span class="text-zinc-700 font-bold uppercase">Verein</span>
+                            <span>•</span>
+                            <span>20. Mai 2026</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-red-600 transition">
+                            Einladung zur Jahreshauptversammlung
+                        </h3>
+                        <p class="text-gray-600 text-sm line-clamp-2">
+                            Der Vorstand lädt alle Mitglieder herzlich zur diesjährigen Versammlung ein. Auf der Tagesordnung stehen wichtige Wahlen...
+                        </p>
+                    </div>
+                    <a href="/aktuelles" class="text-red-600 hover:text-red-700 font-bold text-sm mt-4 inline-block">Weiterlesen →</a>
+                </div>
+            </article>
 
-			<article class="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-200 flex flex-col group">
-				<div class="h-48 bg-gray-200 flex items-center justify-center text-gray-400 italic">
-					[Bild: Fußballschule]
-				</div>
-				<div class="p-6 flex-1 flex flex-col justify-between">
-					<div>
-						<div class="flex gap-2 text-xs font-semibold text-gray-500 mb-2">
-							<span class="text-red-600 font-bold uppercase">Junioren</span>
-							<span>•</span>
-							<span>15. Mai 2026</span>
-						</div>
-						<h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-red-600 transition">
-							Jetzt anmelden: Sommer-Jugendcamp
-						</h3>
-						<p class="text-gray-600 text-sm line-clamp-2">
-							Auch in diesem Jahr findet wieder unser beliebtes Fußballcamp für Kinder von 6 bis 14 Jahren statt...
-						</p>
-					</div>
-					<a href="/aktuelles" class="text-red-600 hover:text-red-700 font-bold text-sm mt-4 inline-block">Infos & Anmeldung →</a>
-				</div>
-			</article>
-		</div>
+            <!-- News-Karte 2 mit emotionalem Einlauf-Bild -->
+            <article class="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-200 flex flex-col group">
+                <div class="h-48 relative overflow-hidden bg-gray-100">
+                    <Image 
+                        src={bildCamp} 
+                        alt="Kinder laufen auf das Spielfeld" 
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        width={600}
+                        height={300}
+                    />
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                        <div class="flex gap-2 text-xs font-semibold text-gray-500 mb-2">
+                            <span class="text-red-600 font-bold uppercase">Junioren</span>
+                            <span>•</span>
+                            <span>15. Mai 2026</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-red-600 transition">
+                            Jetzt anmelden: Sommer-Jugendcamp
+                        </h3>
+                        <p class="text-gray-600 text-sm line-clamp-2">
+                            Auch in diesem Jahr findet wieder unser beliebtes Fußballcamp für Kinder von 6 bis 14 Jahren statt...
+                        </p>
+                    </div>
+                    <a href="/aktuelles" class="text-red-600 hover:text-red-700 font-bold text-sm mt-4 inline-block">Infos & Anmeldung →</a>
+                </div>
+            </article>
+        </div>
 
-		<!-- CTA-Bereich innerhalb von Main für saubere Struktur -->
-		<section class="mb-16">
-			<div class="bg-red-600 text-white p-12 rounded-2xl shadow-xl text-center border border-red-700">
-				<h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight">Werde Teil der BVB-Familie!</h2>
-				<p class="text-lg text-red-100 mt-4 max-w-2xl mx-auto leading-relaxed">
-					Egal ob aktiver Kicker, Senior oder Fan – beim BV Brambauer 13/45 ist jeder willkommen.
-				</p>
-				<div class="mt-8 flex flex-col sm:flex-row justify-center gap-4">
-					<a href="/aufnahmeantrag.pdf" target="_blank" class="bg-zinc-900 hover:bg-black text-white font-bold px-8 py-4 rounded-xl shadow-lg transition flex items-center justify-center gap-2 uppercase tracking-wider text-sm group">
-						<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:-translate-y-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-						</svg>
-						Aufnahmeantrag (PDF)
-					</a>
-				</div>
-			</div>
-		</section>
+        <section class="mb-16">
+            <div class="bg-red-600 text-white p-12 rounded-2xl shadow-xl text-center border border-red-700">
+                <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight">Werde Teil der BVB-Familie!</h2>
+                <p class="text-lg text-red-100 mt-4 max-w-2xl mx-auto leading-relaxed">
+                    Egal ob aktiver Kicker, Senior oder Fan – beim BV Brambauer 13/45 ist jeder willkommen.
+                </p>
+                <div class="mt-8 flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="/aufnahmeantrag.pdf" target="_blank" class="bg-zinc-900 hover:bg-black text-white font-bold px-8 py-4 rounded-xl shadow-lg transition flex items-center justify-center gap-2 uppercase tracking-wider text-sm group">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:-translate-y-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                        Aufnahmeantrag (PDF)
+                    </a>
+                </div>
+            </div>
+        </section>
 
-	</main>
+    </main>
 
-	<!-- Termine außerhalb von Main für visuellen Kontrast -->
-	<section id="spiele" class="bg-gray-900 text-white py-16">
-		<div class="max-w-4xl mx-auto px-4">
-			<div class="text-center mb-12">
-				<h2 class="text-3xl font-black tracking-tight uppercase">Die nächsten Termine</h2>
-			</div>
+    <section id="spiele" class="bg-gray-900 text-white py-16">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-black tracking-tight uppercase">Die nächsten Termine</h2>
+            </div>
             <!-- ... deine Termine ... -->
-		</div>
-	</section>
+        </div>
+    </section>
 
 </MainLayout>

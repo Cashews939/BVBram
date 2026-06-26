@@ -20,9 +20,10 @@ import MainLayout from '../layouts/MainLayout.astro';
             <!-- SECTION: 1. Mannschaft -->
             <section class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden flex flex-col justify-between">
                 <div>
-                    <div class="p-6 bg-red-600 text-white">
-                        <span class="text-xs font-bold uppercase tracking-wider bg-black/20 px-2.5 py-1 rounded">A-Liga Dortmund</span>
-                        <h2 class="text-2xl font-black uppercase mt-2">1. Mannschaft</h2>
+                    <!-- FIX: bg-zinc-900 statt bg-red-600, dafür eine rote Kante (border-t-4 border-red-600) -->
+                    <div class="p-6 bg-zinc-900 text-white border-t-4 border-red-600">
+                        <span class="text-xs font-bold uppercase tracking-wider text-red-500">A-Liga Dortmund</span>
+                        <h2 class="text-2xl font-black uppercase mt-1">1. Mannschaft</h2>
                     </div>
                     <div class="p-6 space-y-4">
                         <p class="text-gray-600 text-sm">Unser Aushängeschild im Herrenbereich. Das Team kämpft jede Woche in der Kreisliga A2 um wichtige Punkte für den Aufstieg.</p>

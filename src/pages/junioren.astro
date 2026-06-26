@@ -7,8 +7,9 @@ import MainLayout from '../layouts/MainLayout.astro';
     
     <header class="bg-zinc-900 text-white py-12 px-4 border-b-4 border-red-600">
         <div class="max-w-6xl mx-auto">
-            <span class="text-xs font-bold uppercase tracking-widest bg-red-600 text-white px-2.5 py-1 rounded">Nachwuchs</span>
-            <h1 class="text-3xl md:text-5xl font-black uppercase tracking-tight mt-3">Unsere Junioren</h1>
+            <!-- FIX: Hintergrund dunkel, Text rot und feiner Rahmen -->
+            <span class="text-xs font-bold uppercase tracking-widest border border-red-600/30 text-red-500 px-2.5 py-1 rounded bg-red-950/20">Nachwuchs</span>
+            <h1 class="text-3xl md:text-5xl font-black uppercase tracking-tight mt-4">Unsere Junioren</h1>
             <p class="text-gray-400 mt-2 text-base md:text-lg">Die Zukunft des BV Brambauer. Von den Minikickern bis zur U17 – Spaß am Fußball steht bei uns im Fokus!</p>
         </div>
     </header>
@@ -66,7 +67,12 @@ import MainLayout from '../layouts/MainLayout.astro';
                     </div>
                     <div class="mt-4 pt-3 border-t border-gray-50 text-[11px] text-gray-500 flex justify-between items-center">
                         <span>Jahrgang 2013/2014</span>
-                        <button onclick="openModal('D-Junioren (U13)', 'Jahrgang 2013/2014', 'Dienstag & Donnerstag: 16:30 - 18:00 Uhr', 'Jugendleiter / Trainer (Infos folgen)')" class="text-red-600 font-bold hover:underline">Infos</button>
+                        <button 
+                            onclick="openModal(...)" 
+                            class="bg-zinc-50 hover:bg-red-50 text-zinc-700 hover:text-red-600 font-bold text-xs uppercase tracking-wider px-3 py-1.5 rounded-lg border border-gray-200 hover:border-red-200 transition duration-200"
+                        >
+                            Infos
+                        </button>
                     </div>
                 </div>
 
@@ -78,7 +84,12 @@ import MainLayout from '../layouts/MainLayout.astro';
                     </div>
                     <div class="mt-4 pt-3 border-t border-gray-50 text-[11px] text-gray-500 flex justify-between items-center">
                         <span>Jahrgang 2015/2016</span>
-                        <button onclick="openModal('E-Junioren (U11)', 'Jahrgang 2015/2016', 'Montag & Mittwoch: 16:30 - 18:00 Uhr', 'Trainer-Team (Infos folgen)')" class="text-red-600 font-bold hover:underline">Infos</button>
+                        <button 
+                            onclick="openModal(...)" 
+                            class="bg-zinc-50 hover:bg-red-50 text-zinc-700 hover:text-red-600 font-bold text-xs uppercase tracking-wider px-3 py-1.5 rounded-lg border border-gray-200 hover:border-red-200 transition duration-200"
+                        >
+                            Infos
+                        </button>
                     </div>
                 </div>
 
@@ -90,7 +101,12 @@ import MainLayout from '../layouts/MainLayout.astro';
                     </div>
                     <div class="mt-4 pt-3 border-t border-gray-50 text-[11px] text-gray-500 flex justify-between items-center">
                         <span>Jahrgang 2017/2018</span>
-                        <button onclick="openModal('F-Junioren (U9)', 'Jahrgang 2017/2018', 'Dienstag & Donnerstag: 16:00 - 17:30 Uhr', 'Trainer-Team (Infos folgen)')" class="text-red-600 font-bold hover:underline">Infos</button>
+                       <button 
+                            onclick="openModal(...)" 
+                            class="bg-zinc-50 hover:bg-red-50 text-zinc-700 hover:text-red-600 font-bold text-xs uppercase tracking-wider px-3 py-1.5 rounded-lg border border-gray-200 hover:border-red-200 transition duration-200"
+                        >
+                            Infos
+                        </button>
                     </div>
                 </div>
 
@@ -102,7 +118,12 @@ import MainLayout from '../layouts/MainLayout.astro';
                     </div>
                     <div class="mt-4 pt-3 border-t border-gray-50 text-[11px] text-gray-500 flex justify-between items-center">
                         <span>Ab 4 Jahren</span>
-                        <button onclick="openModal('G-Junioren (Minikicker)', 'Ab 4 Jahren / Jahrgang 2019 und jünger', 'Freitag: 15:30 - 17:00 Uhr', 'Betreuer-Team (Infos folgen)')" class="text-red-600 font-bold hover:underline">Infos</button>
+                        <button 
+                            onclick="openModal('G-Junioren (Minikicker)', 'Ab 4 Jahren / Jahrgang 2019 und jünger', 'Freitag: 15:30 - 17:00 Uhr', 'Betreuer-Team (Infos folgen)')" 
+                            class="bg-zinc-50 hover:bg-red-50 text-zinc-700 hover:text-red-600 font-bold text-xs uppercase tracking-wider px-3 py-1.5 rounded-lg border border-gray-200 hover:border-red-200 transition duration-200"
+                        >
+                            Infos
+                        </button>
                     </div>
                 </div>
 

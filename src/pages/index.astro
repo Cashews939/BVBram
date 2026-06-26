@@ -34,7 +34,9 @@ import bildCamp from '../assets/images/kinder-feld.jpeg'; // Beispielname für N
                 <Image src={vereinsLogo} alt="BV Brambauer Logo" class="h-20 w-auto" />
             </div> -->
             
-            <span class="bg-red-600 text-white text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full">Kreisliga A2 Dortmund</span>
+            <span class="inline-block bg-zinc-900/80 text-red-500 border border-red-600/30 text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full backdrop-blur-sm">
+                Kreisliga A2 Dortmund
+            </span>
             <h1 class="text-4xl md:text-6xl font-black tracking-tight mt-4 mb-6 uppercase">
                 Tradition. Leidenschaft. <br><span class="text-red-500">Brambauer!</span>
             </h1>
@@ -42,8 +44,21 @@ import bildCamp from '../assets/images/kinder-feld.jpeg'; // Beispielname für N
                 Willkommen auf der neuen Heimat des BV Brambauer 13/45. Hier schlägt das fußballerische Herz von Lünen.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="/senioren" class="bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-3 rounded shadow transition text-center">Zu den Mannschaften</a>
-                <a href="/aktuelles" class="bg-transparent border-2 border-white hover:bg-white hover:text-black font-bold px-6 py-3 rounded transition text-center">Aktuelle News</a>
+                <!-- Der Mannschafts-Button: Mobil rot, ab Desktop (md:) anthrazit -->
+                <a 
+                    href="/senioren" 
+                    class="bg-red-600 md:bg-zinc-900 hover:bg-red-700 md:hover:bg-red-600 text-white border border-red-600 md:border-zinc-800 md:hover:border-red-600 font-bold px-6 py-3 rounded shadow-lg transition duration-300 text-center uppercase tracking-wider text-sm"
+                >
+                    Zu den Mannschaften
+                </a>
+                
+                <!-- Der News-Button: Passt sich dezent an -->
+                <a 
+                    href="/aktuelles" 
+                    class="bg-transparent border-2 border-white/80 hover:bg-white hover:text-black font-bold px-6 py-3 rounded transition duration-300 text-center uppercase tracking-wider text-sm"
+                >
+                    Aktuelle News
+                </a>
             </div>
         </div>
     </header>
@@ -135,13 +150,14 @@ import bildCamp from '../assets/images/kinder-feld.jpeg'; // Beispielname für N
         </div>
 
         <section class="mb-16">
-            <div class="bg-red-600 text-white p-12 rounded-2xl shadow-xl text-center border border-red-700">
+            <div class="bg-zinc-900 text-white p-12 rounded-2xl shadow-xl text-center border-t-4 border-red-600">
                 <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight">Werde Teil der BVB-Familie!</h2>
-                <p class="text-lg text-red-100 mt-4 max-w-2xl mx-auto leading-relaxed">
+                <p class="text-lg text-zinc-300 mt-4 max-w-2xl mx-auto leading-relaxed">
                     Egal ob aktiver Kicker, Senior oder Fan – beim BV Brambauer 13/45 ist jeder willkommen.
                 </p>
                 <div class="mt-8 flex flex-col sm:flex-row justify-center gap-4">
-                    <a href="/aufnahmeantrag.pdf" target="_blank" class="bg-zinc-900 hover:bg-black text-white font-bold px-8 py-4 rounded-xl shadow-lg transition flex items-center justify-center gap-2 uppercase tracking-wider text-sm group">
+                    <!-- Der Button wird jetzt zum roten Hingucker -->
+                    <a href="/aufnahmeantrag.pdf" target="_blank" class="bg-red-600 hover:bg-red-700 text-white font-bold px-8 py-4 rounded-xl shadow-lg transition flex items-center justify-center gap-2 uppercase tracking-wider text-sm group">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:-translate-y-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                         </svg>

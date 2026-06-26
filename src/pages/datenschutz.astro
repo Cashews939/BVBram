@@ -1,53 +1,70 @@
 ---
+// src/pages/datenschutz.astro
 import MainLayout from '../layouts/MainLayout.astro';
 ---
 
 <MainLayout title="Datenschutzerklärung">
-	<header class="bg-zinc-900 text-white py-12 px-4 border-b-4 border-red-600">
-		<div class="max-w-4xl mx-auto">
-			<h1 class="text-3xl md:text-5xl font-black uppercase tracking-tight">Datenschutz</h1>
-			<p class="text-gray-400 mt-2 text-sm md:text-base">Erklärung zur Erhebung und Verarbeitung personenbezogener Daten</p>
-		</div>
-	</header>
+    <header class="bg-zinc-900 text-white py-12 px-4 border-b-4 border-red-600">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-3xl md:text-5xl font-black uppercase tracking-tight">Datenschutz</h1>
+            <p class="text-gray-400 mt-2 text-sm md:text-base">Erklärung zur Erhebung und Verarbeitung personenbezogener Daten</p>
+        </div>
+    </header>
 
-	<main class="max-w-4xl mx-auto px-4 py-12 flex-grow text-gray-700 leading-relaxed space-y-8 text-sm md:text-base">
-		
-		<section class="space-y-3">
-			<h2 class="text-xl font-bold text-black uppercase">1. Datenschutz auf einen Blick</h2>
-			<p>Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p>
-			<p>Wenn Sie diese Website benutzen, werden verschiedene personenbezogene Daten erhoben. Personenbezogene Daten sind Daten, mit denen Sie persönlich identifiziert werden können.</p>
-		</section>
+    <main class="max-w-4xl mx-auto px-4 py-12 flex-grow text-gray-700 leading-relaxed space-y-8 text-sm md:text-base">
+        
+        <section class="space-y-3">
+            <h2 class="text-xl font-bold text-black uppercase">1. Datenschutz auf einen Blick</h2>
+            <p>Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p>
+            <p>Wenn Sie diese Website benutzen, werden verschiedene personenbezogene Daten erhoben. Personenbezogene Daten sind Daten, mit denen Sie persönlich identifiziert werden können.</p>
+        </section>
 
-		<section class="space-y-3">
-			<h2 class="text-xl font-bold text-black uppercase">2. Verantwortliche Stelle</h2>
-			<p>Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:</p>
-			<div class="bg-white p-4 rounded-lg border border-gray-200">
-				<p class="font-bold">BV Brambauer 13/45 e.V.</p>
-				<p>Diebecker Weg 29</p>
-				<p>44536 Lünen</p>
-				<p>E-Mail: info[at]bv-brambauer.de</p>
-			</div>
-		</section>
+        <section class="space-y-3">
+            <h2 class="text-xl font-bold text-black uppercase">2. Verantwortliche Stelle</h2>
+            <p>Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:</p>
+            <div class="bg-white p-4 rounded-lg border border-gray-200 max-w-sm">
+                <p class="font-bold text-gray-900">BV Brambauer 13/45 e.V.</p>
+                <p>Diebecker Weg 29</p>
+                <p>44536 Lünen</p>
+                <p>E-Mail: info[at]bv-brambauer.de</p>
+            </div>
+        </section>
 
-		<section class="space-y-3">
-			<h2 class="text-xl font-bold text-black uppercase">3. Datenerfassung auf unserer Website</h2>
-			<h3 class="font-bold text-gray-900 mt-2">Server-Log-Dateien</h3>
-			<p>Der Provider der Seiten erhebt und speichert automatisch Informationen in sogenannten Server-Log-Files, die Ihr Browser automatisch an uns übermittelt. Dies sind:</p>
-			<ul class="list-disc pl-5 space-y-1">
-				<li>Browsertyp und Browserversion</li>
-				<li>Verwendetes Betriebssystem</li>
-				<li>Referrer URL (die zuvor besuchte Seite)</li>
-				<li>Hostname des zugreifenden Rechners</li>
-				<li>Uhrzeit der Serveranfrage</li>
-				<li>IP-Adresse</li>
-			</ul>
-			<p>Eine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht vorgenommen. Grundlage für die Datenverarbeitung ist Art. 6 Abs. 1 lit. f DSGVO (Berechtigtes Interesse an einer fehlerfreien Darstellung der Website).</p>
-		</section>
+        <section class="space-y-3">
+            <h2 class="text-xl font-bold text-black uppercase">3. Datenerfassung auf unserer Website</h2>
+            <h3 class="font-bold text-gray-900 mt-2">Server-Log-Dateien</h3>
+            <p>Der Provider der Seiten erhebt und speichert automatisch Informationen in sogenannten Server-Log-Files, die Ihr Browser automatisch an uns übermittelt. Dies sind:</p>
+            <ul class="list-disc pl-5 space-y-1">
+                <li>Browsertyp und Browserversion</li>
+                <li>Verwendetes Betriebssystem</li>
+                <li>Referrer URL (die zuvor besuchte Seite)</li>
+                <li>Hostname des zugreifenden Rechners</li>
+                <li>Uhrzeit der Serveranfrage</li>
+                <li>IP-Adresse</li>
+            </ul>
+            <p>Eine Zusammenführung dieser Daten mit anderen Daten sources wird nicht vorgenommen. Grundlage für die Datenverarbeitung ist Art. 6 Abs. 1 lit. f DSGVO (Berechtigtes Interesse an einer fehlerfreien Darstellung und Optimierung der Website).</p>
+        </section>
 
-		<section class="space-y-3">
-			<h2 class="text-xl font-bold text-black uppercase">4. Ihre Rechte</h2>
-			<p>Sie haben jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten. Sie haben außerdem ein Recht, die Berichtigung oder Löschung dieser Daten zu verlangen. Hierzu sowie zu weiteren Fragen zum Thema Datenschutz können Sie sich jederzeit unter der im Impressum angegebenen Adresse an uns wenden.</p>
-		</section>
+        <!-- NEU: ABSCHNITT FÜR INSTAGRAM INTEGRATION -->
+        <section class="space-y-3">
+            <h2 class="text-xl font-bold text-black uppercase">4. Einbindung von Diensten Dritter (Social Media)</h2>
+            <h3 class="font-bold text-gray-900 mt-2">Instagram Plugin / Widget</h3>
+            <p>Auf unserer Website (Seite „Aktuelles“) werden Inhalte des Social-Media-Netzwerks Instagram eingebunden. Anbieter ist die Meta Platforms Ireland Limited, 4 Grand Canal Square, Grand Canal Harbour, Dublin 2, Irland.</p>
+            <p>Durch die Einbindung des Widgets auf unserer Seite wird eine direkte Verbindung zwischen Ihrem Browser und den Servern von Instagram (Meta) hergestellt. Instagram erhält dadurch die Information, dass Sie mit Ihrer IP-Adresse unsere Seite besucht haben. Wenn Sie in Ihrem Instagram-Account eingeloggt sind, können Sie die Inhalte unserer Seiten mit Ihrem Profil verlinken, wodurch Instagram den Besuch unserer Seiten Ihrem Benutzerkonto zuordnen kann.</p>
+            <p>Wir weisen darauf hin, dass wir als Anbieter der Seiten keine Kenntnis vom Inhalt der übermittelten Daten sowie deren Nutzung durch Instagram erhalten. Die Speicherung und Analyse der Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Der Websitebetreiber hat ein berechtigtes Interesse an einer möglichst umfassenden Sichtbarkeit in den Sozialen Medien.</p>
+            <p>Weitere Informationen hierzu finden Sie in der Datenschutzerklärung von Instagram: <a href="https://instagram.com/about/legal/privacy/" target="_blank" rel="noopener noreferrer" class="text-red-600 hover:underline">https://instagram.com/about/legal/privacy/</a>.</p>
+        </section>
 
-	</main>
-</MainLayout>
+        <!-- NEU: ABSCHNITT FÜR OPENLIGADB / MATCHCENTER -->
+        <section class="space-y-3">
+            <h2 class="text-xl font-bold text-black uppercase">5. Externe APIs und Live-Daten</h2>
+            <h3 class="font-bold text-gray-900 mt-2">OpenLigaDB Live-Matchcenter</h3>
+            <p>Wir binden auf unserer Website ein Live-Matchcenter ein, das aktuelle Spieldaten und Ergebnisse automatisiert abruft. Diese Daten werden über eine Programmierschnittstelle (API) von OpenLigaDB bezogen.</p>
+            <p>Beim Aufruf der Seite „Aktuelles“ baut Ihr Webbrowser eine direkte Verbindung zu den Servern von OpenLigaDB auf, um die aktuellen Spielstände abzufragen. Hierbei wird Ihre IP-Adresse technisch bedingt an OpenLigaDB übertragen, damit die Daten an Ihren Browser gesendet werden können. Es findet laut Anbieter keine permanente Speicherung oder personenbezogene Auswertung dieser Verbindungsdaten statt.</p>
+            <p>Die Nutzung dieses Dienstes erfolgt im Interesse einer ansprechenden und automatisierten Bereitstellung von Spielplan-Informationen für unsere Vereinsmitglieder und Fans. Dies stellt ein berechtigtes Interesse im Sinne von Art. 6 Abs. 1 lit. f DSGVO dar.</p>
+        </section>
+
+        <section class="space-y-3">
+            <h2 class="text-xl font-bold text-black uppercase">6. Ihre Rechte</h2>
+            <p>Sie haben jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten. Sie haben außerdem ein Recht, die Berichtigung oder Löschung dieser Daten zu verlangen. Hierzu sowie zu weiteren Fragen zum Thema Datenschutz können Sie sich jederzeit unter der im Impressum angegebenen Adresse an uns wenden.</p>
+            <p>Des Weiteren steht Ihnen ein Beschwerderecht bei der zuständigen AufsichtsNormally I can help with things like this, but I don't seem to have access to that content. You can try again or ask me for something else.

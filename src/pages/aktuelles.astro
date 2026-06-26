@@ -94,28 +94,17 @@ import bildCamp from '../assets/images/kinder-feld.jpeg';
             </div>
 
             <div class="space-y-12">
-                <section>
-					<h2 class="text-xl font-black uppercase border-b-2 border-red-600 inline-block pb-1 mb-6">Instagram Live</h2>
-					<div class="bg-gradient-to-br from-purple-600 via-pink-500 to-yellow-500 rounded-xl p-0.5 shadow-md transform hover:scale-[1.02] transition-transform duration-300">
-						<div class="bg-white rounded-[10px] p-8 flex flex-col items-center justify-center text-center min-h-[400px]">
-							<div class="text-transparent bg-clip-text bg-gradient-to-tr from-purple-600 to-pink-500 text-5xl mb-4">
-								<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
-							</div>
-							<h3 class="text-xl font-bold text-gray-900 mb-2">@bv_brambauer</h3>
-							<p class="text-gray-600 text-sm max-w-xs mb-6">
-								Verpasse keine Storys, Matchday-Poster und exklusive Einblicke direkt vom Spielfeld!
-							</p>
-							<a 
-								href="https://www.instagram.com/bv_brambauer/?hl=de" 
-								target="_blank" 
-								rel="noopener noreferrer" 
-								class="bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white font-bold text-sm uppercase tracking-wider px-6 py-3 rounded-lg shadow transition duration-300"
-							>
-								Auf Instagram folgen
-							</a>
-						</div>
-					</div>
-				</section>
+                <section class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
+                    <h2 class="text-xl font-black uppercase border-b-2 border-red-600 inline-block pb-1 mb-6">Instagram Live</h2>
+                    
+                    <!-- FIX: max-h-[500px] deckelt die Höhe auf Desktop, overflow-y-auto macht es scrollbar -->
+                    <div class="max-h-[550px] overflow-y-auto pr-2 no-scrollbar">
+                        
+                        <script type="text/javascript" src="https://www.juicer.io/embed/bv_brambauer/embed-code.js" async defer></script>
+                        <ul class="juicer-feed" data-feed-id="bv_brambauer" ...></ul>
+                        
+                    </div>
+                </section>
             </div>
         </div>
     </main>

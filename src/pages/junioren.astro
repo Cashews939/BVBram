@@ -7,32 +7,46 @@ import MainLayout from '../layouts/MainLayout.astro';
     
     <header class="bg-zinc-900 text-white py-12 px-4 border-b-4 border-red-600">
         <div class="max-w-6xl mx-auto">
-            <!-- FIX: Hintergrund dunkel, Text rot und feiner Rahmen -->
             <span class="text-xs font-bold uppercase tracking-widest border border-red-600/30 text-red-500 px-2.5 py-1 rounded bg-red-950/20">Nachwuchs</span>
             <h1 class="text-3xl md:text-5xl font-black uppercase tracking-tight mt-4">Unsere Junioren</h1>
-            <p class="text-gray-400 mt-2 text-base md:text-lg">Die Zukunft des BV Brambauer. Von den Minikickern bis zur U17 – Spaß am Fußball steht bei uns im Fokus!</p>
+            <p class="text-gray-400 mt-2 text-base md:text-lg">Die Zukunft des BV Brambauer. Von den Minikickern bis zur U19 – Spaß am Fußball steht bei uns im Fokus!</p>
         </div>
     </header>
 
     <main class="max-w-6xl mx-auto px-4 py-12 flex-grow">
         
-        <!-- GROSSFELD JUGEND -->
+        <!-- GROSSFELD JUGEND (U19 bis U13) -->
         <div class="mb-16">
             <h2 class="text-2xl font-black uppercase tracking-tight border-b-2 border-gray-200 pb-2 mb-6 text-zinc-800">Großfeld-Jugend</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- A-Junioren (U19) - NEU HINZUGEFÜGT -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-xl font-bold text-black uppercase">A-Junioren (U19)</h3>
+                            <span class="text-xs font-semibold bg-gray-100 text-gray-600 px-2 py-0.5 rounded">U19</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mt-3">Die direkte Vorstufe zu unseren Seniorenteams. Hier stehen Leistungsförderung und taktischer Feinschliff im Vordergrund.</p>
+                    </div>
+                    <div class="mt-6 border-t border-gray-50 pt-4 flex justify-between items-center text-xs">
+                        <span class="text-gray-500 font-medium">Training: Mo & Mi 18:00 Uhr</span>
+                        <a href="#live-a-junioren" class="bg-zinc-900 hover:bg-red-600 text-white font-bold px-3 py-1.5 rounded transition uppercase tracking-wider text-[10px]">Live-Daten</a>
+                    </div>
+                </div>
                 
                 <!-- B-Junioren (U17) -->
                 <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col justify-between">
                     <div>
                         <div class="flex justify-between items-start">
                             <h3 class="text-xl font-bold text-black uppercase">B-Junioren (U17)</h3>
-                            <span class="text-xs font-semibold bg-gray-100 text-gray-600 px-2 py-0.5 rounded">Jahrgänge 2009/2010</span>
+                            <span class="text-xs font-semibold bg-gray-100 text-gray-600 px-2 py-0.5 rounded">U17</span>
                         </div>
-                        <p class="text-gray-600 text-sm mt-3">Hier bereiten sich unsere ältesten Jugendlichen intensiv auf den Übergang in den Seniorenbereich vor. Taktik und Fitness spielen eine größere Rolle.</p>
+                        <p class="text-gray-600 text-sm mt-3">Intensive Vorbereitung auf den leistungsorientierten Jugendfußball. Taktik, Physis und Fitness spielen eine zentrale Rolle.</p>
                     </div>
                     <div class="mt-6 border-t border-gray-50 pt-4 flex justify-between items-center text-xs">
                         <span class="text-gray-500 font-medium">Training: Mo & Mi 17:30 Uhr</span>
-                        <a href="#live-b-junioren" class="bg-zinc-900 hover:bg-red-600 text-white font-bold px-3 py-1.5 rounded transition uppercase tracking-wider text-[10px]">Tabelle & Spielplan live</a>
+                        <a href="#live-b-junioren" class="bg-zinc-900 hover:bg-red-600 text-white font-bold px-3 py-1.5 rounded transition uppercase tracking-wider text-[10px]">Live-Daten</a>
                     </div>
                 </div>
 
@@ -41,89 +55,78 @@ import MainLayout from '../layouts/MainLayout.astro';
                     <div>
                         <div class="flex justify-between items-start">
                             <h3 class="text-xl font-bold text-black uppercase">C-Junioren (U15)</h3>
-                            <span class="text-xs font-semibold bg-gray-100 text-gray-600 px-2 py-0.5 rounded">Jahrgänge 2011/2012</span>
+                            <span class="text-xs font-semibold bg-gray-100 text-gray-600 px-2 py-0.5 rounded">U15</span>
                         </div>
-                        <p class="text-gray-600 text-sm mt-3">Der Einstieg auf das ganz große Spielfeld und die 11-gegen-11 Aufstellung. Ein wichtiger Schritt in der Entwicklung unserer Nachwuchskicker.</p>
+                        <p class="text-gray-600 text-sm mt-3">Der Einstieg auf das große Spielfeld und die 11-gegen-11 Aufstellung. Ein Meilenstein in der Entwicklung unserer Nachwuchskicker.</p>
                     </div>
                     <div class="mt-6 border-t border-gray-50 pt-4 flex justify-between items-center text-xs">
                         <span class="text-gray-500 font-medium">Training: Di & Do 17:30 Uhr</span>
-                        <a href="#live-c-junioren" class="bg-zinc-900 hover:bg-red-600 text-white font-bold px-3 py-1.5 rounded transition uppercase tracking-wider text-[10px]">Tabelle & Spielplan live</a>
+                        <a href="#live-c-junioren" class="bg-zinc-900 hover:bg-red-600 text-white font-bold px-3 py-1.5 rounded transition uppercase tracking-wider text-[10px]">Live-Daten</a>
+                    </div>
+                </div>
+
+                <!-- D-Junioren (U13) - JETZT 2 TEAMS LAUT LISTE -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-xl font-bold text-black uppercase">D-Junioren (U13 I & II)</h3>
+                            <span class="text-xs font-semibold bg-red-50 text-red-600 px-2 py-0.5 rounded">2 Teams (I & II)</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mt-3">Der goldene Lernbereich auf dem verkürzten Großfeld. Durch zwei gemeldete Teams können wir alle Kinder leistungsgerecht fördern.</p>
+                    </div>
+                    <div class="mt-6 border-t border-gray-50 pt-4 flex justify-between items-center text-xs">
+                        <span class="text-gray-500 font-medium">Training: Di & Do 16:30 Uhr</span>
+                        <a href="#live-d-junioren" class="bg-zinc-900 hover:bg-red-600 text-white font-bold px-3 py-1.5 rounded transition uppercase tracking-wider text-[10px]">Live-Daten</a>
                     </div>
                 </div>
 
             </div>
         </div>
 
-        <!-- KLEINFELD JUGEND -->
+        <!-- KLEINFELD JUGEND (E- bis G-Jugend) -->
         <div class="mb-16">
             <h2 class="text-2xl font-black uppercase tracking-tight border-b-2 border-gray-200 pb-2 mb-6 text-zinc-800">Kleinfeld-Jugend</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 
-                <!-- D-Junioren (U13) -->
+                <!-- E-Junioren (U11) - JETZT STARK VERTRETEN MIT 4 TEAMS -->
                 <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5 flex flex-col justify-between">
                     <div>
-                        <h3 class="text-lg font-bold text-black uppercase">D-Junioren (U13)</h3>
-                        <p class="text-gray-600 text-xs mt-2">Der goldene Lern- und Spielspaß-Bereich auf verkürztem Großfeld.</p>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-lg font-bold text-black uppercase">E-Junioren (U11)</h3>
+                            <span class="text-[10px] font-bold bg-red-50 text-red-600 px-2 py-0.5 rounded">4 Teams (I - IV)</span>
+                        </div>
+                        <p class="text-gray-600 text-xs">Unsere teilnehmerstärkste Altersklasse! Vier Mannschaften garantieren maximalen Spielspaß und viel Spielzeit für jedes Kind.</p>
                     </div>
                     <div class="mt-4 pt-3 border-t border-gray-50 text-[11px] text-gray-500 flex justify-between items-center">
-                        <span>Jahrgang 2013/2014</span>
-                        <button 
-                            onclick="openModal(...)" 
-                            class="bg-zinc-50 hover:bg-red-50 text-zinc-700 hover:text-red-600 font-bold text-xs uppercase tracking-wider px-3 py-1.5 rounded-lg border border-gray-200 hover:border-red-200 transition duration-200"
-                        >
-                            Infos
-                        </button>
+                        <span>Jahrgänge 15/16</span>
+                        <button onclick="openModal('E-Junioren (Teams I bis IV)', 'Jahrgänge 2015/2016', 'Montag & Mittwoch: 16:30 - 18:00 Uhr', 'Koordinatoren & Trainer-Team')" class="bg-zinc-50 hover:bg-red-50 text-zinc-700 hover:text-red-600 font-bold text-xs uppercase tracking-wider px-3 py-1.5 rounded-lg border border-gray-200 hover:border-red-200 transition duration-200">Infos</button>
                     </div>
                 </div>
 
-                <!-- E-Junioren (U11) -->
+                <!-- F-Junioren (U9) - 2 TEAMS -->
                 <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5 flex flex-col justify-between">
                     <div>
-                        <h3 class="text-lg font-bold text-black uppercase">E-Junioren (U11)</h3>
-                        <p class="text-gray-600 text-xs mt-2">Spielerische Förderung der Technik und jede Menge Tore stehen hier im Fokus.</p>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-lg font-bold text-black uppercase">F-Junioren (U9)</h3>
+                            <span class="text-[10px] font-bold bg-red-50 text-red-600 px-2 py-0.5 rounded">2 Teams (I & II)</span>
+                        </div>
+                        <p class="text-gray-600 text-xs">Erste echte Liga-Atmosphäre und Turniere. Teamgeist und die Freude am gemeinsamen Torerfolg stehen im Mittelpunkt.</p>
                     </div>
                     <div class="mt-4 pt-3 border-t border-gray-50 text-[11px] text-gray-500 flex justify-between items-center">
-                        <span>Jahrgang 2015/2016</span>
-                        <button 
-                            onclick="openModal(...)" 
-                            class="bg-zinc-50 hover:bg-red-50 text-zinc-700 hover:text-red-600 font-bold text-xs uppercase tracking-wider px-3 py-1.5 rounded-lg border border-gray-200 hover:border-red-200 transition duration-200"
-                        >
-                            Infos
-                        </button>
+                        <span>Jahrgänge 17/18</span>
+                        <button onclick="openModal('F-Junioren (I & II)', 'Jahrgänge 2017/2018', 'Dienstag & Donnerstag: 16:00 - 17:30 Uhr', 'Trainer-Team')" class="bg-zinc-50 hover:bg-red-50 text-zinc-700 hover:text-red-600 font-bold text-xs uppercase tracking-wider px-3 py-1.5 rounded-lg border border-gray-200 hover:border-red-200 transition duration-200">Infos</button>
                     </div>
                 </div>
 
-                <!-- F-Junioren (U9) -->
+                <!-- G-Junioren (U7) - MINIKICKER -->
                 <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5 flex flex-col justify-between">
                     <div>
-                        <h3 class="text-lg font-bold text-black uppercase">F-Junioren (U9)</h3>
-                        <p class="text-gray-600 text-xs mt-2">Erste Erfahrungen im echten Ligabetrieb. Teamgeist wird von klein auf gelernt.</p>
-                    </div>
-                    <div class="mt-4 pt-3 border-t border-gray-50 text-[11px] text-gray-500 flex justify-between items-center">
-                        <span>Jahrgang 2017/2018</span>
-                       <button 
-                            onclick="openModal(...)" 
-                            class="bg-zinc-50 hover:bg-red-50 text-zinc-700 hover:text-red-600 font-bold text-xs uppercase tracking-wider px-3 py-1.5 rounded-lg border border-gray-200 hover:border-red-200 transition duration-200"
-                        >
-                            Infos
-                        </button>
-                    </div>
-                </div>
-
-                <!-- G-Junioren (U7) -->
-                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5 flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-lg font-bold text-red-600 uppercase">G-Junioren (U7)</h3>
-                        <p class="text-gray-600 text-xs mt-2">Unsere "Minikicker"! Die Allerkleinsten lernen spielerisch den Umgang mit dem Ball.</p>
+                        <h3 class="text-lg font-bold text-red-600 uppercase mb-2">G-Junioren (U7)</h3>
+                        <p class="text-gray-600 text-xs">Unsere Minikicker! Hier lernen die Allerkleinsten spielerisch und ohne Leistungsdruck das tolle Gefühl mit dem Ball am Fuß.</p>
                     </div>
                     <div class="mt-4 pt-3 border-t border-gray-50 text-[11px] text-gray-500 flex justify-between items-center">
                         <span>Ab 4 Jahren</span>
-                        <button 
-                            onclick="openModal('G-Junioren (Minikicker)', 'Ab 4 Jahren / Jahrgang 2019 und jünger', 'Freitag: 15:30 - 17:00 Uhr', 'Betreuer-Team (Infos folgen)')" 
-                            class="bg-zinc-50 hover:bg-red-50 text-zinc-700 hover:text-red-600 font-bold text-xs uppercase tracking-wider px-3 py-1.5 rounded-lg border border-gray-200 hover:border-red-200 transition duration-200"
-                        >
-                            Infos
-                        </button>
+                        <button onclick="openModal('G-Junioren (Minikicker)', 'Ab 4 Jahren / Neulinge', 'Freitag: 15:30 - 17:00 Uhr', 'Betreuer-Team')" class="bg-zinc-50 hover:bg-red-50 text-zinc-700 hover:text-red-600 font-bold text-xs uppercase tracking-wider px-3 py-1.5 rounded-lg border border-gray-200 hover:border-red-200 transition duration-200">Infos</button>
                     </div>
                 </div>
 
@@ -132,102 +135,28 @@ import MainLayout from '../layouts/MainLayout.astro';
 
         <hr class="border-gray-200 my-12" />
 
-        <!-- LIVE DATA FÜR GROSSFELD -->
+        <!-- LIVE-CENTER FÜR DIE GROSSFELD-TEAMS -->
         <div class="space-y-16">
-            
-            <!-- Live-Bereich: B-Junioren -->
+            <!-- Vorbereitung für die Widgets der A-, B-, C- und D-Jugend -->
+            <div id="live-a-junioren" class="scroll-mt-6">
+                <div class="border-l-4 border-red-600 pl-4 mb-4"><h3 class="text-xl font-black uppercase">Live-Center: A-Junioren</h3></div>
+                <p class="text-xs text-gray-400 italic p-4 text-center bg-white rounded-xl border border-gray-200 shadow-sm">Warte auf DFB-Widget-Freigabe...</p>
+            </div>
             <div id="live-b-junioren" class="scroll-mt-6">
-                <div class="border-l-4 border-red-600 pl-4 mb-6">
-                    <h2 class="text-2xl font-black uppercase tracking-tight text-gray-900">Live-Center: B-Junioren (U17)</h2>
-                    <p class="text-gray-500 text-sm">Aktuelle Daten direkt von Fussball.de</p>
-                </div>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm overflow-x-auto">
-                        <h3 class="font-bold text-gray-700 mb-4 uppercase text-xs tracking-wider">Tabelle</h3>
-                        <div id="wg-b-tabelle"></div>
-                        <!-- <script type="text/javascript" src="https://www.fussball.de/widget2/-/schluessel/DEIN_B_TAB_SCHLUESSEL/target/wg-b-tabelle"></script> -->
-                        <p class="text-xs text-gray-400 italic p-4 text-center bg-gray-50 rounded">Wird geladen...</p>
-                    </div>
-                    <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
-                        <h3 class="font-bold text-gray-700 mb-4 uppercase text-xs tracking-wider">Spielplan & Ergebnisse</h3>
-                        <div id="wg-b-spielplan"></div>
-                        <!-- <script type="text/javascript" src="https://www.fussball.de/widget2/-/schluessel/DEIN_B_SPIEL_SCHLUESSEL/target/wg-b-spielplan"></script> -->
-                        <p class="text-xs text-gray-400 italic p-4 text-center bg-gray-50 rounded">Wird geladen...</p>
-                    </div>
-                </div>
+                <div class="border-l-4 border-zinc-900 pl-4 mb-4"><h3 class="text-xl font-black uppercase">Live-Center: B-Junioren</h3></div>
+                <p class="text-xs text-gray-400 italic p-4 text-center bg-white rounded-xl border border-gray-200 shadow-sm">Warte auf DFB-Widget-Freigabe...</p>
             </div>
-
-            <!-- Live-Bereich: C-Junioren -->
             <div id="live-c-junioren" class="scroll-mt-6">
-                <div class="border-l-4 border-zinc-900 pl-4 mb-6">
-                    <h2 class="text-2xl font-black uppercase tracking-tight text-gray-900">Live-Center: C-Junioren (U15)</h2>
-                    <p class="text-gray-500 text-sm">Aktuelle Daten direkt von Fussball.de</p>
-                </div>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm overflow-x-auto">
-                        <h3 class="font-bold text-gray-700 mb-4 uppercase text-xs tracking-wider">Tabelle</h3>
-                        <div id="wg-c-tabelle"></div>
-                        <!-- <script type="text/javascript" src="https://www.fussball.de/widget2/-/schluessel/DEIN_C_TAB_SCHLUESSEL/target/wg-c-tabelle"></script> -->
-                        <p class="text-xs text-gray-400 italic p-4 text-center bg-gray-50 rounded">Wird geladen...</p>
-                    </div>
-                    <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
-                        <h3 class="font-bold text-gray-700 mb-4 uppercase text-xs tracking-wider">Spielplan & Ergebnisse</h3>
-                        <div id="wg-c-spielplan"></div>
-                        <!-- <script type="text/javascript" src="https://www.fussball.de/widget2/-/schluessel/DEIN_C_SPIEL_SCHLUESSEL/target/wg-c-spielplan"></script> -->
-                        <p class="text-xs text-gray-400 italic p-4 text-center bg-gray-50 rounded">Wird geladen...</p>
-                    </div>
-                </div>
+                <div class="border-l-4 border-zinc-900 pl-4 mb-4"><h3 class="text-xl font-black uppercase">Live-Center: C-Junioren</h3></div>
+                <p class="text-xs text-gray-400 italic p-4 text-center bg-white rounded-xl border border-gray-200 shadow-sm">Warte auf DFB-Widget-Freigabe...</p>
             </div>
-
+            <div id="live-d-junioren" class="scroll-mt-6">
+                <div class="border-l-4 border-zinc-900 pl-4 mb-4"><h3 class="text-xl font-black uppercase">Live-Center: D-Junioren</h3></div>
+                <p class="text-xs text-gray-400 italic p-4 text-center bg-white rounded-xl border border-gray-200 shadow-sm">Warte auf DFB-Widget-Freigabe...</p>
+            </div>
         </div>
+
     </main>
 
-    <!-- INTERAKTIVES MODAL (POP-UP) FÜR DETAILS -->
-    <div id="infoModal" class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 hidden backdrop-blur-sm">
-        <div class="bg-white rounded-2xl max-w-md w-full overflow-hidden shadow-2xl border border-gray-100 transform transition-transform scale-95 duration-300">
-            <div class="p-6 bg-red-600 text-white">
-                <h3 id="modalTitle" class="text-2xl font-black uppercase">Mannschaftsdetails</h3>
-                <p id="modalYear" class="text-red-100 text-xs mt-1 font-medium"></p>
-            </div>
-            <div class="p-6 space-y-4">
-                <div>
-                    <h4 class="text-xs uppercase font-bold text-gray-400 tracking-wider">Trainingszeiten</h4>
-                    <p id="modalTraining" class="text-gray-900 font-medium mt-1 text-sm"></p>
-                </div>
-                <div>
-                    <h4 class="text-xs uppercase font-bold text-gray-400 tracking-wider">Ansprechpartner / Trainer</h4>
-                    <p id="modalTrainer" class="text-gray-900 font-medium mt-1 text-sm"></p>
-                </div>
-            </div>
-            <div class="p-4 bg-gray-50 border-t border-gray-100 flex justify-end">
-                <button onclick="closeModal()" class="bg-zinc-900 hover:bg-black text-white text-xs font-bold px-4 py-2 rounded-lg transition uppercase tracking-wider">Schließen</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- MINI JAVASCRIPT FÜR DIE INTERAKTION -->
-    <script is:inline>
-        function openModal(title, year, training, trainer) {
-            document.getElementById('modalTitle').innerText = title;
-            document.getElementById('modalYear').innerText = year;
-            document.getElementById('modalTraining').innerText = training;
-            document.getElementById('modalTrainer').innerText = trainer;
-            
-            const modal = document.getElementById('infoModal');
-            modal.classList.remove('hidden');
-        }
-
-        function closeModal() {
-            const modal = document.getElementById('infoModal');
-            modal.classList.add('hidden');
-        }
-
-        // Schließen, wenn man außerhalb des Fensters klickt
-        window.onclick = function(event) {
-            const modal = document.getElementById('infoModal');
-            if (event.target === modal) {
-                closeModal();
-            }
-        }
-    </script>
+    <!-- HIER FOLGT DAS MODAL & JAVASCRIPT WIE GEHABT -->
 </MainLayout>

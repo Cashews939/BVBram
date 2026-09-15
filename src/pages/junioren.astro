@@ -158,5 +158,56 @@ import MainLayout from '../layouts/MainLayout.astro';
 
     </main>
 
-    <!-- HIER FOLGT DAS MODAL & JAVASCRIPT WIE GEHABT -->
+    <!-- INTERAKTIVES MODAL (POP-UP) FÜR DETAILS -->
+    <div id="infoModal" class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 hidden backdrop-blur-sm">
+        <div class="bg-white rounded-2xl max-w-md w-full overflow-hidden shadow-2xl border border-gray-100 transform transition-transform scale-95 duration-300">
+            <div class="p-6 bg-red-600 text-white">
+                <h3 id="modalTitle" class="text-2xl font-black uppercase">Mannschaftsdetails</h3>
+                <p id="modalYear" class="text-red-100 text-xs mt-1 font-medium"></p>
+            </div>
+            <div class="p-6 space-y-4">
+                <div>
+                    <h4 class="text-xs uppercase font-bold text-gray-400 tracking-wider">Trainingszeiten</h4>
+                    <p id="modalTraining" class="text-gray-900 font-medium mt-1 text-sm"></p>
+                </div>
+                <div>
+                    <h4 class="text-xs uppercase font-bold text-gray-400 tracking-wider">Ansprechpartner / Trainer</h4>
+                    <p id="modalTrainer" class="text-gray-900 font-medium mt-1 text-sm"></p>
+                </div>
+            </div>
+            <div class="p-4 bg-gray-50 border-t border-gray-100 flex justify-end">
+                <button onclick="closeModal()" class="bg-zinc-900 hover:bg-black text-white text-xs font-bold px-4 py-2 rounded-lg transition uppercase tracking-wider cursor-pointer">Schließen</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT FÜR DIE MODAL-INTERAKTION -->
+    <script is:inline>
+        function openModal(title, year, training, trainer) {
+            const modalTitle = document.getElementById('modalTitle');
+            const modalYear = document.getElementById('modalYear');
+            const modalTraining = document.getElementById('modalTraining');
+            const modalTrainer = document.getElementById('modalTrainer');
+            const modal = document.getElementById('infoModal');
+
+            if (modalTitle) modalTitle.innerText = title;
+            if (modalYear) modalYear.innerText = year;
+            if (modalTraining) modalTraining.innerText = training;
+            if (modalTrainer) modalTrainer.innerText = trainer;
+            if (modal) modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('infoModal');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        // Schließen, wenn man außerhalb des Fensters klickt
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('infoModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+    </script>
 </MainLayout>

@@ -100,7 +100,7 @@ import bildCamp from '../assets/images/kinder-feld.jpeg';
                     <!-- FIX: max-h-[500px] deckelt die Höhe auf Desktop, overflow-y-auto macht es scrollbar -->
                     <div class="max-h-[550px] overflow-y-auto pr-2 no-scrollbar">
                         
-                        <script type="text/javascript" src="https://www.juicer.io/embed/bv_brambauer/embed-code.js" async defer></script>
+                        <script is:inline type="text/javascript" src="https://www.juicer.io/embed/bv_brambauer/embed-code.js" async defer></script>
                         <ul class="juicer-feed" data-feed-id="bv_brambauer" ...></ul>
                         
                     </div>
@@ -110,9 +110,10 @@ import bildCamp from '../assets/images/kinder-feld.jpeg';
     </main>
 
     <!-- SCRIPT FÜR LIVE-DATEN -->
-    <script>
+    <script is:inline>
         async function loadMatchData() {
             const container = document.getElementById('match-content');
+            if (!container) return;
             const leagueShortcut = 'do-kla2-2026'; 
             
             try {
@@ -120,10 +121,10 @@ import bildCamp from '../assets/images/kinder-feld.jpeg';
                 if (!response.ok) throw new Error('API Fehler');
                 
                 const spiele = await response.json();
-                const spiel = spiele.find(s => 
-                    s.team1.teamName.toLowerCase().includes('brambauer') || 
-                    s.team2.teamName.toLowerCase().includes('brambauer')
-                );
+                const spiel = Array.isArray(spiele) ? spiele.find(function(s) {
+                    return (s.team1 && s.team1.teamName && s.team1.teamName.toLowerCase().includes('brambauer')) || 
+                           (s.team2 && s.team2.teamName && s.team2.teamName.toLowerCase().includes('brambauer'));
+                }) : null;
 
                 if (spiel) {
                     const ergebnis = spiel.matchResults && spiel.matchResults.length > 0 
@@ -133,7 +134,7 @@ import bildCamp from '../assets/images/kinder-feld.jpeg';
                     container.innerHTML = `
                         <div class="max-w-2xl mx-auto bg-gray-900 text-white rounded-xl p-6 shadow-md text-center">
                             <p class="text-[10px] uppercase tracking-widest text-gray-400 font-bold mb-3">
-                                ${spiel.group.groupName || "Spieltag"}
+                                ${(spiel.group && spiel.group.groupName) || "Spieltag"}
                             </p>
                             <div class="flex justify-between items-center text-base md:text-xl font-black px-4">
                                 <span class="w-2/5 text-right uppercase truncate">${spiel.team1.teamName}</span>
@@ -157,6 +158,7 @@ import bildCamp from '../assets/images/kinder-feld.jpeg';
         }
 
         function showFallback(container) {
+            if (!container) return;
             container.innerHTML = `
                 <div class="max-w-2xl mx-auto bg-gray-50 border border-gray-200 rounded-xl p-6 text-center">
                     <p class="text-[10px] uppercase tracking-widest text-gray-400 font-bold mb-2">Letztes Meisterschaftsspiel</p>

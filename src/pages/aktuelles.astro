@@ -93,17 +93,73 @@ import bildCamp from '../assets/images/kinder-feld.jpeg';
                 </article>
             </div>
 
-            <div class="space-y-12">
-                <section class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
-                    <h2 class="text-xl font-black uppercase border-b-2 border-red-600 inline-block pb-1 mb-6">Instagram Live</h2>
-                    
-                    <!-- FIX: max-h-[500px] deckelt die Höhe auf Desktop, overflow-y-auto macht es scrollbar -->
-                    <div class="max-h-[550px] overflow-y-auto pr-2 no-scrollbar">
-                        
-                        <script is:inline type="text/javascript" src="https://www.juicer.io/embed/bv_brambauer/embed-code.js" async defer></script>
-                        <ul class="juicer-feed" data-feed-id="bv_brambauer" ...></ul>
-                        
+            <div class="space-y-8">
+                <!-- INSTAGRAM HUB CARD -->
+                <section class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden flex flex-col">
+                    <!-- Header mit Instagram-Gradient & Branding -->
+                    <div class="bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 p-6 text-white text-center relative">
+                        <div class="w-16 h-16 mx-auto bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center shadow-inner mb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+                            </svg>
+                        </div>
+                        <span class="inline-block bg-black/30 backdrop-blur-sm text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full mb-1">
+                            Offizieller Kanal
+                        </span>
+                        <h3 class="text-xl font-black">@bv_brambauer</h3>
                     </div>
+
+                    <!-- Inhaltsbereich -->
+                    <div class="p-6 space-y-4">
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            Erlebe den BVBram hautnah! Aktuelle Spieltags-Storys, Transfers, Trainingseindrücke und Blicke hinter die Kulissen gibt es täglich frisch auf unserem offiziellen Instagram-Kanal.
+                        </p>
+
+                        <div class="bg-gray-50 rounded-xl p-3 border border-gray-100 flex items-center justify-between text-xs font-semibold text-gray-700">
+                            <span class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                                Live-Storys & Spielberichte
+                            </span>
+                            <span class="text-red-600 font-bold">#BVBram</span>
+                        </div>
+
+                        <a 
+                            href="https://www.instagram.com/bv_brambauer/?hl=de" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            class="w-full text-center bg-gradient-to-r from-purple-600 via-rose-600 to-amber-500 hover:opacity-95 text-white font-bold py-3 px-4 rounded-xl shadow-md transition duration-200 uppercase tracking-wider text-xs flex items-center justify-center gap-2"
+                        >
+                            <span>Auf Instagram folgen</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- FACEBOOK COMMUNITY CARD -->
+                <section class="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm flex items-center justify-between gap-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm text-gray-900">Facebook-Community</h4>
+                            <p class="text-xs text-gray-500">BV Brambauer 13/45 e.V.</p>
+                        </div>
+                    </div>
+                    <a 
+                        href="https://www.facebook.com/p/BV-Brambauer-1345-100063477852848/?locale=de_DE" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        class="bg-gray-100 hover:bg-blue-600 hover:text-white text-gray-700 text-xs font-bold px-3 py-2 rounded-lg transition"
+                    >
+                        Besuchen ↗
+                    </a>
                 </section>
             </div>
         </div>

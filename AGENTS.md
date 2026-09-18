@@ -24,6 +24,8 @@ Verantwortlich für die technische Content-Integrität, Komponenten-Entwicklung,
 - **Schema-Validierung:** Prüft Inhalte vor dem Veröffentlichen auf Vollständigkeit aller Pflichtfelder gemäß `keystatic.config.ts`:
   - `aktuelles` (`src/content/aktuelles/*`): Titel, Datum, Kategorie (`Verein` | `Senioren` | `Junioren`), Teaser, Inhalt (`content.mdoc`).
   - `termine` (`src/content/termine/*`): Titel, Datum, Uhrzeit, Spielort (`location`).
+  - `senioren` (`src/content/senioren/*`): Mannschaftsname (`name`), Sortierung (`order`), Badge (`badge`), Trainingszeiten (`training`), Trainer (`trainer`), Beschreibung (`description`), Button-Links.
+  - `junioren` (`src/content/junioren/*`): Mannschaftsname (`name`), Bereich (`bereich`: Großfeld/Kleinfeld), Sortierung (`order`), Badge, Jahrgänge (`year`), Trainingszeiten (`training`), Trainer (`trainer`), Beschreibung.
 - **Komponentenbau:** Entwickelt UI-Komponenten in Astro und React (z. B. Spieltags-Cards, Kader-Übersichten, Terminkalender), abgestimmt auf das Vereinsdesign.
 - **Autonome Build-Prüfung:** Führt nach Code- oder Content-Änderungen stets `npm run build` in `D:\BVBram` aus, fängt Astro-Rendering- oder Bildoptimierungsfehler ab und korrigiert sie eigenständig vor dem Commit.
 - **Accessibility & Performance:** Semantisches HTML, responsive Bilder via `astro:assets` und saubere Alt-Texte für Logos und Mannschaftsfotos.

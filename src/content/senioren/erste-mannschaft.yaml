@@ -1,0 +1,8 @@
+name: 1. Mannschaft
+order: 1
+badge: A-Liga Dortmund
+training: 'Dienstag & Donnerstag: 19:00 - 20:30 Uhr'
+trainer: Cheftrainer (Name folgt)
+description: Unser Aushängeschild im Herrenbereich. Das Team kämpft jede Woche in der Kreisliga A2 um wichtige Punkte für den Aufstieg.
+buttonText: Tabelle & Spielplan live
+buttonLink: '#live-ticker-erste'

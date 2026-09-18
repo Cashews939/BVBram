@@ -1,6 +1,13 @@
 ---
 // src/pages/junioren.astro
 import MainLayout from '../layouts/MainLayout.astro';
+import { reader } from '../lib/keystatic';
+
+const allJunioren = await reader.collections.junioren.all();
+const sortedTeams = allJunioren.sort((a, b) => (a.entry.order ?? 99) - (b.entry.order ?? 99));
+
+const grossfeldTeams = sortedTeams.filter(t => t.entry.bereich === 'grossfeld');
+const kleinfeldTeams = sortedTeams.filter(t => t.entry.bereich === 'kleinfeld');
 ---
 
 <MainLayout 
@@ -22,67 +29,42 @@ import MainLayout from '../layouts/MainLayout.astro';
         <div class="mb-16">
             <h2 class="text-2xl font-black uppercase tracking-tight border-b-2 border-gray-200 pb-2 mb-6 text-zinc-800">Großfeld-Jugend</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                
-                <!-- A-Junioren (U19) - NEU HINZUGEFÜGT -->
-                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-start">
-                            <h3 class="text-xl font-bold text-black uppercase">A-Junioren (U19)</h3>
-                            <span class="text-xs font-semibold bg-gray-100 text-gray-600 px-2 py-0.5 rounded">U19</span>
+                {grossfeldTeams.map(({ entry }) => (
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start">
+                                <h3 class="text-xl font-bold text-black uppercase">{entry.name}</h3>
+                                {entry.badge && (
+                                    <span class="text-xs font-semibold bg-gray-100 text-gray-600 px-2 py-0.5 rounded">{entry.badge}</span>
+                                )}
+                            </div>
+                            {entry.description && (
+                                <p class="text-gray-600 text-sm mt-3 leading-relaxed">{entry.description}</p>
+                            )}
                         </div>
-                        <p class="text-gray-600 text-sm mt-3">Die direkte Vorstufe zu unseren Seniorenteams. Hier stehen Leistungsförderung und taktischer Feinschliff im Vordergrund.</p>
-                    </div>
-                    <div class="mt-6 border-t border-gray-50 pt-4 flex justify-between items-center text-xs">
-                        <span class="text-gray-500 font-medium">Training: Mo & Mi 18:00 Uhr</span>
-                        <a href="#live-a-junioren" class="bg-zinc-900 hover:bg-red-600 text-white font-bold px-3 py-1.5 rounded transition uppercase tracking-wider text-[10px]">Live-Daten</a>
-                    </div>
-                </div>
-                
-                <!-- B-Junioren (U17) -->
-                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-start">
-                            <h3 class="text-xl font-bold text-black uppercase">B-Junioren (U17)</h3>
-                            <span class="text-xs font-semibold bg-gray-100 text-gray-600 px-2 py-0.5 rounded">U17</span>
+                        <div class="mt-6 border-t border-gray-100 pt-4 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 text-xs">
+                            <div class="space-y-1">
+                                {entry.training && (
+                                    <div class="text-gray-700 font-medium">
+                                        <span class="text-gray-400 uppercase text-[10px] font-bold block">Training:</span>
+                                        {entry.training}
+                                    </div>
+                                )}
+                                {entry.trainer && (
+                                    <div class="text-gray-700 font-medium">
+                                        <span class="text-gray-400 uppercase text-[10px] font-bold block">Trainer:</span>
+                                        {entry.trainer}
+                                    </div>
+                                )}
+                            </div>
+                            {entry.liveCenterId && (
+                                <a href={entry.liveCenterId} class="self-start sm:self-auto bg-zinc-900 hover:bg-red-600 text-white font-bold px-3 py-1.5 rounded transition uppercase tracking-wider text-[10px]">
+                                    Live-Daten
+                                </a>
+                            )}
                         </div>
-                        <p class="text-gray-600 text-sm mt-3">Intensive Vorbereitung auf den leistungsorientierten Jugendfußball. Taktik, Physis und Fitness spielen eine zentrale Rolle.</p>
                     </div>
-                    <div class="mt-6 border-t border-gray-50 pt-4 flex justify-between items-center text-xs">
-                        <span class="text-gray-500 font-medium">Training: Mo & Mi 17:30 Uhr</span>
-                        <a href="#live-b-junioren" class="bg-zinc-900 hover:bg-red-600 text-white font-bold px-3 py-1.5 rounded transition uppercase tracking-wider text-[10px]">Live-Daten</a>
-                    </div>
-                </div>
-
-                <!-- C-Junioren (U15) -->
-                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-start">
-                            <h3 class="text-xl font-bold text-black uppercase">C-Junioren (U15)</h3>
-                            <span class="text-xs font-semibold bg-gray-100 text-gray-600 px-2 py-0.5 rounded">U15</span>
-                        </div>
-                        <p class="text-gray-600 text-sm mt-3">Der Einstieg auf das große Spielfeld und die 11-gegen-11 Aufstellung. Ein Meilenstein in der Entwicklung unserer Nachwuchskicker.</p>
-                    </div>
-                    <div class="mt-6 border-t border-gray-50 pt-4 flex justify-between items-center text-xs">
-                        <span class="text-gray-500 font-medium">Training: Di & Do 17:30 Uhr</span>
-                        <a href="#live-c-junioren" class="bg-zinc-900 hover:bg-red-600 text-white font-bold px-3 py-1.5 rounded transition uppercase tracking-wider text-[10px]">Live-Daten</a>
-                    </div>
-                </div>
-
-                <!-- D-Junioren (U13) - JETZT 2 TEAMS LAUT LISTE -->
-                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-start">
-                            <h3 class="text-xl font-bold text-black uppercase">D-Junioren (U13 I & II)</h3>
-                            <span class="text-xs font-semibold bg-red-50 text-red-600 px-2 py-0.5 rounded">2 Teams (I & II)</span>
-                        </div>
-                        <p class="text-gray-600 text-sm mt-3">Der goldene Lernbereich auf dem verkürzten Großfeld. Durch zwei gemeldete Teams können wir alle Kinder leistungsgerecht fördern.</p>
-                    </div>
-                    <div class="mt-6 border-t border-gray-50 pt-4 flex justify-between items-center text-xs">
-                        <span class="text-gray-500 font-medium">Training: Di & Do 16:30 Uhr</span>
-                        <a href="#live-d-junioren" class="bg-zinc-900 hover:bg-red-600 text-white font-bold px-3 py-1.5 rounded transition uppercase tracking-wider text-[10px]">Live-Daten</a>
-                    </div>
-                </div>
-
+                ))}
             </div>
         </div>
 
@@ -90,49 +72,34 @@ import MainLayout from '../layouts/MainLayout.astro';
         <div class="mb-16">
             <h2 class="text-2xl font-black uppercase tracking-tight border-b-2 border-gray-200 pb-2 mb-6 text-zinc-800">Kleinfeld-Jugend</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                
-                <!-- E-Junioren (U11) - JETZT STARK VERTRETEN MIT 4 TEAMS -->
-                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5 flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-lg font-bold text-black uppercase">E-Junioren (U11)</h3>
-                            <span class="text-[10px] font-bold bg-red-50 text-red-600 px-2 py-0.5 rounded">4 Teams (I - IV)</span>
+                {kleinfeldTeams.map(({ entry }) => (
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-lg font-bold text-black uppercase">{entry.name}</h3>
+                                {entry.badge && (
+                                    <span class="text-[10px] font-bold bg-red-50 text-red-600 px-2 py-0.5 rounded">{entry.badge}</span>
+                                )}
+                            </div>
+                            {entry.description && (
+                                <p class="text-gray-600 text-xs leading-relaxed">{entry.description}</p>
+                            )}
                         </div>
-                        <p class="text-gray-600 text-xs">Unsere teilnehmerstärkste Altersklasse! Vier Mannschaften garantieren maximalen Spielspaß und viel Spielzeit für jedes Kind.</p>
-                    </div>
-                    <div class="mt-4 pt-3 border-t border-gray-50 text-[11px] text-gray-500 flex justify-between items-center">
-                        <span>Jahrgänge 15/16</span>
-                        <button onclick="openModal('E-Junioren (Teams I bis IV)', 'Jahrgänge 2015/2016', 'Montag & Mittwoch: 16:30 - 18:00 Uhr', 'Koordinatoren & Trainer-Team')" class="bg-zinc-50 hover:bg-red-50 text-zinc-700 hover:text-red-600 font-bold text-xs uppercase tracking-wider px-3 py-1.5 rounded-lg border border-gray-200 hover:border-red-200 transition duration-200">Infos</button>
-                    </div>
-                </div>
-
-                <!-- F-Junioren (U9) - 2 TEAMS -->
-                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5 flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-lg font-bold text-black uppercase">F-Junioren (U9)</h3>
-                            <span class="text-[10px] font-bold bg-red-50 text-red-600 px-2 py-0.5 rounded">2 Teams (I & II)</span>
+                        <div class="mt-4 pt-3 border-t border-gray-100 text-[11px] text-gray-500 flex justify-between items-center">
+                            <span>{entry.year || 'Nachwuchs'}</span>
+                            <button 
+                                type="button"
+                                data-title={entry.name}
+                                data-year={entry.year || ''}
+                                data-training={entry.training || ''}
+                                data-trainer={entry.trainer || ''}
+                                class="open-team-modal-btn bg-zinc-50 hover:bg-red-50 text-zinc-700 hover:text-red-600 font-bold text-xs uppercase tracking-wider px-3 py-1.5 rounded-lg border border-gray-200 hover:border-red-200 transition duration-200 cursor-pointer"
+                            >
+                                Infos
+                            </button>
                         </div>
-                        <p class="text-gray-600 text-xs">Erste echte Liga-Atmosphäre und Turniere. Teamgeist und die Freude am gemeinsamen Torerfolg stehen im Mittelpunkt.</p>
                     </div>
-                    <div class="mt-4 pt-3 border-t border-gray-50 text-[11px] text-gray-500 flex justify-between items-center">
-                        <span>Jahrgänge 17/18</span>
-                        <button onclick="openModal('F-Junioren (I & II)', 'Jahrgänge 2017/2018', 'Dienstag & Donnerstag: 16:00 - 17:30 Uhr', 'Trainer-Team')" class="bg-zinc-50 hover:bg-red-50 text-zinc-700 hover:text-red-600 font-bold text-xs uppercase tracking-wider px-3 py-1.5 rounded-lg border border-gray-200 hover:border-red-200 transition duration-200">Infos</button>
-                    </div>
-                </div>
-
-                <!-- G-Junioren (U7) - MINIKICKER -->
-                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5 flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-lg font-bold text-red-600 uppercase mb-2">G-Junioren (U7)</h3>
-                        <p class="text-gray-600 text-xs">Unsere Minikicker! Hier lernen die Allerkleinsten spielerisch und ohne Leistungsdruck das tolle Gefühl mit dem Ball am Fuß.</p>
-                    </div>
-                    <div class="mt-4 pt-3 border-t border-gray-50 text-[11px] text-gray-500 flex justify-between items-center">
-                        <span>Ab 4 Jahren</span>
-                        <button onclick="openModal('G-Junioren (Minikicker)', 'Ab 4 Jahren / Neulinge', 'Freitag: 15:30 - 17:00 Uhr', 'Betreuer-Team')" class="bg-zinc-50 hover:bg-red-50 text-zinc-700 hover:text-red-600 font-bold text-xs uppercase tracking-wider px-3 py-1.5 rounded-lg border border-gray-200 hover:border-red-200 transition duration-200">Infos</button>
-                    </div>
-                </div>
-
+                ))}
             </div>
         </div>
 
@@ -204,6 +171,16 @@ import MainLayout from '../layouts/MainLayout.astro';
             const modal = document.getElementById('infoModal');
             if (modal) modal.classList.add('hidden');
         }
+
+        document.querySelectorAll('.open-team-modal-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const title = button.getAttribute('data-title') || '';
+                const year = button.getAttribute('data-year') || '';
+                const training = button.getAttribute('data-training') || '';
+                const trainer = button.getAttribute('data-trainer') || '';
+                openModal(title, year, training, trainer);
+            });
+        });
 
         // Schließen, wenn man außerhalb des Fensters klickt
         window.addEventListener('click', function(event) {

@@ -3,28 +3,88 @@ import '../styles/global.css';
 import logoImage from '../assets/wissen/logo.png';
 import { Image } from 'astro:assets';
 
-// Wir erlauben, dass jede Seite ihren eigenen Titel an das Layout übergibt
-const { title } = Astro.props;
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+}
+
+const { 
+  title,
+  description = "Offizielle Website des BV Brambauer 13/45 e.V. – Tradition, Leidenschaft und Fußball in Lünen-Brambauer (Kreisliga A2 Dortmund).",
+  image = "/favicon.png"
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://bv-bram.vercel.app');
+const ogImageURL = new URL(image, Astro.site || 'https://bv-bram.vercel.app');
 ---
 
 <html lang="de">
     <head>
         <meta charset="utf-8" />
-        <link rel="icon" type="image/png" href="/favicon.png" />
-        <!-- FIX 1: initial-scale=1 hinzugefügt für korrektes mobiles Skalieren -->
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="generator" content={Astro.generator} />
+        
+        <!-- Primäre SEO Meta-Tags -->
         <title>{title} | BV Brambauer 13/45 e.V.</title>
+        <meta name="title" content={`${title} | BV Brambauer 13/45 e.V.`} />
+        <meta name="description" content={description} />
+        <link rel="canonical" href={canonicalURL} />
+        <meta name="theme-color" content="#dc2626" />
+
+        <!-- Favicon & PWA Webmanifest -->
+        <link rel="icon" type="image/png" href="/favicon.png" />
+        <link rel="apple-touch-icon" href="/favicon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+
+        <!-- Open Graph / Facebook / WhatsApp -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={canonicalURL} />
+        <meta property="og:title" content={`${title} | BV Brambauer 13/45 e.V.`} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={ogImageURL} />
+        <meta property="og:site_name" content="BV Brambauer 13/45 e.V." />
+        <meta property="og:locale" content="de_DE" />
+
+        <!-- Twitter Card -->
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content={canonicalURL} />
+        <meta property="twitter:title" content={`${title} | BV Brambauer 13/45 e.V.`} />
+        <meta property="twitter:description" content={description} />
+        <meta property="twitter:image" content={ogImageURL} />
+
+        <!-- Strukturierte Daten (Schema.org) für Sportvereine -->
+        <script is:inline type="application/ld+json" set:html={JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "SportsClub",
+          "name": "BV Brambauer 13/45 e.V.",
+          "alternateName": "BVBram",
+          "url": "https://bv-bram.vercel.app",
+          "logo": "https://bv-bram.vercel.app/favicon.png",
+          "sport": "Soccer",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Am Freibad 10",
+            "addressLocality": "Lünen-Brambauer",
+            "postalCode": "44536",
+            "addressCountry": "DE"
+          }
+        })} />
     </head>
     
     <body class="bg-gray-50 text-gray-900 font-sans min-h-screen flex flex-col">
 
-        <nav class="bg-white text-gray-900 sticky top-0 z-50 shadow-sm border-b border-gray-100">
+        <!-- Barrierefreiheit: Tastatur-Skip-Link -->
+        <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-red-600 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:shadow-xl focus:outline-none font-bold text-sm">
+            Zum Hauptinhalt springen
+        </a>
+
+        <nav aria-label="Hauptnavigation" class="bg-white text-gray-900 sticky top-0 z-50 shadow-sm border-b border-gray-100">
             <!-- py-4 statt py-2 gibt auf Mobile etwas mehr Luft zum Atmen -->
             <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0">
                 
                 <!-- Logo & Vereinsname: Zentriert sich auf Mobile automatisch -->
-                <div class="flex items-center space-x-4">
+                <a href="/" class="flex items-center space-x-4 focus:outline-none focus:ring-2 focus:ring-red-600 rounded-lg p-1">
                     <Image 
                         src={logoImage} 
                         alt="BV Brambauer-Lünen Logo" 
@@ -32,20 +92,21 @@ const { title } = Astro.props;
                         quality="max"
                     />
                     <span class="font-black text-lg md:text-xl tracking-tight text-black">BV Brambauer <span class="text-red-600">13/45</span></span>
-                </div>
+                </a>
                 
-                <!-- FIX 2: Navigation bricht jetzt sauber um (flex-wrap) und zentriert sich auf Mobile -->
+                <!-- Navigation -->
                 <div class="w-full md:w-auto flex flex-wrap justify-center md:justify-end gap-x-6 gap-y-2 pt-2 md:pt-0 font-semibold text-xs uppercase tracking-wider border-t border-gray-100 md:border-t-0">
-                    <a href="/" class="text-gray-600 hover:text-red-600 transition">Startseite</a>
-                    <a href="/aktuelles" class="text-gray-600 hover:text-red-600 transition">Aktuelles</a>
-                    <a href="/senioren" class="text-gray-600 hover:text-red-600 transition">Senioren</a>
-                    <a href="/junioren" class="text-gray-600 hover:text-red-600 transition">Junioren</a>
-                    <a href="/chronik" class="text-gray-600 hover:text-red-600 transition">Chronik</a>
+                    <a href="/" class="text-gray-600 hover:text-red-600 transition p-1">Startseite</a>
+                    <a href="/aktuelles" class="text-gray-600 hover:text-red-600 transition p-1">Aktuelles</a>
+                    <a href="/senioren" class="text-gray-600 hover:text-red-600 transition p-1">Senioren</a>
+                    <a href="/junioren" class="text-gray-600 hover:text-red-600 transition p-1">Junioren</a>
+                    <a href="/chronik" class="text-gray-600 hover:text-red-600 transition p-1">Chronik</a>
+                    <a href="/kontakt" class="text-gray-600 hover:text-red-600 transition p-1">Kontakt</a>
 					<a 
 						href="https://www.11teamsports.com/de-de/clubshop/bv-brambauer-13-45-e-v/" 
 						target="_blank" 
 						rel="noopener noreferrer" 
-						class="text-red-600 hover:text-red-700 transition font-bold flex items-center gap-1"
+						class="text-red-600 hover:text-red-700 transition font-bold flex items-center gap-1 p-1"
 					>
 						Clubshop 🛒
 					</a>
@@ -55,11 +116,11 @@ const { title } = Astro.props;
         </nav>
 
         <!-- Der eigentliche Inhalt der Seiten -->
-        <div class="flex-grow">
+        <div id="main-content" class="flex-grow">
             <slot />
         </div>
 
-        <footer class="bg-gray-950 text-gray-400 py-12 border-t border-gray-950 mt-auto">
+        <footer class="bg-gray-950 text-gray-300 py-12 border-t border-gray-950 mt-auto">
             <!-- gap-8 sorgt auf Mobile für besseren Abstand zwischen Text und Social-Buttons -->
             <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-8">
                 

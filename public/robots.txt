@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /keystatic/
+Disallow: /api/keystatic/
+
+Sitemap: https://bv-bram.vercel.app/sitemap-index.xml

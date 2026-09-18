@@ -2,13 +2,16 @@
 import MainLayout from '../layouts/MainLayout.astro';
 ---
 
-<MainLayout title="Vereinsgeschichte & Chronik">
+<MainLayout 
+	title="Vereinsgeschichte & Chronik"
+	description="Die bewegte Geschichte des BV Brambauer 13/45 e.V. – Von der Gründung auf Zeche Minister Achenbach 1913 bis zur modernen Glückauf-Arena."
+>
 	
 	<header class="relative bg-zinc-900 text-white py-20 px-4 overflow-hidden border-b-8 border-red-600">
 		<div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
 		<div class="relative max-w-4xl mx-auto text-center">
 			<h1 class="text-4xl md:text-6xl font-black uppercase tracking-tighter">Tradition seit <span class="text-red-600">1913</span></h1>
-			<p class="text-lg md:text-xl text-gray-400 mt-4 font-medium">Vom tiefen Schacht der Zeche Minister Achenbach bis zum Kunstrasen der Glückauf-Arena.</p>
+			<p class="text-lg md:text-xl text-gray-300 mt-4 font-medium">Vom tiefen Schacht der Zeche Minister Achenbach bis zum Kunstrasen der Glückauf-Arena.</p>
 		</div>
 	</header>
 
@@ -58,13 +61,13 @@ import MainLayout from '../layouts/MainLayout.astro';
 			</p>
 			<div class="mt-10 flex justify-center items-center space-x-8">
 				<div class="text-center">
-					<div class="w-20 h-20 bg-zinc-200 rounded-full mb-2 mx-auto flex items-center justify-center font-bold text-gray-400">13</div>
-					<span class="text-xs font-bold uppercase tracking-widest text-gray-400">BV 13</span>
+					<div class="w-20 h-20 bg-zinc-200 rounded-full mb-2 mx-auto flex items-center justify-center font-bold text-zinc-700 text-lg">13</div>
+					<span class="text-xs font-bold uppercase tracking-widest text-zinc-600">BV 13</span>
 				</div>
 				<div class="text-2xl font-black text-red-600">+</div>
 				<div class="text-center">
-					<div class="w-20 h-20 bg-zinc-200 rounded-full mb-2 mx-auto flex items-center justify-center font-bold text-gray-400">45</div>
-					<span class="text-xs font-bold uppercase tracking-widest text-gray-400">FC 45</span>
+					<div class="w-20 h-20 bg-zinc-200 rounded-full mb-2 mx-auto flex items-center justify-center font-bold text-zinc-700 text-lg">45</div>
+					<span class="text-xs font-bold uppercase tracking-widest text-zinc-600">FC 45</span>
 				</div>
 			</div>
 		</section>

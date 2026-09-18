@@ -9,7 +9,10 @@ import bildVersammlung from '../assets/images/logogarage.jpeg'; // Beispielname 
 import bildCamp from '../assets/images/kinder-feld.jpeg'; // Beispielname für News 2
 ---
 
-<MainLayout title="Startseite">
+<MainLayout 
+    title="Startseite"
+    description="Willkommen beim BV Brambauer 13/45 e.V. – Alle News, Spielberichte, Teams der Senioren & Junioren sowie Termine aus der Glückauf-Arena Lünen."
+>
 
     <!-- HEADER / HERO: Jetzt mit echtem Stadion-Hintergrundbild -->
     <header class="relative bg-black text-white py-24 px-4 overflow-hidden">
@@ -19,7 +22,12 @@ import bildCamp from '../assets/images/kinder-feld.jpeg'; // Beispielname für N
                 src={stadionBild} 
                 alt="Die Glückauf-Arena des BV Brambauer" 
                 class="w-full h-full object-cover opacity-25"
-                priority
+                widths={[640, 1024, 1920]}
+                sizes="100vw"
+                format="webp"
+                quality={75}
+                loading="eager"
+                fetchpriority="high"
             />
             <!-- Subtiler Farbverlauf über dem Bild für bessere Lesbarkeit des Textes -->
             <div class="absolute inset-0 bg-gradient-to-r from-black via-transparent to-gray-900 opacity-80"></div>

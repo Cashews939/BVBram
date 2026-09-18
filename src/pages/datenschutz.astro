@@ -3,11 +3,14 @@
 import MainLayout from '../layouts/MainLayout.astro';
 ---
 
-<MainLayout title="Datenschutzerklärung">
+<MainLayout 
+    title="Datenschutzerklärung"
+    description="Datenschutzerklärung des BV Brambauer 13/45 e.V. – Transparente Informationen zur Erhebung und Verarbeitung personenbezogener Daten auf unserer Website."
+>
     <header class="bg-zinc-900 text-white py-12 px-4 border-b-4 border-red-600">
         <div class="max-w-4xl mx-auto">
             <h1 class="text-3xl md:text-5xl font-black uppercase tracking-tight">Datenschutz</h1>
-            <p class="text-gray-400 mt-2 text-sm md:text-base">Erklärung zur Erhebung und Verarbeitung personenbezogener Daten</p>
+            <p class="text-gray-300 mt-2 text-sm md:text-base">Erklärung zur Erhebung und Verarbeitung personenbezogener Daten</p>
         </div>
     </header>
 
@@ -65,3 +68,6 @@ import MainLayout from '../layouts/MainLayout.astro';
             <p>Sie haben jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten. Sie haben außerdem ein Recht, die Berichtigung oder Löschung dieser Daten zu verlangen. Hierzu sowie zu weiteren Fragen zum Thema Datenschutz können Sie sich jederzeit unter der im Impressum angegebenen Adresse an uns wenden.</p>
             <p>Des Weiteren steht Ihnen ein Beschwerderecht bei der zuständigen Aufsichtsbehörde (Landesbeauftragte für Datenschutz und Informationsfreiheit Nordrhein-Westfalen) zu.</p>
         </section>
+
+    </main>
+</MainLayout>

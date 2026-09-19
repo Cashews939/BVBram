@@ -9,4 +9,9 @@ export default defineConfig({
   site: 'https://bv-bram.vercel.app',
   adapter: vercel(),
   integrations: [react(), tailwind(), keystatic(), sitemap()],
+  vite: {
+    ssr: {
+      noExternal: ['@keystar/ui', /@react-aria/, /@internationalized/],
+    },
+  },
 });

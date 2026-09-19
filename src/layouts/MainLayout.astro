@@ -17,6 +17,24 @@ const {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://bv-bram.vercel.app');
 const ogImageURL = new URL(image, Astro.site || 'https://bv-bram.vercel.app');
+
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+
+const navLinks = [
+  { href: '/', label: 'Startseite' },
+  { href: '/aktuelles', label: 'Aktuelles' },
+  { href: '/senioren', label: 'Senioren' },
+  { href: '/junioren', label: 'Junioren' },
+  { href: '/chronik', label: 'Chronik' },
+  { href: '/kontakt', label: 'Kontakt' },
+];
+
+const isLinkActive = (href: string) => {
+  if (href === '/') {
+    return currentPath === '/';
+  }
+  return currentPath.startsWith(href);
+};
 ---
 
 <html lang="de">
@@ -80,40 +98,156 @@ const ogImageURL = new URL(image, Astro.site || 'https://bv-bram.vercel.app');
         </a>
 
         <nav aria-label="Hauptnavigation" class="bg-white text-gray-900 sticky top-0 z-50 shadow-sm border-b border-gray-100">
-            <!-- py-4 statt py-2 gibt auf Mobile etwas mehr Luft zum Atmen -->
-            <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0">
+            <div class="max-w-6xl mx-auto px-4 py-2.5 md:py-3.5 flex justify-between items-center">
                 
-                <!-- Logo & Vereinsname: Zentriert sich auf Mobile automatisch -->
-                <a href="/" class="flex items-center space-x-4 focus:outline-none focus:ring-2 focus:ring-red-600 rounded-lg p-1">
+                <!-- Logo & Vereinsname -->
+                <a href="/" class="flex items-center space-x-3 md:space-x-4 focus:outline-none focus:ring-2 focus:ring-red-600 rounded-lg p-1">
                     <Image 
                         src={logoImage} 
                         alt="BV Brambauer-Lünen Logo" 
-                        class="w-10 h-auto md:w-12 object-contain"
+                        class="w-9 h-auto md:w-12 object-contain shrink-0"
                         quality="max"
                     />
-                    <span class="font-black text-lg md:text-xl tracking-tight text-black">BV Brambauer <span class="text-red-600">13/45</span></span>
+                    <span class="font-black text-base sm:text-lg md:text-xl tracking-tight text-black">BV Brambauer <span class="text-red-600">13/45</span></span>
                 </a>
                 
-                <!-- Navigation -->
-                <div class="w-full md:w-auto flex flex-wrap justify-center md:justify-end gap-x-6 gap-y-2 pt-2 md:pt-0 font-semibold text-xs uppercase tracking-wider border-t border-gray-100 md:border-t-0">
-                    <a href="/" class="text-gray-600 hover:text-red-600 transition p-1">Startseite</a>
-                    <a href="/aktuelles" class="text-gray-600 hover:text-red-600 transition p-1">Aktuelles</a>
-                    <a href="/senioren" class="text-gray-600 hover:text-red-600 transition p-1">Senioren</a>
-                    <a href="/junioren" class="text-gray-600 hover:text-red-600 transition p-1">Junioren</a>
-                    <a href="/chronik" class="text-gray-600 hover:text-red-600 transition p-1">Chronik</a>
-                    <a href="/kontakt" class="text-gray-600 hover:text-red-600 transition p-1">Kontakt</a>
-					<a 
-						href="https://www.11teamsports.com/de-de/clubshop/bv-brambauer-13-45-e-v/" 
-						target="_blank" 
-						rel="noopener noreferrer" 
-						class="text-red-600 hover:text-red-700 transition font-bold flex items-center gap-1 p-1"
-					>
-						Clubshop 🛒
-					</a>
+                <!-- Desktop-Navigation (ab md: sichtbar) -->
+                <div class="hidden md:flex items-center gap-x-6 font-semibold text-xs uppercase tracking-wider">
+                    {navLinks.map((link) => (
+                        <a 
+                            href={link.href} 
+                            class={`transition p-1 ${isLinkActive(link.href) ? 'text-red-600 font-bold border-b-2 border-red-600' : 'text-gray-600 hover:text-red-600'}`}
+                        >
+                            {link.label}
+                        </a>
+                    ))}
+                    <a 
+                        href="https://www.11teamsports.com/de-de/clubshop/bv-brambauer-13-45-e-v/" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        class="text-red-600 hover:text-red-700 transition font-bold flex items-center gap-1 p-1 hover:scale-105"
+                    >
+                        Clubshop 🛒
+                    </a>
                 </div>
 
+                <!-- Hamburger-Button für mobile Ansicht (unter md: sichtbar) -->
+                <button
+                    id="mobile-menu-toggle"
+                    type="button"
+                    class="md:hidden inline-flex items-center justify-center p-2 rounded-lg text-gray-700 hover:text-red-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-red-600 transition"
+                    aria-controls="mobile-menu"
+                    aria-expanded="false"
+                    aria-label="Navigation öffnen"
+                >
+                    <!-- Icon Menü geschlossen: 3 Striche -->
+                    <svg id="icon-menu-closed" class="w-6 h-6 block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <!-- Icon Menü geöffnet: X -->
+                    <svg id="icon-menu-open" class="w-6 h-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+
+            </div>
+
+            <!-- Mobiles Menü (Dropdown/Drawer) -->
+            <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white/95 backdrop-blur-md shadow-xl transition-all">
+                <div class="max-w-6xl mx-auto px-4 py-3 space-y-1 font-semibold text-sm uppercase tracking-wider">
+                    {navLinks.map((link) => (
+                        <a 
+                            href={link.href} 
+                            class={`block px-3 py-2.5 rounded-lg transition ${isLinkActive(link.href) ? 'bg-red-50 text-red-600 font-bold' : 'text-gray-700 hover:text-red-600 hover:bg-gray-50'}`}
+                        >
+                            {link.label}
+                        </a>
+                    ))}
+                    <div class="pt-2 border-t border-gray-100">
+                        <a 
+                            href="https://www.11teamsports.com/de-de/clubshop/bv-brambauer-13-45-e-v/" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            class="flex items-center justify-center gap-2 w-full py-2.5 px-4 bg-red-600 hover:bg-red-700 text-white rounded-lg font-bold shadow-sm transition text-center"
+                        >
+                            <span>Clubshop</span>
+                            <span>🛒</span>
+                        </a>
+                    </div>
+                </div>
             </div>
         </nav>
+
+        <script>
+            function initMobileMenu() {
+                const toggleBtn = document.getElementById('mobile-menu-toggle');
+                const menu = document.getElementById('mobile-menu');
+                const iconClosed = document.getElementById('icon-menu-closed');
+                const iconOpen = document.getElementById('icon-menu-open');
+
+                if (!toggleBtn || !menu || !iconClosed || !iconOpen) return;
+
+                if (toggleBtn.dataset.initialized === 'true') return;
+                toggleBtn.dataset.initialized = 'true';
+
+                function closeMenu() {
+                    menu.classList.add('hidden');
+                    iconClosed.classList.remove('hidden');
+                    iconOpen.classList.add('hidden');
+                    toggleBtn.setAttribute('aria-expanded', 'false');
+                    toggleBtn.setAttribute('aria-label', 'Navigation öffnen');
+                }
+
+                function openMenu() {
+                    menu.classList.remove('hidden');
+                    iconClosed.classList.add('hidden');
+                    iconOpen.classList.remove('hidden');
+                    toggleBtn.setAttribute('aria-expanded', 'true');
+                    toggleBtn.setAttribute('aria-label', 'Navigation schließen');
+                }
+
+                toggleBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const isOpen = toggleBtn.getAttribute('aria-expanded') === 'true';
+                    if (isOpen) {
+                        closeMenu();
+                    } else {
+                        openMenu();
+                    }
+                });
+
+                menu.querySelectorAll('a').forEach((link) => {
+                    link.addEventListener('click', () => {
+                        closeMenu();
+                    });
+                });
+
+                document.addEventListener('click', (e) => {
+                    if (!menu.classList.contains('hidden')) {
+                        const target = e.target as Node;
+                        if (!menu.contains(target) && !toggleBtn.contains(target)) {
+                            closeMenu();
+                        }
+                    }
+                });
+
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && !menu.classList.contains('hidden')) {
+                        closeMenu();
+                        toggleBtn.focus();
+                    }
+                });
+
+                window.addEventListener('resize', () => {
+                    if (window.innerWidth >= 768 && !menu.classList.contains('hidden')) {
+                        closeMenu();
+                    }
+                });
+            }
+
+            initMobileMenu();
+            document.addEventListener('astro:page-load', initMobileMenu);
+        </script>
 
         <!-- Der eigentliche Inhalt der Seiten -->
         <div id="main-content" class="flex-grow">

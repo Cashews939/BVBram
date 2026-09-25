@@ -11,6 +11,7 @@ export default defineConfig({
   adapter: vercel(),
   integrations: [react(), tailwind(), keystatic(), sitemap(), markdoc()],
   vite: {
+    envPrefix: ['VITE_', 'PUBLIC_', 'KEYSTATIC_'],
     ssr: {
       noExternal: ['@keystar/ui', /@react-aria/, /@internationalized/],
     },

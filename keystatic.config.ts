@@ -4,7 +4,7 @@ import { config, fields, collection } from '@keystatic/core';
 export default config({
   // Speicherort: Im lokalen Modus direkt auf Festplatte, auf Vercel via GitHub
   storage:
-    process.env.NODE_ENV === 'development'
+    import.meta.env.DEV
       ? { kind: 'local' }
       : {
           kind: 'github',

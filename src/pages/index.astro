@@ -1,12 +1,20 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
 import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
 
 // 1. Hier importierst du deine statischen Bilder aus deinem Assets-Ordner
 import stadionBild from '../assets/images/stadion.jpeg'; 
 // import vereinsLogo from '../assets/images/logo.png'; // Falls du das Logo hier nutzen willst
-import bildVersammlung from '../assets/images/logogarage.jpeg'; // Beispielname für News 1
-import bildCamp from '../assets/images/kinder-feld.jpeg'; // Beispielname für News 2
+import bildVersammlung from '../assets/images/logogarage.jpeg'; // Fallback Bild 1
+import bildCamp from '../assets/images/kinder-feld.jpeg'; // Fallback Bild 2
+
+// 2. News dynamisch aus dem CMS (Keystatic) laden
+const allNews = await getCollection('aktuelles');
+// Nach Datum absteigend sortieren und die neuesten 2 Beiträge nehmen
+const latestNews = allNews
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 2);
 ---
 
 <MainLayout 
@@ -98,63 +106,51 @@ import bildCamp from '../assets/images/kinder-feld.jpeg'; // Beispielname für N
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-            <!-- News-Karte 1 mit echtem Bild -->
-            <article class="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-200 flex flex-col group">
-                <div class="h-48 relative overflow-hidden bg-gray-100">
-                    <Image 
-                        src={bildVersammlung} 
-                        alt="Jahreshauptversammlung des BV Brambauer" 
-                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        width={600}
-                        height={300}
-                    />
-                </div>
-                <div class="p-6 flex-1 flex flex-col justify-between">
-                    <div>
-                        <div class="flex gap-2 text-xs font-semibold text-gray-500 mb-2">
-                            <span class="text-zinc-700 font-bold uppercase">Verein</span>
-                            <span>•</span>
-                            <span>20. Mai 2026</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-red-600 transition">
-                            Einladung zur Jahreshauptversammlung
-                        </h3>
-                        <p class="text-gray-600 text-sm line-clamp-2">
-                            Der Vorstand lädt alle Mitglieder herzlich zur diesjährigen Versammlung ein. Auf der Tagesordnung stehen wichtige Wahlen...
-                        </p>
-                    </div>
-                    <a href="/aktuelles" class="text-red-600 hover:text-red-700 font-bold text-sm mt-4 inline-block">Weiterlesen →</a>
-                </div>
-            </article>
+            {latestNews.map((news) => {
+                // Datumsformatierung
+                const dateString = new Intl.DateTimeFormat('de-DE', {
+                    day: '2-digit',
+                    month: 'long',
+                    year: 'numeric'
+                }).format(news.data.date);
+                
+                // Wir nehmen abwechselnd die Bilder als Platzhalter (da noch kein Bild im CMS)
+                const imageSrc = news.data.category === 'Junioren' ? bildCamp : bildVersammlung;
 
-            <!-- News-Karte 2 mit emotionalem Einlauf-Bild -->
-            <article class="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-200 flex flex-col group">
-                <div class="h-48 relative overflow-hidden bg-gray-100">
-                    <Image 
-                        src={bildCamp} 
-                        alt="Kinder laufen auf das Spielfeld" 
-                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        width={600}
-                        height={300}
-                    />
-                </div>
-                <div class="p-6 flex-1 flex flex-col justify-between">
-                    <div>
-                        <div class="flex gap-2 text-xs font-semibold text-gray-500 mb-2">
-                            <span class="text-red-600 font-bold uppercase">Junioren</span>
-                            <span>•</span>
-                            <span>15. Mai 2026</span>
+                return (
+                    <article class="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-200 flex flex-col group">
+                        <div class="h-48 relative overflow-hidden bg-gray-100">
+                            <Image 
+                                src={imageSrc} 
+                                alt={news.data.title} 
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                width={600}
+                                height={300}
+                            />
                         </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-red-600 transition">
-                            Jetzt anmelden: Sommer-Jugendcamp
-                        </h3>
-                        <p class="text-gray-600 text-sm line-clamp-2">
-                            Auch in diesem Jahr findet wieder unser beliebtes Fußballcamp für Kinder von 6 bis 14 Jahren statt...
-                        </p>
-                    </div>
-                    <a href="/aktuelles" class="text-red-600 hover:text-red-700 font-bold text-sm mt-4 inline-block">Infos & Anmeldung →</a>
-                </div>
-            </article>
+                        <div class="p-6 flex-1 flex flex-col justify-between">
+                            <div>
+                                <div class="flex gap-2 text-xs font-semibold text-gray-500 mb-2">
+                                    <span class={news.data.category === 'Verein' ? 'text-zinc-700 font-bold uppercase' : 'text-red-600 font-bold uppercase'}>
+                                        {news.data.category}
+                                    </span>
+                                    <span>•</span>
+                                    <span>{dateString}</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-red-600 transition">
+                                    {news.data.title}
+                                </h3>
+                                {news.data.teaser && (
+                                    <p class="text-gray-600 text-sm line-clamp-2">
+                                        {news.data.teaser}
+                                    </p>
+                                )}
+                            </div>
+                            <a href={`/aktuelles/${news.id}`} class="text-red-600 hover:text-red-700 font-bold text-sm mt-4 inline-block">Weiterlesen →</a>
+                        </div>
+                    </article>
+                );
+            })}
         </div>
 
         <section class="mb-16">

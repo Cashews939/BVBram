@@ -8,7 +8,6 @@ import markdoc from '@astrojs/markdoc';
 
 export default defineConfig({
   site: 'https://bv-bram.vercel.app',
-  output: 'hybrid',
   adapter: vercel(),
   integrations: [react(), tailwind(), keystatic(), sitemap(), markdoc()],
   vite: {

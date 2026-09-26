@@ -42,6 +42,11 @@ export default config({
           ],
           defaultValue: 'Verein',
         }),
+        draft: fields.checkbox({
+          label: 'Als Entwurf speichern (Verstecken)',
+          description: 'Wenn dies angehakt ist, wird der Beitrag NICHT auf der Website angezeigt.',
+          defaultValue: false,
+        }),
         coverImage: fields.image({
           label: 'Titelbild (Vorschaubild)',
           directory: 'public/images/news',

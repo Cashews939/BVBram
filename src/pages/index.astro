@@ -13,8 +13,9 @@ import bildCamp from '../assets/images/kinder-feld.jpeg'; // Fallback Bild 2
 const allNews = await getCollection('aktuelles');
 // Nach Datum absteigend sortieren und die neuesten 2 Beiträge nehmen
 const latestNews = allNews
+  .filter(n => n.data.draft !== true)
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-  .slice(0, 2);
+  .slice(0, 4);
 
 // Termine dynamisch aus dem CMS laden
 const allTermine = await getCollection('termine');

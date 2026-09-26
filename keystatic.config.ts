@@ -49,6 +49,7 @@ export default config({
         }),
         coverImage: fields.image({
           label: 'Titelbild (Vorschaubild)',
+          description: 'WICHTIG: Das Bild darf maximal 2 MB groß sein. Zu große Bilder blockieren das Speichern! (Ideal: unter 500 KB für schnelle Ladezeiten).',
           directory: 'public/images/news',
           publicPath: '/images/news/',
         }),
@@ -97,6 +98,7 @@ export default config({
         buttonLink: fields.text({ label: 'Button-Link / Anker (z.B. #live-ticker-erste oder mailto:...)' }),
         teamPhoto: fields.image({
           label: 'Mannschaftsfoto',
+          description: 'WICHTIG: Das Bild darf maximal 2 MB groß sein. Zu große Bilder blockieren das Speichern!',
           directory: 'public/images/teams',
           publicPath: '/images/teams/',
         }),
@@ -129,6 +131,7 @@ export default config({
         liveCenterId: fields.text({ label: 'Live-Center Anker (optional, z.B. #live-a-junioren)' }),
         teamPhoto: fields.image({
           label: 'Mannschaftsfoto',
+          description: 'WICHTIG: Das Bild darf maximal 2 MB groß sein. Zu große Bilder blockieren das Speichern!',
           directory: 'public/images/teams',
           publicPath: '/images/teams/',
         }),

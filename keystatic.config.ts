@@ -42,8 +42,22 @@ export default config({
           ],
           defaultValue: 'Verein',
         }),
+        coverImage: fields.image({
+          label: 'Titelbild (Vorschaubild)',
+          directory: 'public/images/news',
+          publicPath: '/images/news/',
+        }),
         teaser: fields.text({ label: 'Kurzer Vorschautext', multiline: true }),
-        content: fields.document({ label: 'Haupttext / Inhalt' }),
+        content: fields.document({
+          label: 'Haupttext / Inhalt',
+          formatting: true,
+          dividers: true,
+          links: true,
+          images: {
+            directory: 'public/images/news',
+            publicPath: '/images/news/',
+          },
+        }),
       },
     }),
 
@@ -76,6 +90,11 @@ export default config({
         description: fields.text({ label: 'Beschreibung / Infos zum Team', multiline: true }),
         buttonText: fields.text({ label: 'Button-Text (z.B. Tabelle & Spielplan live)' }),
         buttonLink: fields.text({ label: 'Button-Link / Anker (z.B. #live-ticker-erste oder mailto:...)' }),
+        teamPhoto: fields.image({
+          label: 'Mannschaftsfoto',
+          directory: 'public/images/teams',
+          publicPath: '/images/teams/',
+        }),
       },
     }),
 
@@ -103,6 +122,11 @@ export default config({
         trainer: fields.text({ label: 'Trainer-Team / Ansprechpartner' }),
         description: fields.text({ label: 'Beschreibung / Infos zum Team', multiline: true }),
         liveCenterId: fields.text({ label: 'Live-Center Anker (optional, z.B. #live-a-junioren)' }),
+        teamPhoto: fields.image({
+          label: 'Mannschaftsfoto',
+          directory: 'public/images/teams',
+          publicPath: '/images/teams/',
+        }),
       },
     }),
   },

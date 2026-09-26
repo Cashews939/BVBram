@@ -3,6 +3,19 @@ order: 3
 badge: Freizeit & Pokal
 training: 'Mittwoch: ab 18:30 Uhr'
 trainer: Freundschaftsspiele, Kreispokal & Vereinskultur
-description: Die Traditions-Kicker des BVB. Unsere Ü32, Ü40 und Ü50 Mannschaften kicken in Pokalrunden, Turnieren und halten die Geselligkeit hoch.
+description: >-
+  Die Traditions-Kicker des BVB. Unsere Ü32, Ü40 und Ü50 Mannschaften kicken in
+  Pokalrunden, Turnieren und halten die Geselligkeit hoch.
 buttonText: Ansprechpartner kontaktieren
-buttonLink: 'mailto:kontakt@bv-brambauer.de'
+buttonLink: mailto:kontakt@bv-brambauer.de
+fussballWidget: |-
+  <script 
+    type="text/javascript" 
+    src="https://www.fussball.de/widgets.js">
+  </script>
+  <div 
+    class="fussballde_widget"
+    data-id="9441fe18-dbbe-42fb-988c-2e88d8052c2f"
+    data-type="team-matches"
+    style="width: 100%"
+  ></div>

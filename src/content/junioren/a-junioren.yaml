@@ -3,7 +3,20 @@ bereich: grossfeld
 order: 1
 badge: U19
 year: Jahrgänge 2007/2008
-training: 'Mo & Mi 18:00 Uhr'
+training: Mo & Mi 18:00 Uhr
 trainer: Trainer-Team
-description: Die direkte Vorstufe zu unseren Seniorenteams. Hier stehen Leistungsförderung und taktischer Feinschliff im Vordergrund.
+description: >-
+  Die direkte Vorstufe zu unseren Seniorenteams. Hier stehen Leistungsförderung
+  und taktischer Feinschliff im Vordergrund.
 liveCenterId: '#live-a-junioren'
+fussballWidget: |-
+  <script 
+    type="text/javascript" 
+    src="https://www.fussball.de/widgets.js">
+  </script>
+  <div 
+    class="fussballde_widget"
+    data-id="a26f78c8-72ad-4232-aa1a-a473dbd9294f"
+    data-type="team-matches"
+    style="width: 100%"
+  ></div>

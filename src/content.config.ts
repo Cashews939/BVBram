@@ -34,6 +34,8 @@ const senioren = defineCollection({
     description: z.string().optional(),
     buttonText: z.string().optional(),
     buttonLink: z.string().optional(),
+    teamPhoto: z.string().optional(),
+    fussballWidget: z.string().optional(),
   }),
 });
 
@@ -49,6 +51,8 @@ const junioren = defineCollection({
     trainer: z.string().optional(),
     description: z.string().optional(),
     liveCenterId: z.string().optional(),
+    teamPhoto: z.string().optional(),
+    fussballWidget: z.string().optional(),
   }),
 });
 

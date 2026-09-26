@@ -49,14 +49,12 @@ const sortedSenioren = allSenioren.sort((a, b) => a.data.order - b.data.order);
                         </div>
                     </div>
                     
-                    {team.data.buttonLink && team.data.buttonText && (
-                        <a 
-                            href={team.data.buttonLink}
-                            class="block w-full text-center bg-zinc-900 hover:bg-red-600 text-white font-bold py-3 px-4 rounded transition uppercase tracking-wider text-sm"
-                        >
-                            {team.data.buttonText}
-                        </a>
-                    )}
+                    <a 
+                        href={`/senioren/${team.id}`}
+                        class="mt-4 block w-full text-center bg-zinc-900 hover:bg-red-600 text-white font-bold py-3 px-4 rounded transition uppercase tracking-wider text-sm"
+                    >
+                        Zur Mannschaft & Tabelle
+                    </a>
                 </div>
             ))}
             

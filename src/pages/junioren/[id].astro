@@ -1,0 +1,94 @@
+---
+import { getCollection } from 'astro:content';
+import MainLayout from '../../layouts/MainLayout.astro';
+
+export async function getStaticPaths() {
+  const teams = await getCollection('junioren');
+  return teams.map(team => ({
+    params: { id: team.id },
+    props: { team },
+  }));
+}
+
+const { team } = Astro.props;
+---
+
+<MainLayout title={`${team.data.name} - Tabelle & Spielplan`} description={team.data.description || ''}>
+    <header class="bg-zinc-900 text-white py-12 px-4 border-b-4 border-red-600">
+        <div class="max-w-6xl mx-auto">
+            <nav class="flex mb-4 text-xs uppercase font-bold tracking-widest text-zinc-400 gap-2">
+                <a href="/junioren" class="hover:text-white transition">Junioren</a>
+                <span>/</span>
+                <span class="text-red-500">{team.data.name}</span>
+            </nav>
+            <h1 class="text-3xl md:text-5xl font-black uppercase tracking-tight">{team.data.name}</h1>
+            {team.data.badge && <p class="text-gray-300 mt-2 text-base">{team.data.badge}</p>}
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-12 flex-grow">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            
+            <!-- Linke Spalte: Widget -->
+            <div class="lg:col-span-2">
+                <h2 class="text-2xl font-black uppercase mb-6 flex items-center gap-2">
+                    <span class="w-2 h-8 bg-red-600 inline-block"></span>
+                    Tabelle & Spielplan
+                </h2>
+                
+                <div class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden p-2 md:p-6 min-h-[400px]">
+                    {team.data.fussballWidget ? (
+                        <div set:html={team.data.fussballWidget} />
+                    ) : (
+                        <div class="flex flex-col items-center justify-center h-full text-gray-500 py-12 text-center">
+                            <p>Noch kein Widget hinterlegt.</p>
+                            <p class="text-sm mt-2">Ein Redakteur kann den Fussball.de Code im CMS eintragen.</p>
+                        </div>
+                    )}
+                </div>
+            </div>
+
+            <!-- Rechte Spalte: Infos & Foto -->
+            <div class="space-y-8">
+                <h2 class="text-2xl font-black uppercase mb-6 flex items-center gap-2">
+                    <span class="w-2 h-8 bg-zinc-900 inline-block"></span>
+                    Team-Infos
+                </h2>
+                
+                {team.data.teamPhoto && (
+                    <div class="rounded-xl overflow-hidden shadow-sm border border-gray-200 mb-6">
+                        <img src={team.data.teamPhoto} alt={team.data.name} class="w-full h-auto object-cover" />
+                    </div>
+                )}
+                
+                <div class="bg-gray-50 rounded-xl p-6 border border-gray-200 space-y-4">
+                    {team.data.year && (
+                        <div>
+                            <p class="text-xs uppercase font-bold text-gray-400 tracking-wider mb-1">Jahrgänge</p>
+                            <p class="font-medium text-gray-800">{team.data.year}</p>
+                        </div>
+                    )}
+                    {team.data.training && (
+                        <div>
+                            <p class="text-xs uppercase font-bold text-gray-400 tracking-wider mb-1">Trainingszeiten</p>
+                            <p class="font-medium text-gray-800">{team.data.training}</p>
+                        </div>
+                    )}
+                    {team.data.trainer && (
+                        <div>
+                            <p class="text-xs uppercase font-bold text-gray-400 tracking-wider mb-1">Trainer-Team</p>
+                            <p class="font-medium text-gray-800">{team.data.trainer}</p>
+                        </div>
+                    )}
+                    {team.data.description && (
+                        <div>
+                            <p class="text-xs uppercase font-bold text-gray-400 tracking-wider mb-1">Beschreibung</p>
+                            <p class="text-sm text-gray-700">{team.data.description}</p>
+                        </div>
+                    )}
+                </div>
+            </div>
+
+        </div>
+    </main>
+</MainLayout>

@@ -96,6 +96,11 @@ export default config({
         description: fields.text({ label: 'Beschreibung / Infos zum Team', multiline: true }),
         buttonText: fields.text({ label: 'Button-Text (z.B. Tabelle & Spielplan live)' }),
         buttonLink: fields.text({ label: 'Button-Link / Anker (z.B. #live-ticker-erste oder mailto:...)' }),
+        fussballWidget: fields.text({ 
+          label: 'Fussball.de Widget (HTML-Code)', 
+          multiline: true,
+          description: 'Füge hier den kompletten Einbettungscode (<div id="...">...<script>...) von Fussball.de ein.' 
+        }),
         teamPhoto: fields.image({
           label: 'Mannschaftsfoto',
           description: 'WICHTIG: Das Bild darf maximal 2 MB groß sein. Zu große Bilder blockieren das Speichern!',
@@ -129,6 +134,11 @@ export default config({
         trainer: fields.text({ label: 'Trainer-Team / Ansprechpartner' }),
         description: fields.text({ label: 'Beschreibung / Infos zum Team', multiline: true }),
         liveCenterId: fields.text({ label: 'Live-Center Anker (optional, z.B. #live-a-junioren)' }),
+        fussballWidget: fields.text({ 
+          label: 'Fussball.de Widget (HTML-Code)', 
+          multiline: true,
+          description: 'Füge hier den kompletten Einbettungscode (<div id="...">...<script>...) von Fussball.de ein.' 
+        }),
         teamPhoto: fields.image({
           label: 'Mannschaftsfoto',
           description: 'WICHTIG: Das Bild darf maximal 2 MB groß sein. Zu große Bilder blockieren das Speichern!',

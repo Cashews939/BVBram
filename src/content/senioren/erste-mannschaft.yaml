@@ -8,3 +8,8 @@ description: >-
   Kreisliga A2 um wichtige Punkte für den Aufstieg.
 buttonText: Tabelle & Spielplan live
 buttonLink: '#live-ticker-erste'
+fussballWidget: |-
+  <script 
+    type="text/javascript" 
+    src="https://www.fussball.de/widgets.js">
+  </script>

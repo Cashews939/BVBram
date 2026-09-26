@@ -1,0 +1,120 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allJunioren = await getCollection('junioren');
+const sortedJunioren = allJunioren.sort((a, b) => a.data.order - b.data.order);
+
+// Gruppieren in Großfeld und Kleinfeld
+const grossfeld = sortedJunioren.filter(t => t.data.bereich === 'grossfeld');
+const kleinfeld = sortedJunioren.filter(t => t.data.bereich === 'kleinfeld');
+---
+
+<MainLayout 
+    title="Junioren Mannschaften"
+    description="Alle Jugend-Mannschaften des BV Brambauer 13/45 e.V."
+>
+    <header class="bg-zinc-900 text-white py-12 px-4 border-b-4 border-red-600">
+        <div class="max-w-6xl mx-auto">
+            <h1 class="text-3xl md:text-5xl font-black uppercase tracking-tight">Junioren</h1>
+            <p class="text-gray-300 mt-2 text-base">Die Zukunft des BV Brambauer.</p>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-12 flex-grow space-y-16">
+        
+        <!-- Großfeld -->
+        <section>
+            <h2 class="text-3xl font-black uppercase mb-8 flex items-center gap-3">
+                <span class="w-2 h-8 bg-red-600 inline-block"></span>
+                Großfeld (U13 - U19)
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {grossfeld.map(team => (
+                    <div class="bg-white border border-gray-200 rounded-xl shadow-sm p-6 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <h3 class="text-2xl font-black uppercase">{team.data.name}</h3>
+                                    {team.data.year && <p class="text-gray-500 text-sm font-bold uppercase mt-1">{team.data.year}</p>}
+                                </div>
+                                {team.data.badge && (
+                                    <span class="bg-red-100 text-red-800 text-xs font-bold px-2.5 py-0.5 rounded uppercase text-right">
+                                        {team.data.badge}
+                                    </span>
+                                )}
+                            </div>
+                            
+                            <p class="text-gray-600 mb-6">{team.data.description}</p>
+                            
+                            <div class="space-y-3 mb-6 text-sm">
+                                {team.data.training && (
+                                    <div class="flex items-start gap-3">
+                                        <span class="text-red-600 font-bold">⚽ Training:</span>
+                                        <span class="text-gray-700">{team.data.training}</span>
+                                    </div>
+                                )}
+                                {team.data.trainer && (
+                                    <div class="flex items-start gap-3">
+                                        <span class="text-red-600 font-bold">👤 Trainer:</span>
+                                        <span class="text-gray-700">{team.data.trainer}</span>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                ))}
+                {grossfeld.length === 0 && <p class="text-gray-500">Keine Mannschaften hinterlegt.</p>}
+            </div>
+        </section>
+
+        <!-- Kleinfeld -->
+        <section>
+            <h2 class="text-3xl font-black uppercase mb-8 flex items-center gap-3">
+                <span class="w-2 h-8 bg-zinc-900 inline-block"></span>
+                Kleinfeld (U7 - U11)
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {kleinfeld.map(team => (
+                    <div class="bg-white border border-gray-200 rounded-xl shadow-sm p-6 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <h3 class="text-2xl font-black uppercase">{team.data.name}</h3>
+                                    {team.data.year && <p class="text-gray-500 text-sm font-bold uppercase mt-1">{team.data.year}</p>}
+                                </div>
+                                {team.data.badge && (
+                                    <span class="bg-zinc-100 text-zinc-800 text-xs font-bold px-2.5 py-0.5 rounded uppercase text-right">
+                                        {team.data.badge}
+                                    </span>
+                                )}
+                            </div>
+                            
+                            <p class="text-gray-600 mb-6">{team.data.description}</p>
+                            
+                            <div class="space-y-3 mb-6 text-sm">
+                                {team.data.training && (
+                                    <div class="flex items-start gap-3">
+                                        <span class="text-zinc-900 font-bold">⚽ Training:</span>
+                                        <span class="text-gray-700">{team.data.training}</span>
+                                    </div>
+                                )}
+                                {team.data.trainer && (
+                                    <div class="flex items-start gap-3">
+                                        <span class="text-zinc-900 font-bold">👤 Trainer:</span>
+                                        <span class="text-gray-700">{team.data.trainer}</span>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                ))}
+                {kleinfeld.length === 0 && <p class="text-gray-500">Keine Mannschaften hinterlegt.</p>}
+            </div>
+        </section>
+
+    </main>
+</MainLayout>
+
+<!-- Wir können Astro-Komponenten innerhalb der Datei verwenden, aber der Einfachheit halber schreiben wir das Markup direkt (Astro erlaubt keine in-file Komponenten Definition wie React, also iterieren wir oben) -->
+<!-- Korrektur: Ich muss den Code für TeamCard inline duplizieren, da Astro keine lokalen Komponentenfunktionen unterstützt. Ich schreibe den Code um. -->

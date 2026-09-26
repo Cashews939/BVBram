@@ -15,6 +15,16 @@ const allNews = await getCollection('aktuelles');
 const latestNews = allNews
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
   .slice(0, 2);
+
+// Termine dynamisch aus dem CMS laden
+const allTermine = await getCollection('termine');
+const today = new Date();
+today.setHours(0, 0, 0, 0); // Nur Datum vergleichen
+
+const upcomingTermine = allTermine
+  .filter(t => t.data.date >= today) // Keine veralteten Termine anzeigen
+  .sort((a, b) => a.data.date.getTime() - b.data.date.getTime()) // Nächster Termin zuerst
+  .slice(0, 5); // Max. 5 anzeigen
 ---
 
 <MainLayout 
@@ -178,7 +188,33 @@ const latestNews = allNews
             <div class="text-center mb-12">
                 <h2 class="text-3xl font-black tracking-tight uppercase">Die nächsten Termine</h2>
             </div>
-            <!-- ... deine Termine ... -->
+            
+            <div class="space-y-4">
+                {upcomingTermine.length === 0 ? (
+                    <p class="text-center text-gray-400">Derzeit stehen keine neuen Termine an.</p>
+                ) : (
+                    upcomingTermine.map(termin => {
+                        const terminDate = new Intl.DateTimeFormat('de-DE', {
+                            weekday: 'short',
+                            day: '2-digit',
+                            month: '2-digit',
+                            year: 'numeric'
+                        }).format(termin.data.date);
+                        return (
+                            <div class="bg-zinc-800 border border-zinc-700 rounded-lg p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                                <div>
+                                    <h3 class="text-xl font-bold text-white">{termin.data.title}</h3>
+                                    <div class="text-gray-400 text-sm mt-1 flex gap-3">
+                                        <span>📅 {terminDate}</span>
+                                        {termin.data.time && <span>⏰ {termin.data.time}</span>}
+                                        <span>📍 {termin.data.location || 'Glückauf-Arena'}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    })
+                )}
+            </div>
         </div>
     </section>
 

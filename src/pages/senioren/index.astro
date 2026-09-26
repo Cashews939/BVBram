@@ -1,0 +1,68 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allSenioren = await getCollection('senioren');
+const sortedSenioren = allSenioren.sort((a, b) => a.data.order - b.data.order);
+---
+
+<MainLayout 
+    title="Senioren Mannschaften"
+    description="Alle Senioren Mannschaften des BV Brambauer 13/45 e.V."
+>
+    <header class="bg-zinc-900 text-white py-12 px-4 border-b-4 border-red-600">
+        <div class="max-w-6xl mx-auto">
+            <h1 class="text-3xl md:text-5xl font-black uppercase tracking-tight">Senioren</h1>
+            <p class="text-gray-300 mt-2 text-base">Unsere Mannschaften im Überblick.</p>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-12 flex-grow">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {sortedSenioren.map(team => (
+                <div class="bg-white border border-gray-200 rounded-xl shadow-sm p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <h2 class="text-2xl font-black uppercase">{team.data.name}</h2>
+                            {team.data.badge && (
+                                <span class="bg-red-100 text-red-800 text-xs font-bold px-2.5 py-0.5 rounded uppercase">
+                                    {team.data.badge}
+                                </span>
+                            )}
+                        </div>
+                        
+                        <p class="text-gray-600 mb-6">{team.data.description}</p>
+                        
+                        <div class="space-y-3 mb-6 text-sm">
+                            {team.data.training && (
+                                <div class="flex items-start gap-3">
+                                    <span class="text-red-600 font-bold">⚽ Training:</span>
+                                    <span class="text-gray-700">{team.data.training}</span>
+                                </div>
+                            )}
+                            {team.data.trainer && (
+                                <div class="flex items-start gap-3">
+                                    <span class="text-red-600 font-bold">👤 Trainer:</span>
+                                    <span class="text-gray-700">{team.data.trainer}</span>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                    
+                    {team.data.buttonLink && team.data.buttonText && (
+                        <a 
+                            href={team.data.buttonLink}
+                            class="block w-full text-center bg-zinc-900 hover:bg-red-600 text-white font-bold py-3 px-4 rounded transition uppercase tracking-wider text-sm"
+                        >
+                            {team.data.buttonText}
+                        </a>
+                    )}
+                </div>
+            ))}
+            
+            {sortedSenioren.length === 0 && (
+                <p class="text-gray-500">Es wurden noch keine Senioren-Mannschaften angelegt.</p>
+            )}
+        </div>
+    </main>
+</MainLayout>

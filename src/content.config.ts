@@ -7,6 +7,7 @@ const aktuelles = defineCollection({
     title: z.string(),
     date: z.coerce.date(),
     category: z.enum(['Verein', 'Senioren', 'Junioren']).default('Verein'),
+    coverImage: z.string().optional(),
     teaser: z.string().optional(),
   }),
 });

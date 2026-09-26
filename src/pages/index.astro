@@ -125,18 +125,27 @@ const upcomingTermine = allTermine
                 }).format(news.data.date);
                 
                 // Wir nehmen abwechselnd die Bilder als Platzhalter (da noch kein Bild im CMS)
-                const imageSrc = news.data.category === 'Junioren' ? bildCamp : bildVersammlung;
+                const fallbackImage = news.data.category === 'Junioren' ? bildCamp : bildVersammlung;
+                const hasCustomImage = !!news.data.coverImage;
 
                 return (
                     <article class="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-200 flex flex-col group">
                         <div class="h-48 relative overflow-hidden bg-gray-100">
-                            <Image 
-                                src={imageSrc} 
-                                alt={news.data.title} 
-                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                                width={600}
-                                height={300}
-                            />
+                            {hasCustomImage ? (
+                                <img 
+                                    src={news.data.coverImage} 
+                                    alt={news.data.title} 
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                />
+                            ) : (
+                                <Image 
+                                    src={fallbackImage} 
+                                    alt={news.data.title} 
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                    width={600}
+                                    height={300}
+                                />
+                            )}
                         </div>
                         <div class="p-6 flex-1 flex flex-col justify-between">
                             <div>

@@ -13,3 +13,9 @@ fussballWidget: |-
     type="text/javascript" 
     src="https://www.fussball.de/widgets.js">
   </script>
+  <div 
+    class="fussballde_widget"
+    data-id="bf8f54bc-1e3d-4953-963f-e8d795887256"
+    data-type="team-matches"
+    style="width: 100%"
+  ></div>

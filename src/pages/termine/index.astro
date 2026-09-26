@@ -1,0 +1,104 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allTermine = await getCollection('termine');
+const today = new Date();
+today.setHours(0, 0, 0, 0);
+
+// Nächste Termine (aufsteigend sortiert: der nächste zuerst)
+const upcomingTermine = allTermine
+  .filter(t => t.data.date >= today)
+  .sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
+
+// Vergangene Termine / Archiv (absteigend sortiert: der jüngste in der Vergangenheit zuerst)
+const pastTermine = allTermine
+  .filter(t => t.data.date < today)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<MainLayout 
+    title="Termine & Archiv"
+    description="Alle kommenden Termine und das Veranstaltungsarchiv des BV Brambauer 13/45 e.V."
+>
+    <header class="bg-zinc-900 text-white py-12 px-4 border-b-4 border-red-600">
+        <div class="max-w-6xl mx-auto">
+            <h1 class="text-3xl md:text-5xl font-black uppercase tracking-tight">Termine</h1>
+            <p class="text-gray-300 mt-2 text-base">Alle Spiele, Feste und Veranstaltungen auf einen Blick.</p>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-12 flex-grow space-y-16">
+        
+        <!-- Kommende Termine -->
+        <section>
+            <h2 class="text-2xl font-black uppercase mb-6 flex items-center gap-2">
+                <span class="w-2 h-8 bg-red-600 inline-block"></span>
+                Kommende Termine
+            </h2>
+            
+            <div class="space-y-4">
+                {upcomingTermine.length === 0 ? (
+                    <p class="text-gray-500">Derzeit stehen keine neuen Termine an.</p>
+                ) : (
+                    upcomingTermine.map(termin => {
+                        const terminDate = new Intl.DateTimeFormat('de-DE', {
+                            weekday: 'long',
+                            day: '2-digit',
+                            month: '2-digit',
+                            year: 'numeric'
+                        }).format(termin.data.date);
+                        return (
+                            <div class="bg-white border-l-4 border-red-600 shadow-sm p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                                <div>
+                                    <h3 class="text-xl font-bold text-zinc-900">{termin.data.title}</h3>
+                                    <div class="text-gray-600 text-sm mt-2 flex flex-wrap gap-4 font-semibold">
+                                        <span class="flex items-center gap-1">📅 {terminDate}</span>
+                                        {termin.data.time && <span class="flex items-center gap-1">⏰ {termin.data.time}</span>}
+                                        <span class="flex items-center gap-1">📍 {termin.data.location || 'Glückauf-Arena'}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    })
+                )}
+            </div>
+        </section>
+
+        <!-- Archiv / Vergangene Termine -->
+        <section>
+            <h2 class="text-2xl font-black uppercase mb-6 flex items-center gap-2 text-gray-400">
+                <span class="w-2 h-8 bg-gray-300 inline-block"></span>
+                Archiv (Vergangene Termine)
+            </h2>
+            
+            <div class="space-y-3">
+                {pastTermine.length === 0 ? (
+                    <p class="text-gray-500">Das Archiv ist leer.</p>
+                ) : (
+                    pastTermine.map(termin => {
+                        const terminDate = new Intl.DateTimeFormat('de-DE', {
+                            day: '2-digit',
+                            month: '2-digit',
+                            year: 'numeric'
+                        }).format(termin.data.date);
+                        return (
+                            <div class="bg-gray-50 border border-gray-200 rounded p-4 flex flex-col sm:flex-row items-center justify-between gap-4 opacity-75">
+                                <div>
+                                    <h3 class="text-lg font-bold text-gray-700">{termin.data.title}</h3>
+                                    <div class="text-gray-500 text-sm flex gap-3">
+                                        <span>📅 {terminDate}</span>
+                                        {termin.data.time && <span>⏰ {termin.data.time}</span>}
+                                        <span>📍 {termin.data.location || 'Glückauf-Arena'}</span>
+                                    </div>
+                                </div>
+                                <span class="text-xs font-bold uppercase tracking-wider text-gray-400 bg-gray-200 px-2 py-1 rounded">Abgeschlossen</span>
+                            </div>
+                        )
+                    })
+                )}
+            </div>
+        </section>
+
+    </main>
+</MainLayout>

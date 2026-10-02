@@ -3,7 +3,20 @@ bereich: grossfeld
 order: 3
 badge: U15
 year: Jahrgänge 2011/2012
-training: 'Di & Do 17:30 Uhr'
+training: Di & Do 17:30 Uhr
 trainer: Trainer-Team
-description: Der Einstieg auf das große Spielfeld und die 11-gegen-11 Aufstellung. Ein Meilenstein in der Entwicklung unserer Nachwuchskicker.
+description: >-
+  Der Einstieg auf das große Spielfeld und die 11-gegen-11 Aufstellung. Ein
+  Meilenstein in der Entwicklung unserer Nachwuchskicker.
 liveCenterId: '#live-c-junioren'
+fussballWidget: |-
+  <script 
+    type="text/javascript" 
+    src="https://www.fussball.de/widgets.js">
+  </script>
+  <div 
+    class="fussballde_widget"
+    data-id="fa1a56cc-6638-4b2f-b8c0-b6cc330a8eb4"
+    data-type="team-matches"
+    style="width: 100%"
+  ></div>

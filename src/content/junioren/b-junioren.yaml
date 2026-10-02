@@ -3,7 +3,20 @@ bereich: grossfeld
 order: 2
 badge: U17
 year: Jahrgänge 2009/2010
-training: 'Mo & Mi 17:30 Uhr'
+training: Mo & Mi 17:30 Uhr
 trainer: Trainer-Team
-description: Intensive Vorbereitung auf den leistungsorientierten Jugendfußball. Taktik, Physis und Fitness spielen eine zentrale Rolle.
+description: >-
+  Intensive Vorbereitung auf den leistungsorientierten Jugendfußball. Taktik,
+  Physis und Fitness spielen eine zentrale Rolle.
 liveCenterId: '#live-b-junioren'
+fussballWidget: |-
+  <script 
+    type="text/javascript" 
+    src="https://www.fussball.de/widgets.js">
+  </script>
+  <div 
+    class="fussballde_widget"
+    data-id="47c66888-e46b-4a7e-8af6-76cbc5a8ec54"
+    data-type="team-matches"
+    style="width: 100%"
+  ></div>

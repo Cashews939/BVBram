@@ -5,4 +5,17 @@ badge: Minikicker
 year: Ab 4 Jahren / Neulinge
 training: 'Freitag: 15:30 - 17:00 Uhr'
 trainer: Betreuer-Team
-description: Unsere Minikicker! Hier lernen die Allerkleinsten spielerisch und ohne Leistungsdruck das tolle Gefühl mit dem Ball am Fuß.
+description: >-
+  Unsere Minikicker! Hier lernen die Allerkleinsten spielerisch und ohne
+  Leistungsdruck das tolle Gefühl mit dem Ball am Fuß.
+fussballWidget: |
+  <script 
+    type="text/javascript" 
+    src="https://www.fussball.de/widgets.js">
+  </script>
+  <div 
+    class="fussballde_widget"
+    data-id="fe298b83-f0cc-4641-9b49-734c5a34f8ee"
+    data-type="team-matches"
+    style="width: 100%"
+  ></div>

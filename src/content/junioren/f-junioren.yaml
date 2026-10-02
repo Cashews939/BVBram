@@ -5,4 +5,17 @@ badge: 2 Teams (I & II)
 year: Jahrgänge 2017/2018
 training: 'Dienstag & Donnerstag: 16:00 - 17:30 Uhr'
 trainer: Trainer-Team
-description: Erste echte Liga-Atmosphäre und Turniere. Teamgeist und die Freude am gemeinsamen Torerfolg stehen im Mittelpunkt.
+description: >-
+  Erste echte Liga-Atmosphäre und Turniere. Teamgeist und die Freude am
+  gemeinsamen Torerfolg stehen im Mittelpunkt.
+fussballWidget: |-
+  <script 
+    type="text/javascript" 
+    src="https://www.fussball.de/widgets.js">
+  </script>
+  <div 
+    class="fussballde_widget"
+    data-id="4a54c621-768c-41cc-9105-10b5cfcd1ff8"
+    data-type="team-matches"
+    style="width: 100%"
+  ></div>

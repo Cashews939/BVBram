@@ -10,63 +10,155 @@ import MainLayout from '../layouts/MainLayout.astro';
     <header class="bg-zinc-900 text-white py-12 px-4 border-b-4 border-red-600">
         <div class="max-w-4xl mx-auto">
             <h1 class="text-3xl md:text-5xl font-black uppercase tracking-tight">Datenschutz</h1>
-            <p class="text-gray-300 mt-2 text-sm md:text-base">Erklärung zur Erhebung und Verarbeitung personenbezogener Daten</p>
+            <p class="text-gray-300 mt-2 text-sm md:text-base">Erklärung zur Erhebung und Verarbeitung personenbezogener Daten nach der DSGVO und dem TDDDG</p>
         </div>
     </header>
 
-    <main class="max-w-4xl mx-auto px-4 py-12 flex-grow text-gray-700 leading-relaxed space-y-8 text-sm md:text-base">
+    <main class="max-w-4xl mx-auto px-4 py-12 flex-grow text-gray-700 leading-relaxed space-y-10 text-sm md:text-base">
         
+        <!-- 1. DATENSCHUTZ AUF EINEN BLICK -->
         <section class="space-y-3">
-            <h2 class="text-xl font-bold text-black uppercase">1. Datenschutz auf einen Blick</h2>
-            <p>Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p>
-            <p>Wenn Sie diese Website benutzen, werden verschiedene personenbezogene Daten erhoben. Personenbezogene Daten sind Daten, mit denen Sie persönlich identifiziert werden können.</p>
+            <h2 class="text-xl md:text-2xl font-bold text-black uppercase tracking-wide border-b border-gray-200 pb-2">1. Datenschutz auf einen Blick</h2>
+            <h3 class="font-bold text-gray-900 mt-2">Allgemeine Hinweise</h3>
+            <p>Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften (insbesondere der EU-Datenschutz-Grundverordnung DSGVO und dem Telekommunikation-Digitale-Dienste-Datenschutz-Gesetz TDDDG) sowie dieser Datenschutzerklärung.</p>
+            <p>Wenn Sie diese Website benutzen, werden verschiedene personenbezogene Daten erhoben. Personenbezogene Daten sind Daten, mit denen Sie persönlich identifiziert werden können. Die vorliegende Datenschutzerklärung erläutert, welche Daten wir erheben und wofür wir sie nutzen. Sie erläutert auch, wie und zu welchem Zweck das geschieht.</p>
         </section>
 
+        <!-- 2. VERANTWORTLICHE STELLE -->
         <section class="space-y-3">
-            <h2 class="text-xl font-bold text-black uppercase">2. Verantwortliche Stelle</h2>
+            <h2 class="text-xl md:text-2xl font-bold text-black uppercase tracking-wide border-b border-gray-200 pb-2">2. Verantwortliche Stelle</h2>
             <p>Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:</p>
-            <div class="bg-white p-4 rounded-lg border border-gray-200 max-w-sm">
-                <p class="font-bold text-gray-900">BV Brambauer 13/45 e.V.</p>
-                <p>Diebecker Weg 29</p>
-                <p>44536 Lünen</p>
-                <p>E-Mail: info[at]bv-brambauer.de</p>
+            <div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm max-w-lg space-y-2">
+                <p class="font-bold text-gray-900 text-base">BV Brambauer 13/45 e.V.</p>
+                <p>Diebecker Weg 29<br />44536 Lünen</p>
+                <p class="pt-1"><strong class="text-gray-900">Vertretungsberechtigter geschäftsführender Vorstand:</strong><br />
+                Oliver Maximilian Basdorf (1. Geschäftsführer), Werner Smuda (2. Vorsitzender), Baris Izmirli (3. Vorsitzender), Dariusz Jöres (4. Vorsitzender), Klaus Prediger (1. Kassierer)</p>
+                <p class="pt-1"><strong class="text-gray-900">E-Mail:</strong> <a href="mailto:info@bv-brambauer.de" class="text-red-600 hover:underline">info[at]bv-brambauer.de</a></p>
             </div>
+            <p class="text-xs text-gray-500 mt-2">Hinweis zum Datenschutzbeauftragten: Für unseren Verein besteht gemäß § 38 BDSG keine gesetzliche Pflicht zur Benennung eines Datenschutzbeauftragten, da in der Regel weniger als 20 Personen ständig mit der automatisierten Verarbeitung personenbezogener Daten beschäftigt sind. Bei allen Fragen zum Datenschutz können Sie sich direkt an den geschäftsführenden Vorstand wenden.</p>
         </section>
 
+        <!-- 3. HOSTING & CDN -->
         <section class="space-y-3">
-            <h2 class="text-xl font-bold text-black uppercase">3. Datenerfassung auf unserer Website</h2>
-            <h3 class="font-bold text-gray-900 mt-2">Server-Log-Dateien</h3>
-            <p>Der Provider der Seiten erhebt und speichert automatisch Informationen in sogenannten Server-Log-Files, die Ihr Browser automatisch an uns übermittelt. Dies sind:</p>
+            <h2 class="text-xl md:text-2xl font-bold text-black uppercase tracking-wide border-b border-gray-200 pb-2">3. Hosting und Content Delivery Networks (CDN)</h2>
+            <p>Wir hosten unsere Website bei dem externen Anbieter <strong>Vercel</strong>. Anbieter ist die <strong>Vercel Inc.</strong>, 440 N Barranca Ave #4133, Covina, CA 91723, USA.</p>
+            <p>Wenn Sie unsere Website besuchen, erfasst Vercel verschiedene Logfiles inklusive Ihrer IP-Adresse, um die technische Auslieferung der Seite und deren Sicherheit zu gewährleisten. Details entnehmen Sie der Datenschutzerklärung von Vercel: <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" class="text-red-600 hover:underline">https://vercel.com/legal/privacy-policy</a>.</p>
+            <p><strong>Rechtsgrundlage:</strong> Die Verwendung von Vercel erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Wir haben ein berechtigtes Interesse an einer möglichst zuverlässigen, schnellen und sicheren Bereitstellung unserer Vereins-Website.</p>
+            <p><strong>Auftragsverarbeitung & Drittstaatenübermittlung:</strong> Wir haben mit dem Anbieter einen Vertrag über Auftragsverarbeitung (Data Processing Addendum / DPA) gemäß Art. 28 DSGVO abgeschlossen. Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission bzw. die Zertifizierung unter dem EU-US Data Privacy Framework (DPF) gestützt.</p>
+        </section>
+
+        <!-- 4. ALLGEMEINE HINWEISE & PFLICHTINFORMATIONEN -->
+        <section class="space-y-3">
+            <h2 class="text-xl md:text-2xl font-bold text-black uppercase tracking-wide border-b border-gray-200 pb-2">4. Allgemeine Hinweise und technische Schutzmaßnahmen</h2>
+            
+            <h3 class="font-bold text-gray-900 mt-3">SSL- bzw. TLS-Verschlüsselung</h3>
+            <p>Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte, wie zum Beispiel Anfragen, die Sie an uns über das Kontaktformular senden, eine SSL- bzw. TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von „http://“ auf „https://“ wechselt und an dem Schloss-Symbol in Ihrer Browserzeile. Wenn die SSL- bzw. TLS-Verschlüsselung aktiviert ist, können die Daten, die Sie an uns übermitteln, nicht von Dritten mitgelesen werden.</p>
+
+            <h3 class="font-bold text-gray-900 mt-3">Cookies und Speichertechnologien</h3>
+            <p>Unsere Website verzichtet auf den Einsatz von zustimmungspflichtigen Tracking-, Analyse- oder Marketing-Cookies. Beim rein informatorischen Besuch unserer Website werden keine persistenten Cookies auf Ihrem Endgerät gespeichert (§ 25 Abs. 2 TDDDG).</p>
+
+            <h3 class="font-bold text-gray-900 mt-3">Server-Log-Dateien</h3>
+            <p>Der Provider der Seiten erhebt und speichert automatisch Informationen in sogenannten Server-Log-Dateien, die Ihr Browser automatisch an uns bzw. an unseren Hostinganbieter übermittelt. Dies sind:</p>
             <ul class="list-disc pl-5 space-y-1">
                 <li>Browsertyp und Browserversion</li>
                 <li>Verwendetes Betriebssystem</li>
                 <li>Referrer URL (die zuvor besuchte Seite)</li>
                 <li>Hostname des zugreifenden Rechners</li>
-                <li>Uhrzeit der Serveranfrage</li>
+                <li>Datum und Uhrzeit der Serveranfrage</li>
                 <li>IP-Adresse</li>
             </ul>
-            <p>Eine Zusammenführung dieser Daten mit anderen Daten sources wird nicht vorgenommen. Grundlage für die Datenverarbeitung ist Art. 6 Abs. 1 lit. f DSGVO (Berechtigtes Interesse an einer fehlerfreien Darstellung und Optimierung der Website).</p>
+            <p>Eine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht vorgenommen. Die Erfassung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Der Websitebetreiber hat ein berechtigtes Interesse an der technisch fehlerfreien Darstellung, der Systemsicherheit und der Optimierung seiner Website. Die Log-Dateien werden nach Erreichung des Zweckes (in der Regel innerhalb von maximal 7 bis 14 Tagen) automatisch gelöscht oder anonymisiert, sofern keine sicherheitsrelevanten Vorfälle eine längere Speicherung erfordern.</p>
         </section>
 
-        <!-- ABSCHNITT FÜR SOCIAL MEDIA VERLINKUNG -->
+        <!-- 5. KONTAKTAUFNAHME -->
         <section class="space-y-3">
-            <h2 class="text-xl font-bold text-black uppercase">4. Social Media Verlinkungen</h2>
-            <p>Auf unserer Website befinden sich Links zu unseren offiziellen Profilen in den sozialen Netzwerken (Instagram und Facebook). Hierbei handelt es sich um einfache Verlinkungen. Beim bloßen Besuch unserer Website werden keine personenbezogenen Daten an diese Anbieter übertragen. Erst wenn Sie einen dieser Links anklicken, werden Sie auf die jeweiligen Seiten der Betreiber weitergeleitet.</p>
+            <h2 class="text-xl md:text-2xl font-bold text-black uppercase tracking-wide border-b border-gray-200 pb-2">5. Datenerfassung bei Kontaktaufnahme</h2>
+            <h3 class="font-bold text-gray-900 mt-2">Kontaktformular und E-Mail-Kontakt</h3>
+            <p>Wenn Sie uns per Kontaktformular oder per E-Mail Anfragen zukommen lassen (z. B. bezüglich Probetraining, Mitgliedschaft, Sponsoring oder allgemeinen Vereinsfragen), werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten (Name, E-Mail-Adresse, Anliegen und Nachrichtentext) zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert.</p>
+            <p><strong>Rechtsgrundlage:</strong> Die Verarbeitung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, sofern Ihre Anfrage mit der Erfüllung eines Vertrags zusammenhängt oder zur Durchführung vorvertraglicher Maßnahmen (z. B. Probetraining, Mitgliedschaftsaufnahme) erforderlich ist. In allen übrigen Fällen beruht die Verarbeitung auf unserem berechtigten Interesse an der effektiven Bearbeitung der an uns gerichteten Anfragen (Art. 6 Abs. 1 lit. f DSGVO).</p>
+            <p><strong>Speicherdauer:</strong> Die von Ihnen an uns übersandten Daten verbleiben bei uns, bis Sie uns zur Löschung auffordern, Ihre Einwilligung zur Speicherung widerrufen oder der Zweck für die Datenspeicherung entfällt (z. B. nach abgeschlossener Bearbeitung Ihres Anliegens). Zwingende gesetzliche Bestimmungen – insbesondere steuer- und handelsrechtliche Aufbewahrungsfristen – bleiben unberührt.</p>
         </section>
 
-        <!-- ABSCHNITT FÜR FUSSBALL.DE WIDGET -->
+        <!-- 6. VEREINSLEBEN & ÖFFENTLICHKEITSARBEIT -->
         <section class="space-y-3">
-            <h2 class="text-xl font-bold text-black uppercase">5. Externe Widgets (FUSSBALL.DE)</h2>
-            <h3 class="font-bold text-gray-900 mt-2">FUSSBALL.DE Vereins- und Spielplan-Widget</h3>
-            <p>Auf unserer Website (Seite „Aktuelles“) binden wir offizielle Widgets von FUSSBALL.DE ein, um aktuelle Spielergebnisse und Tabellen bereitzustellen. Anbieter ist die DFB GmbH & Co. KG, Otto-Fleck-Schneise 6, 60528 Frankfurt am Main.</p>
-            <p>Beim Aufruf der entsprechenden Seite wird durch das Widget eine Verbindung zu den Servern von FUSSBALL.DE aufgebaut, um die aktuellen Daten nachzuladen. Hierbei wird Ihre IP-Adresse technisch bedingt an den Server des Anbieters übertragen. Die Einbindung erfolgt auf Grundlage unseres berechtigten Interesses an einer aktuellen und informativen Berichterstattung über den Spielbetrieb unseres Vereins gemäß Art. 6 Abs. 1 lit. f DSGVO.</p>
+            <h2 class="text-xl md:text-2xl font-bold text-black uppercase tracking-wide border-b border-gray-200 pb-2">6. Vereinsleben, Mitgliedschaft und Berichterstattung</h2>
+            <h3 class="font-bold text-gray-900 mt-2">Mitgliedsantrag</h3>
+            <p>Über unsere Website stellen wir unseren offiziellen Aufnahmeantrag als PDF-Dokument zum Download bereit. Die Verarbeitung der im Aufnahmeantrag angegebenen personenbezogenen Daten (z. B. Name, Anschrift, Geburtsdatum, Bankverbindung) erfolgt ausschließlich zur Begründung, Durchführung und Verwaltung der Vereinsmitgliedschaft sowie zur Spielberechtigung bei den zuständigen Fachverbänden (z. B. FLVW, WDFV, DFB) auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO.</p>
+
+            <h3 class="font-bold text-gray-900 mt-3">Fotos, Spielberichte und Jugendschutz</h3>
+            <p>Im Rahmen der Öffentlichkeitsarbeit und Berichterstattung über das Vereinsgeschehen (Spielberichte, Vereinsfeiern, Turniere) veröffentlichen wir auf unserer Website Berichte und Bildaufnahmen. Bei Veröffentlichungen von Fotos Minderjähriger (Kinder und Jugendliche im Juniorenbereich) achten wir streng auf den Jugendschutz und stellen sicher, dass das entsprechende Einverständnis der gesetzlichen Vertreter vorliegt (Art. 6 Abs. 1 lit. a DSGVO bzw. Kunsturhebergesetz KUG). Bei allgemeinen Spielszenen und Mannschaftsaufnahmen stützen wir die Veröffentlichung auf unser berechtigtes Vereinsinteresse an einer zeitgemäßen Außendarstellung (Art. 6 Abs. 1 lit. f DSGVO).</p>
+        </section>
+
+        <!-- 7. SOCIAL MEDIA & EXTERNE DIENSTE -->
+        <section class="space-y-3">
+            <h2 class="text-xl md:text-2xl font-bold text-black uppercase tracking-wide border-b border-gray-200 pb-2">7. Social Media und externe Einbindungen</h2>
+            
+            <h3 class="font-bold text-gray-900 mt-2">Social-Media-Verlinkungen (Facebook, Instagram)</h3>
+            <p>Auf unserer Website befinden sich Links zu unseren offiziellen Profilen in den sozialen Netzwerken (Instagram und Facebook). Hierbei handelt es sich um reine Hyperlinks, nicht um sogenannte „Social Plugins“. Beim bloßen Besuch unserer Website werden daher keine personenbezogenen Daten an diese Anbieter übertragen. Erst wenn Sie aktiv auf einen dieser Links klicken, verlassen Sie unsere Website und werden auf die jeweiligen Seiten der Betreiber weitergeleitet.</p>
+
+            <h3 class="font-bold text-gray-900 mt-3">FUSSBALL.DE Vereins- und Spielplan-Widget</h3>
+            <p>Auf unserer Website (Bereich „Aktuelles“) binden wir offizielle Widgets von FUSSBALL.DE ein, um aktuelle Tabellen, Spielergebnisse und den Spielplan unseres Vereins bereitzustellen. Anbieter ist die <strong>DFB GmbH & Co. KG</strong>, Otto-Fleck-Schneise 6, 60528 Frankfurt am Main.</p>
+            <p>Beim Aufruf der entsprechenden Seite wird durch das Widget eine direkte Verbindung zu den Servern von FUSSBALL.DE aufgebaut, um die Daten abzurufen. Hierbei wird technisch bedingt Ihre IP-Adresse an den Server des Anbieters übermittelt. Die Einbindung erfolgt auf Grundlage unseres berechtigten Interesses an einer aktuellen, automatisierten und informativen Berichterstattung über den laufenden Spielbetrieb gemäß Art. 6 Abs. 1 lit. f DSGVO.</p>
             <p>Weitere Informationen finden Sie in der Datenschutzerklärung von FUSSBALL.DE unter: <a href="https://www.fussball.de/datenschutz" target="_blank" rel="noopener noreferrer" class="text-red-600 hover:underline">https://www.fussball.de/datenschutz</a>.</p>
         </section>
 
-        <section class="space-y-3">
-            <h2 class="text-xl font-bold text-black uppercase">6. Ihre Rechte</h2>
-            <p>Sie haben jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten. Sie haben außerdem ein Recht, die Berichtigung oder Löschung dieser Daten zu verlangen. Hierzu sowie zu weiteren Fragen zum Thema Datenschutz können Sie sich jederzeit unter der im Impressum angegebenen Adresse an uns wenden.</p>
-            <p>Des Weiteren steht Ihnen ein Beschwerderecht bei der zuständigen Aufsichtsbehörde (Landesbeauftragte für Datenschutz und Informationsfreiheit Nordrhein-Westfalen) zu.</p>
+        <!-- 8. BETROFFENENRECHTE -->
+        <section class="space-y-4">
+            <h2 class="text-xl md:text-2xl font-bold text-black uppercase tracking-wide border-b border-gray-200 pb-2">8. Ihre Rechte als betroffene Person</h2>
+            <p>Sie haben im Rahmen der geltenden gesetzlichen Bestimmungen jederzeit folgende Rechte bezüglich Ihrer personenbezogenen Daten:</p>
+
+            <div class="space-y-3">
+                <div class="bg-white p-4 rounded-lg border border-gray-200">
+                    <h3 class="font-bold text-gray-900">Auskunftsrecht (Art. 15 DSGVO)</h3>
+                    <p class="text-sm mt-1">Sie haben das Recht, unentgeltlich Auskunft über Ihre von uns verarbeiteten personenbezogenen Daten, deren Herkunft, Empfänger und den Zweck der Datenverarbeitung zu verlangen.</p>
+                </div>
+
+                <div class="bg-white p-4 rounded-lg border border-gray-200">
+                    <h3 class="font-bold text-gray-900">Recht auf Berichtigung (Art. 16 DSGVO)</h3>
+                    <p class="text-sm mt-1">Sie haben das Recht, unverzüglich die Berichtigung Sie betreffender unrichtiger oder die Vervollständigung unvollständiger personenbezogener Daten zu verlangen.</p>
+                </div>
+
+                <div class="bg-white p-4 rounded-lg border border-gray-200">
+                    <h3 class="font-bold text-gray-900">Recht auf Löschung (Art. 17 DSGVO)</h3>
+                    <p class="text-sm mt-1">Sie haben das Recht, die unverzügliche Löschung Ihrer bei uns gespeicherten personenbezogenen Daten zu verlangen, sofern keine gesetzlichen Aufbewahrungspflichten oder berechtigten Gründe entgegenstehen.</p>
+                </div>
+
+                <div class="bg-white p-4 rounded-lg border border-gray-200">
+                    <h3 class="font-bold text-gray-900">Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO)</h3>
+                    <p class="text-sm mt-1">Sie haben das Recht, die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen, wenn die Richtigkeit bestritten wird, die Verarbeitung unrechtmäßig ist oder Sie Widerspruch eingelegt haben.</p>
+                </div>
+
+                <div class="bg-white p-4 rounded-lg border border-gray-200">
+                    <h3 class="font-bold text-gray-900">Recht auf Datenübertragbarkeit (Art. 20 DSGVO)</h3>
+                    <p class="text-sm mt-1">Sie haben das Recht, Daten, die wir auf Grundlage Ihrer Einwilligung oder in Erfüllung eines Vertrags automatisiert verarbeiten, an sich oder an einen Dritten in einem gängigen, maschinenlesbaren Format aushändigen zu lassen.</p>
+                </div>
+
+                <div class="bg-white p-4 rounded-lg border border-gray-200">
+                    <h3 class="font-bold text-gray-900">Widerrufsrecht bei Einwilligungen (Art. 7 Abs. 3 DSGVO)</h3>
+                    <p class="text-sm mt-1">Haben Sie uns eine Einwilligung zur Datenverarbeitung (z. B. bei Fotoaufnahmen) erteilt, können Sie diese Einwilligung jederzeit mit Wirkung für die Zukunft formlos per E-Mail an uns widerrufen.</p>
+                </div>
+
+                <!-- BESONDERER HINWEIS ZUM WIDERSPRUCHSRECHT GEM. ART. 21 DSGVO -->
+                <div class="bg-red-50 p-5 rounded-lg border-2 border-red-300">
+                    <h3 class="font-bold text-red-950 uppercase tracking-wide">Widerspruchsrecht gegen die Datenverarbeitung (Art. 21 DSGVO)</h3>
+                    <p class="text-red-900 text-sm mt-2 leading-relaxed">
+                        <strong>WENN DIE DATENVERARBEITUNG AUF GRUNDLAGE VON ART. 6 ABS. 1 LIT. F DSGVO ERFOLGT (BERECHTIGTES INTERESSE), HABEN SIE JEDERZEIT DAS RECHT, AUS GRÜNDEN, DIE SICH AUS IHRER BESONDEREN SITUATION ERGEBEN, GEGEN DIE VERARBEITUNG IHRER PERSONENBEZOGENEN DATEN WIDERSPRUCH EINZULEGEN. DIES GILT AUCH FÜR EIN AUF DIESE BESTIMMUNGEN GESTÜTZTES PROFILING.</strong>
+                    </p>
+                    <p class="text-red-900 text-sm mt-2 leading-relaxed">
+                        Legen Sie Widerspruch ein, werden wir Ihre betroffenen personenbezogenen Daten nicht mehr verarbeiten, es sei denn, wir können zwingende schutzwürdige Gründe für die Verarbeitung nachweisen, die Ihre Interessen, Rechte und Freiheiten überwiegen, oder die Verarbeitung dient der Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen.
+                    </p>
+                </div>
+            </div>
+
+            <div class="pt-3">
+                <h3 class="font-bold text-gray-900">Beschwerderecht bei der zuständigen Aufsichtsbehörde (Art. 77 DSGVO)</h3>
+                <p class="mt-1">Im Falle datenschutzrechtlicher Verstöße steht den Betroffenen ein Beschwerderecht bei der zuständigen Aufsichtsbehörde zu. Zuständige Aufsichtsbehörde in datenschutzrechtlichen Fragen für unseren Verein mit Sitz in Nordrhein-Westfalen ist:</p>
+                <div class="bg-white p-4 rounded-lg border border-gray-200 max-w-md mt-2 text-sm">
+                    <p class="font-bold text-gray-900">Landesbeauftragte für Datenschutz und Informationsfreiheit Nordrhein-Westfalen (LDI NRW)</p>
+                    <p>Kavalleriestraße 2–4<br />40213 Düsseldorf</p>
+                    <p class="mt-1">Telefon: 0211 / 38424-0<br />E-Mail: poststelle@ldi.nrw.de<br />Website: <a href="https://www.ldi.nrw.de" target="_blank" rel="noopener noreferrer" class="text-red-600 hover:underline">www.ldi.nrw.de</a></p>
+                </div>
+            </div>
         </section>
 
     </main>

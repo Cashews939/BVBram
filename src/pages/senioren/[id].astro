@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import MainLayout from '../../layouts/MainLayout.astro';
+import FussballWidget from '../../components/FussballWidget.astro';
 
 export async function getStaticPaths() {
   const teams = await getCollection('senioren');
@@ -45,15 +46,11 @@ const resolvedButtonText = team.data.buttonText?.trim() || 'Kontakt aufnehmen';
                     Tabelle & Spielplan
                 </h2>
                 
-                <div class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden p-2 md:p-6 min-h-[400px]">
-                    {team.data.fussballWidget ? (
-                        <div set:html={team.data.fussballWidget} />
-                    ) : (
-                        <div class="flex flex-col items-center justify-center h-full text-gray-500 py-12 text-center">
-                            <p>Noch kein Widget hinterlegt.</p>
-                            <p class="text-sm mt-2">Ein Redakteur kann den Fussball.de Code im CMS eintragen.</p>
-                        </div>
-                    )}
+                <div class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden p-2 md:p-6 min-h-[280px] flex items-center justify-center">
+                    <FussballWidget
+                        rawHtml={team.data.fussballWidget}
+                        title={`${team.data.name} – Spielplan & Tabelle`}
+                    />
                 </div>
             </div>
 

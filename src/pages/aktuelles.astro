@@ -2,6 +2,7 @@
 import MainLayout from '../layouts/MainLayout.astro';
 import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
+import FussballWidget from '../components/FussballWidget.astro';
 
 import fallbackVerein from '../assets/images/stadion.jpeg';
 import fallbackJunioren from '../assets/images/kinder-feld.jpeg';
@@ -43,13 +44,11 @@ const sortedNews = allNews
                 </a>
             </div>
 
-            <div 
-              class="fussballde_widget"
-              data-id="a7290fbe-50af-4548-99bb-ba42dfda81ab"
-              data-type="club-matches"
-              style="width: 100%"
-            ></div>
-            <script is:inline type="text/javascript" src="https://www.fussball.de/widgets.js"></script>
+            <FussballWidget
+              widgetId="a7290fbe-50af-4548-99bb-ba42dfda81ab"
+              widgetType="club-matches"
+              title="Vereinsspielplan von FUSSBALL.DE"
+            />
 
             <div class="mt-4 pt-3 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center text-[11px] text-gray-500 gap-2">
                 <span>Offizielle Spieldaten des BV Brambauer 13/45 e.V.</span>

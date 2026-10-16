@@ -1,6 +1,7 @@
 ---
 import MainLayout from '../../layouts/MainLayout.astro';
 import { getCollection } from 'astro:content';
+import TeamCard from '../../components/TeamCard.astro';
 
 const allJunioren = await getCollection('junioren');
 const sortedJunioren = allJunioren.sort((a, b) => a.data.order - b.data.order);
@@ -31,44 +32,17 @@ const kleinfeld = sortedJunioren.filter(t => t.data.bereich === 'kleinfeld');
             </h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {grossfeld.map(team => (
-                    <div class="bg-white border border-gray-200 rounded-xl shadow-sm p-6 flex flex-col justify-between">
-                        <div>
-                            <div class="flex justify-between items-start mb-4">
-                                <div>
-                                    <h3 class="text-2xl font-black uppercase">{team.data.name}</h3>
-                                    {team.data.year && <p class="text-gray-500 text-sm font-bold uppercase mt-1">{team.data.year}</p>}
-                                </div>
-                                {team.data.badge && (
-                                    <span class="bg-red-100 text-red-800 text-xs font-bold px-2.5 py-0.5 rounded uppercase text-right">
-                                        {team.data.badge}
-                                    </span>
-                                )}
-                            </div>
-                            
-                            <p class="text-gray-600 mb-6">{team.data.description}</p>
-                            
-                            <div class="space-y-3 mb-6 text-sm">
-                                {team.data.training && (
-                                    <div class="flex items-start gap-3">
-                                        <span class="text-red-600 font-bold">⚽ Training:</span>
-                                        <span class="text-gray-700">{team.data.training}</span>
-                                    </div>
-                                )}
-                                {team.data.trainer && (
-                                    <div class="flex items-start gap-3">
-                                        <span class="text-red-600 font-bold">👤 Trainer:</span>
-                                        <span class="text-gray-700">{team.data.trainer}</span>
-                                    </div>
-                                )}
-                            </div>
-                        </div>
-                        <a 
-                            href={`/junioren/${team.id}`}
-                            class="mt-4 block w-full text-center bg-zinc-900 hover:bg-red-600 text-white font-bold py-3 px-4 rounded transition uppercase tracking-wider text-sm"
-                        >
-                            Zur Mannschaft & Tabelle
-                        </a>
-                    </div>
+                    <TeamCard
+                        name={team.data.name}
+                        href={`/junioren/${team.id}`}
+                        badge={team.data.badge}
+                        year={team.data.year}
+                        training={team.data.training}
+                        trainer={team.data.trainer}
+                        description={team.data.description}
+                        teamPhoto={team.data.teamPhoto}
+                        variant="red"
+                    />
                 ))}
                 {grossfeld.length === 0 && <p class="text-gray-500">Keine Mannschaften hinterlegt.</p>}
             </div>
@@ -82,44 +56,17 @@ const kleinfeld = sortedJunioren.filter(t => t.data.bereich === 'kleinfeld');
             </h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {kleinfeld.map(team => (
-                    <div class="bg-white border border-gray-200 rounded-xl shadow-sm p-6 flex flex-col justify-between">
-                        <div>
-                            <div class="flex justify-between items-start mb-4">
-                                <div>
-                                    <h3 class="text-2xl font-black uppercase">{team.data.name}</h3>
-                                    {team.data.year && <p class="text-gray-500 text-sm font-bold uppercase mt-1">{team.data.year}</p>}
-                                </div>
-                                {team.data.badge && (
-                                    <span class="bg-zinc-100 text-zinc-800 text-xs font-bold px-2.5 py-0.5 rounded uppercase text-right">
-                                        {team.data.badge}
-                                    </span>
-                                )}
-                            </div>
-                            
-                            <p class="text-gray-600 mb-6">{team.data.description}</p>
-                            
-                            <div class="space-y-3 mb-6 text-sm">
-                                {team.data.training && (
-                                    <div class="flex items-start gap-3">
-                                        <span class="text-zinc-900 font-bold">⚽ Training:</span>
-                                        <span class="text-gray-700">{team.data.training}</span>
-                                    </div>
-                                )}
-                                {team.data.trainer && (
-                                    <div class="flex items-start gap-3">
-                                        <span class="text-zinc-900 font-bold">👤 Trainer:</span>
-                                        <span class="text-gray-700">{team.data.trainer}</span>
-                                    </div>
-                                )}
-                            </div>
-                        </div>
-                        <a 
-                            href={`/junioren/${team.id}`}
-                            class="mt-4 block w-full text-center bg-zinc-900 hover:bg-red-600 text-white font-bold py-3 px-4 rounded transition uppercase tracking-wider text-sm"
-                        >
-                            Zur Mannschaft & Tabelle
-                        </a>
-                    </div>
+                    <TeamCard
+                        name={team.data.name}
+                        href={`/junioren/${team.id}`}
+                        badge={team.data.badge}
+                        year={team.data.year}
+                        training={team.data.training}
+                        trainer={team.data.trainer}
+                        description={team.data.description}
+                        teamPhoto={team.data.teamPhoto}
+                        variant="dark"
+                    />
                 ))}
                 {kleinfeld.length === 0 && <p class="text-gray-500">Keine Mannschaften hinterlegt.</p>}
             </div>
@@ -127,6 +74,3 @@ const kleinfeld = sortedJunioren.filter(t => t.data.bereich === 'kleinfeld');
 
     </main>
 </MainLayout>
-
-<!-- Wir können Astro-Komponenten innerhalb der Datei verwenden, aber der Einfachheit halber schreiben wir das Markup direkt (Astro erlaubt keine in-file Komponenten Definition wie React, also iterieren wir oben) -->
-<!-- Korrektur: Ich muss den Code für TeamCard inline duplizieren, da Astro keine lokalen Komponentenfunktionen unterstützt. Ich schreibe den Code um. -->

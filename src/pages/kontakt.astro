@@ -140,11 +140,11 @@ import MainLayout from '../layouts/MainLayout.astro';
 			form.addEventListener('submit', (e) => {
 				e.preventDefault();
 
-				const name = document.getElementById('name')?.value || '';
-				const email = document.getElementById('email')?.value || '';
+				const name = document.getElementById('name')?.value?.trim() || '';
+				const email = document.getElementById('email')?.value?.trim() || '';
 				const categorySelect = document.getElementById('category');
 				const categoryText = categorySelect?.options[categorySelect.selectedIndex]?.text || 'Allgemeine Anfrage';
-				const message = document.getElementById('message')?.value || '';
+				const message = document.getElementById('message')?.value?.trim() || '';
 
 				if (!name || !email || !message) {
 					feedback.className = 'mb-6 p-4 rounded-lg text-sm bg-red-50 border border-red-200 text-red-800';
@@ -157,15 +157,46 @@ import MainLayout from '../layouts/MainLayout.astro';
 				const body = `Name: ${name}\nE-Mail: ${email}\nBereich: ${categoryText}\n\nNachricht:\n${message}`;
 				const mailtoUrl = `mailto:bvbrambauer-gf@gmx.de?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
-				feedback.className = 'mb-6 p-4 rounded-lg text-sm bg-green-50 border border-green-200 text-green-800';
-				feedback.innerHTML = `
-					<strong>Vielen Dank, ${name}!</strong><br>
-					Dein E-Mail-Programm wird jetzt vorbereitet, um die Nachricht direkt an die Geschäftsstelle zu senden.<br>
-					Falls sich kein E-Mail-Programm automatisch öffnet, <a href="${mailtoUrl}" class="underline font-bold text-green-900">klicke bitte hier, um die E-Mail direkt zu versenden</a>.
-				`;
+				feedback.className = 'mb-6 p-4 rounded-lg text-sm bg-green-50 border border-green-200 text-green-800 space-y-2';
+				feedback.innerHTML = '';
+
+				const heading = document.createElement('p');
+				const strong = document.createElement('strong');
+				strong.textContent = `Vielen Dank, ${name}!`;
+				heading.appendChild(strong);
+
+				const info = document.createElement('p');
+				info.textContent = 'Dein E-Mail-Programm wird jetzt geöffnet, um die Nachricht an bvbrambauer-gf@gmx.de zu senden.';
+
+				const actions = document.createElement('div');
+				actions.className = 'flex flex-wrap items-center gap-3 pt-1';
+
+				const directLink = document.createElement('a');
+				directLink.href = mailtoUrl;
+				directLink.className = 'underline font-bold text-green-900 hover:text-green-700';
+				directLink.textContent = 'E-Mail-Programm manuell öffnen';
+
+				const copyBtn = document.createElement('button');
+				copyBtn.type = 'button';
+				copyBtn.className = 'bg-white border border-green-300 hover:bg-green-100 text-green-900 text-xs font-bold px-3 py-1.5 rounded transition cursor-pointer';
+				copyBtn.textContent = '📋 Text & E-Mail kopieren';
+				copyBtn.addEventListener('click', async () => {
+					try {
+						await navigator.clipboard.writeText(`An: bvbrambauer-gf@gmx.de\nBetreff: ${subject}\n\n${body}`);
+						copyBtn.textContent = '✓ In Zwischenablage kopiert!';
+					} catch {
+						copyBtn.textContent = 'E-Mail: bvbrambauer-gf@gmx.de';
+					}
+				});
+
+				actions.appendChild(directLink);
+				actions.appendChild(copyBtn);
+
+				feedback.appendChild(heading);
+				feedback.appendChild(info);
+				feedback.appendChild(actions);
 				feedback.classList.remove('hidden');
 
-				// Trigger mailto client
 				window.location.href = mailtoUrl;
 			});
 		});

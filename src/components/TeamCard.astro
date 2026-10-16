@@ -1,0 +1,91 @@
+---
+interface Props {
+  name: string;
+  href: string;
+  badge?: string;
+  year?: string;
+  training?: string;
+  trainer?: string;
+  description?: string;
+  teamPhoto?: string;
+  variant?: 'red' | 'dark';
+}
+
+const {
+  name,
+  href,
+  badge,
+  year,
+  training,
+  trainer,
+  description,
+  teamPhoto,
+  variant = 'red',
+} = Astro.props;
+
+const badgeClasses =
+  variant === 'dark'
+    ? 'bg-zinc-100 text-zinc-800'
+    : 'bg-red-100 text-red-800';
+
+const iconLabelClasses =
+  variant === 'dark'
+    ? 'text-zinc-900 font-bold shrink-0'
+    : 'text-red-600 font-bold shrink-0';
+---
+
+<article class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden flex flex-col justify-between group">
+  <div>
+    {teamPhoto && (
+      <a href={href} class="block h-52 overflow-hidden bg-gray-100 border-b border-gray-100">
+        <img
+          src={teamPhoto}
+          alt={`Mannschaftsfoto ${name}`}
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          loading="lazy"
+        />
+      </a>
+    )}
+    <div class="p-6 pb-0">
+      <div class="flex justify-between items-start gap-3 mb-4">
+        <div>
+          <h3 class="text-2xl font-black uppercase text-zinc-900 group-hover:text-red-600 transition">
+            <a href={href}>{name}</a>
+          </h3>
+          {year && <p class="text-gray-500 text-sm font-bold uppercase mt-1">{year}</p>}
+        </div>
+        {badge && (
+          <span class={`${badgeClasses} text-xs font-bold px-2.5 py-0.5 rounded uppercase text-right shrink-0`}>
+            {badge}
+          </span>
+        )}
+      </div>
+
+      {description && <p class="text-gray-600 mb-6">{description}</p>}
+
+      <div class="space-y-3 mb-6 text-sm">
+        {training && (
+          <div class="flex items-start gap-3">
+            <span class={iconLabelClasses}><span aria-hidden="true">⚽</span> Training:</span>
+            <span class="text-gray-700">{training}</span>
+          </div>
+        )}
+        {trainer && (
+          <div class="flex items-start gap-3">
+            <span class={iconLabelClasses}><span aria-hidden="true">👤</span> Trainer:</span>
+            <span class="text-gray-700">{trainer}</span>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+
+  <div class="p-6 pt-0">
+    <a
+      href={href}
+      class="mt-2 block w-full text-center bg-zinc-900 hover:bg-red-600 text-white font-bold py-3 px-4 rounded-lg transition uppercase tracking-wider text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600"
+    >
+      Zur Mannschaft &amp; Tabelle
+    </a>
+  </div>
+</article>

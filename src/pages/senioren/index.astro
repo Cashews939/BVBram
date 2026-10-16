@@ -1,6 +1,7 @@
 ---
 import MainLayout from '../../layouts/MainLayout.astro';
 import { getCollection } from 'astro:content';
+import TeamCard from '../../components/TeamCard.astro';
 
 const allSenioren = await getCollection('senioren');
 const sortedSenioren = allSenioren.sort((a, b) => a.data.order - b.data.order);
@@ -20,42 +21,16 @@ const sortedSenioren = allSenioren.sort((a, b) => a.data.order - b.data.order);
     <main class="max-w-6xl mx-auto px-4 py-12 flex-grow">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             {sortedSenioren.map(team => (
-                <div class="bg-white border border-gray-200 rounded-xl shadow-sm p-6 flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-start mb-4">
-                            <h2 class="text-2xl font-black uppercase">{team.data.name}</h2>
-                            {team.data.badge && (
-                                <span class="bg-red-100 text-red-800 text-xs font-bold px-2.5 py-0.5 rounded uppercase">
-                                    {team.data.badge}
-                                </span>
-                            )}
-                        </div>
-                        
-                        <p class="text-gray-600 mb-6">{team.data.description}</p>
-                        
-                        <div class="space-y-3 mb-6 text-sm">
-                            {team.data.training && (
-                                <div class="flex items-start gap-3">
-                                    <span class="text-red-600 font-bold">⚽ Training:</span>
-                                    <span class="text-gray-700">{team.data.training}</span>
-                                </div>
-                            )}
-                            {team.data.trainer && (
-                                <div class="flex items-start gap-3">
-                                    <span class="text-red-600 font-bold">👤 Trainer:</span>
-                                    <span class="text-gray-700">{team.data.trainer}</span>
-                                </div>
-                            )}
-                        </div>
-                    </div>
-                    
-                    <a 
-                        href={`/senioren/${team.id}`}
-                        class="mt-4 block w-full text-center bg-zinc-900 hover:bg-red-600 text-white font-bold py-3 px-4 rounded transition uppercase tracking-wider text-sm"
-                    >
-                        Zur Mannschaft & Tabelle
-                    </a>
-                </div>
+                <TeamCard
+                    name={team.data.name}
+                    href={`/senioren/${team.id}`}
+                    badge={team.data.badge}
+                    training={team.data.training}
+                    trainer={team.data.trainer}
+                    description={team.data.description}
+                    teamPhoto={team.data.teamPhoto}
+                    variant="red"
+                />
             ))}
             
             {sortedSenioren.length === 0 && (

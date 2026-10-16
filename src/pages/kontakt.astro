@@ -61,8 +61,9 @@ import MainLayout from '../layouts/MainLayout.astro';
 							<option value="allgemein">Allgemeine Anfrage</option>
 							<option value="junioren">Jugendfußball (Junioren)</option>
 							<option value="senioren">Herrenfußball (Senioren)</option>
-							<option value="sponsoring">Sponsoring & Partner</option>
-							<option value="mitgliedschaft">Mitgliedschaft</option>
+							<option value="sponsoring">Sponsoring &amp; Partner</option>
+							<option value="mitgliedschaft">Mitgliedschaft &amp; Beiträge</option>
+							<option value="vermietung">Vereinsheim-Vermietung</option>
 						</select>
 					</div>
 
@@ -117,13 +118,34 @@ import MainLayout from '../layouts/MainLayout.astro';
 
 					<div class="space-y-1">
 						<p class="text-xs uppercase font-bold text-gray-400">E-Mail Geschäftsstelle</p>
-						<p class="text-sm md:text-base"><a href="mailto:bvbrambauer-gf@gmx.de" class="text-red-400 hover:underline">bvbrambauer-gf[at]gmx.de</a></p>
+						<p class="text-sm md:text-base"><a href="mailto:bvbrambauer-gf@gmx.de" class="text-red-400 hover:underline">bvbrambauer-gf@gmx.de</a></p>
+					</div>
+
+					<div class="space-y-1">
+						<p class="text-xs uppercase font-bold text-gray-400">E-Mail Jugendleitung</p>
+						<p class="text-sm md:text-base"><a href="mailto:bvb13.45jugend@web.de" class="text-red-400 hover:underline">bvb13.45jugend@web.de</a></p>
 					</div>
 				</div>
 
+				<!-- Verweis auf das Organigramm unter Verein & Chronik -->
+				<div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm space-y-3">
+					<p class="text-xs font-black uppercase tracking-wider text-red-600">Wer macht was im Verein?</p>
+					<h3 class="text-lg font-black uppercase text-zinc-900">Vorstand &amp; Ansprechpartner</h3>
+					<p class="text-sm text-gray-600 leading-relaxed">
+						Eine vollständige Übersicht über Vorstand, Geschäftsführung, Kassierer, Jugendleitung und weitere Funktionen findest du in unserem Vereins-Organigramm.
+					</p>
+					<a 
+						href="/chronik#organigramm" 
+						class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-white bg-red-600 hover:bg-red-700 px-4 py-2.5 rounded-lg transition shadow-sm"
+					>
+						<span>Zu Verein &amp; Chronik</span>
+						<span aria-hidden="true">→</span>
+					</a>
+				</div>
+
 				<div class="bg-red-50 border border-red-100 rounded-xl p-6 text-sm text-zinc-800">
-					<p class="font-bold text-red-800 mb-1">Spielbetrieb & Probetraining</p>
-					Du möchtest dir oder deinem Kind ein Training anschauen? Wähle im Formular einfach den passenden Bereich (Senioren/Junioren) aus, damit deine Frage direkt beim richtigen sportlichen Leiter landet!
+					<p class="font-bold text-red-800 mb-1">Spielbetrieb &amp; Probetraining</p>
+					Du möchtest dir oder deinem Kind ein Training anschauen? Wähle im Formular einfach den passenden Bereich (Senioren/Junioren) aus, damit deine Frage direkt beim richtigen Ansprechpartner landet!
 				</div>
 			</div>
 
@@ -143,6 +165,7 @@ import MainLayout from '../layouts/MainLayout.astro';
 				const name = document.getElementById('name')?.value?.trim() || '';
 				const email = document.getElementById('email')?.value?.trim() || '';
 				const categorySelect = document.getElementById('category');
+				const categoryValue = categorySelect?.value || 'allgemein';
 				const categoryText = categorySelect?.options[categorySelect.selectedIndex]?.text || 'Allgemeine Anfrage';
 				const message = document.getElementById('message')?.value?.trim() || '';
 
@@ -153,9 +176,10 @@ import MainLayout from '../layouts/MainLayout.astro';
 					return;
 				}
 
+				const targetEmail = categoryValue === 'junioren' ? 'bvb13.45jugend@web.de' : 'bvbrambauer-gf@gmx.de';
 				const subject = `[BV Brambauer] ${categoryText} von ${name}`;
 				const body = `Name: ${name}\nE-Mail: ${email}\nBereich: ${categoryText}\n\nNachricht:\n${message}`;
-				const mailtoUrl = `mailto:bvbrambauer-gf@gmx.de?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+				const mailtoUrl = `mailto:${targetEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
 				feedback.className = 'mb-6 p-4 rounded-lg text-sm bg-green-50 border border-green-200 text-green-800 space-y-2';
 				feedback.innerHTML = '';
@@ -166,7 +190,7 @@ import MainLayout from '../layouts/MainLayout.astro';
 				heading.appendChild(strong);
 
 				const info = document.createElement('p');
-				info.textContent = 'Dein E-Mail-Programm wird jetzt geöffnet, um die Nachricht an bvbrambauer-gf@gmx.de zu senden.';
+				info.textContent = `Dein E-Mail-Programm wird jetzt geöffnet, um die Nachricht an ${targetEmail} zu senden.`;
 
 				const actions = document.createElement('div');
 				actions.className = 'flex flex-wrap items-center gap-3 pt-1';
@@ -182,10 +206,10 @@ import MainLayout from '../layouts/MainLayout.astro';
 				copyBtn.textContent = '📋 Text & E-Mail kopieren';
 				copyBtn.addEventListener('click', async () => {
 					try {
-						await navigator.clipboard.writeText(`An: bvbrambauer-gf@gmx.de\nBetreff: ${subject}\n\n${body}`);
+						await navigator.clipboard.writeText(`An: ${targetEmail}\nBetreff: ${subject}\n\n${body}`);
 						copyBtn.textContent = '✓ In Zwischenablage kopiert!';
 					} catch {
-						copyBtn.textContent = 'E-Mail: bvbrambauer-gf@gmx.de';
+						copyBtn.textContent = `E-Mail: ${targetEmail}`;
 					}
 				});
 

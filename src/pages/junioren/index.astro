@@ -24,6 +24,31 @@ const kleinfeld = sortedJunioren.filter(t => t.data.bereich === 'kleinfeld');
 
     <main class="max-w-6xl mx-auto px-4 py-12 flex-grow space-y-16">
         
+        <!-- Jugendleitung Direktkontakt -->
+        <section class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div>
+                <span class="text-xs font-black uppercase tracking-wider text-red-600">Ansprechpartner Jugendbereich</span>
+                <h2 class="text-xl font-black uppercase text-zinc-900 mt-0.5">Jugendleitung BV Brambauer</h2>
+                <p class="text-sm text-gray-600 mt-1">
+                    <strong>Björn Hübner</strong> (Jugendvorsitzender) · <strong>Dawid Piontek</strong> &amp; <strong>Dennis Köse</strong> (Stellv. Jugendvorsitzende)
+                </p>
+            </div>
+            <div class="flex flex-wrap items-center gap-3 shrink-0">
+                <a 
+                    href="mailto:bvb13.45jugend@web.de" 
+                    class="bg-red-600 hover:bg-red-700 text-white text-xs font-bold uppercase tracking-wider px-4 py-2.5 rounded-lg transition shadow-sm"
+                >
+                    ✉️ bvb13.45jugend@web.de
+                </a>
+                <a 
+                    href="/chronik#organigramm" 
+                    class="bg-gray-100 hover:bg-gray-200 text-zinc-800 text-xs font-bold uppercase tracking-wider px-4 py-2.5 rounded-lg transition"
+                >
+                    Zum Organigramm →
+                </a>
+            </div>
+        </section>
+
         <!-- Großfeld -->
         <section>
             <h2 class="text-3xl font-black uppercase mb-8 flex items-center gap-3">

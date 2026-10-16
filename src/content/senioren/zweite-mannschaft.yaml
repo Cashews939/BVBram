@@ -1,11 +1,9 @@
 name: 2. Mannschaft
 order: 2
-badge: B-Liga Dortmund
-training: 'Dienstag & Donnerstag: 19:00 - 20:30 Uhr'
-trainer: Trainer (Name folgt)
-description: >-
-  Unser starker Unterbau (BV Brambauer II). Hier reifen junge Talente heran und
-  erfahrene Spieler sorgen für die nötige Stabilität.
+badge: C-Liga Dortmund
+training: Mittwochs & Freitags 19:30 - 21:00 Uhr
+trainer: Dominik Hanke
+description: 'Unsere Zweite Mannschaft! '
 buttonText: Tabelle & Spielplan live
 buttonLink: '#live-ticker-zweite'
 fussballWidget: |-

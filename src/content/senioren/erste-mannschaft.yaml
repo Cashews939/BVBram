@@ -1,11 +1,9 @@
 name: 1. Mannschaft
 order: 1
-badge: A-Liga Dortmund
-training: 'Dienstag & Donnerstag: 19:00 - 20:30 Uhr'
-trainer: Trainer (Name folgt)
-description: >-
-  Unser Aushängeschild im Herrenbereich. Das Team kämpft jede Woche in der
-  Kreisliga A2 um wichtige Punkte für den Aufstieg.
+badge: Medical 4 You Kreisliga A Dortmund
+training: 'Dienstag & Donnerstag: 19:30 - 21:00 Uhr'
+trainer: David Sawatzki
+description: Unsere 1. Mannschaft in der heimischen Kreisliga A!
 buttonText: Tabelle & Spielplan live
 buttonLink: '#live-ticker-erste'
 fussballWidget: |-

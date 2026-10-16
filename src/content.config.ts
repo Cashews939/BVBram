@@ -50,6 +50,8 @@ const junioren = defineCollection({
     training: z.string().optional(),
     trainer: z.string().optional(),
     description: z.string().optional(),
+    buttonText: z.string().optional(),
+    buttonLink: z.string().optional(),
     liveCenterId: z.string().optional(),
     teamPhoto: z.string().optional(),
     fussballWidget: z.string().optional(),

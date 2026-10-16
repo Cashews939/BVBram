@@ -1,10 +1,15 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
 import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
 
-// 1. Hier importierst du deine statischen Bilder
-import bildVersammlung from '../assets/images/logogarage.jpeg'; 
-import bildCamp from '../assets/images/kinder-feld.jpeg'; 
+import fallbackVerein from '../assets/images/stadion.jpeg';
+import fallbackJunioren from '../assets/images/kinder-feld.jpeg';
+
+const allNews = await getCollection('aktuelles');
+const sortedNews = allNews
+  .filter(n => n.data.draft !== true)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
 <MainLayout 
@@ -63,59 +68,64 @@ import bildCamp from '../assets/images/kinder-feld.jpeg';
             <div class="lg:col-span-2 space-y-10">
                 <h2 class="text-xl font-black uppercase border-b-2 border-red-600 inline-block pb-1 mb-4">Wichtige Meldungen</h2>
 
-                <!-- News-Meldung 1: Jahreshauptversammlung -->
-                <article class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden flex flex-col md:flex-row group">
-                    <!-- Bild-Container mit echtem Bild und Hover-Effekt -->
-                    <div class="md:w-1/3 h-48 md:h-auto relative overflow-hidden bg-gray-100 flex items-center justify-center">
-                        <Image 
-                            src={bildVersammlung} 
-                            alt="Jahreshauptversammlung des BV Brambauer" 
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                            width={400}
-                            height={300}
-                        />
+                {sortedNews.length === 0 ? (
+                    <div class="bg-white rounded-xl border border-gray-200 p-8 text-center text-gray-500">
+                        Derzeit sind noch keine aktuellen Meldungen veröffentlicht.
                     </div>
-                    <div class="p-6 md:w-2/3 flex flex-col justify-between">
-                        <div>
-                            <div class="flex items-center gap-3 mb-3">
-                                <span class="bg-zinc-100 text-zinc-600 text-[10px] font-bold uppercase px-2 py-1 rounded">Verein</span>
-                                <span class="text-gray-400 text-xs font-medium">20. Mai 2026</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-black mb-3 group-hover:text-red-600 transition">Einladung zur Jahreshauptversammlung</h3>
-                            <p class="text-gray-600 text-sm leading-relaxed line-clamp-3">
-                                Der Vorstand lädt alle Mitglieder herzlich zur diesjährigen Versammlung ein. Auf der Tagesordnung stehen wichtige Wahlen und die Planung der kommenden Saison in der Glückauf-Arena...
-                            </p>
-                        </div>
-                        <a href="#" class="mt-4 text-red-600 font-bold text-sm uppercase tracking-wider hover:translate-x-1 transition-transform inline-block">Weiterlesen →</a>
-                    </div>
-                </article>
+                ) : (
+                    sortedNews.map((news) => {
+                        const dateString = new Intl.DateTimeFormat('de-DE', {
+                            day: '2-digit',
+                            month: 'long',
+                            year: 'numeric'
+                        }).format(news.data.date);
+                        const fallbackImage = news.data.category === 'Junioren' ? fallbackJunioren : fallbackVerein;
 
-                <!-- News-Meldung 2: Sommer-Jugendcamp -->
-                <article class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden flex flex-col md:flex-row group">
-                    <!-- Bild-Container mit echtem Bild und Hover-Effekt -->
-                    <div class="md:w-1/3 h-48 md:h-auto relative overflow-hidden bg-gray-100 flex items-center justify-center">
-                        <Image 
-                            src={bildCamp} 
-                            alt="Kinder laufen auf das Spielfeld" 
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                            width={400}
-                            height={300}
-                        />
-                    </div>
-                    <div class="p-6 md:w-2/3 flex flex-col justify-between">
-                        <div>
-                            <div class="flex items-center gap-3 mb-3">
-                                <span class="bg-red-50 text-red-600 text-[10px] font-bold uppercase px-2 py-1 rounded">Junioren</span>
-                                <span class="text-gray-400 text-xs font-medium">15. Mai 2026</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-black mb-3 group-hover:text-red-600 transition">Jetzt anmelden: Sommer-Jugendcamp</h3>
-                            <p class="text-gray-600 text-sm leading-relaxed line-clamp-3">
-                                Auch in diesem Jahr findet wieder unser beliebtes Fußballcamp für Kinder von 6 bis 14 Jahren statt. Drei Tage voller Fußball, Spaß und Verpflegung...
-                            </p>
-                        </div>
-                        <a href="#" class="mt-4 text-red-600 font-bold text-sm uppercase tracking-wider hover:translate-x-1 transition-transform inline-block">Infos & Anmeldung →</a>
-                    </div>
-                </article>
+                        return (
+                            <article class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden flex flex-col md:flex-row group">
+                                <a href={`/aktuelles/${news.id}`} class="md:w-1/3 h-52 md:h-auto relative overflow-hidden bg-gray-100 flex items-center justify-center shrink-0">
+                                    {news.data.coverImage ? (
+                                        <img 
+                                            src={news.data.coverImage} 
+                                            alt={news.data.title} 
+                                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                            loading="lazy"
+                                        />
+                                    ) : (
+                                        <Image 
+                                            src={fallbackImage} 
+                                            alt={news.data.title} 
+                                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                            width={400}
+                                            height={300}
+                                        />
+                                    )}
+                                </a>
+                                <div class="p-6 md:w-2/3 flex flex-col justify-between">
+                                    <div>
+                                        <div class="flex items-center gap-3 mb-3">
+                                            <span class={news.data.category === 'Verein' ? 'bg-zinc-100 text-zinc-700 text-[10px] font-bold uppercase px-2 py-1 rounded' : 'bg-red-50 text-red-600 text-[10px] font-bold uppercase px-2 py-1 rounded'}>
+                                                {news.data.category}
+                                            </span>
+                                            <span class="text-gray-400 text-xs font-medium">{dateString}</span>
+                                        </div>
+                                        <h3 class="text-xl font-bold text-black mb-3 group-hover:text-red-600 transition">
+                                            <a href={`/aktuelles/${news.id}`}>{news.data.title}</a>
+                                        </h3>
+                                        {news.data.teaser && (
+                                            <p class="text-gray-600 text-sm leading-relaxed line-clamp-3">
+                                                {news.data.teaser}
+                                            </p>
+                                        )}
+                                    </div>
+                                    <a href={`/aktuelles/${news.id}`} class="mt-4 text-red-600 font-bold text-sm uppercase tracking-wider hover:translate-x-1 transition-transform inline-block">
+                                        Weiterlesen →
+                                    </a>
+                                </div>
+                            </article>
+                        );
+                    })
+                )}
             </div>
 
             <div class="space-y-8">

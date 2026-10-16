@@ -72,6 +72,8 @@ export default config({
       label: 'Nächste Termine',
       slugField: 'title',
       path: 'src/content/termine/*',
+      format: { data: 'yaml' },
+      columns: ['date', 'time', 'location'],
       schema: {
         title: fields.slug({ name: { label: 'Ereignis / Spiel' } }),
         date: fields.date({ label: 'Datum des Events' }),
@@ -94,8 +96,14 @@ export default config({
         training: fields.text({ label: 'Trainingszeiten (z.B. Dienstag & Donnerstag: 19:00 - 20:30 Uhr)' }),
         trainer: fields.text({ label: 'Trainer-Team / Ansprechpartner' }),
         description: fields.text({ label: 'Beschreibung / Infos zum Team', multiline: true }),
-        buttonText: fields.text({ label: 'Button-Text (z.B. Tabelle & Spielplan live)' }),
-        buttonLink: fields.text({ label: 'Button-Link / Anker (z.B. #live-ticker-erste oder mailto:...)' }),
+        buttonText: fields.text({
+          label: 'Optionaler Kontakt-/Button-Text (z.B. Ansprechpartner kontaktieren)',
+          description: 'Wird auf der Mannschafts-Unterseite als Kontakt-Button angezeigt, sobald unten eine E-Mail oder ein Link eingetragen ist.',
+        }),
+        buttonLink: fields.text({
+          label: 'Optionaler Kontakt-Link oder E-Mail (z.B. bvbrambauer-gf@gmx.de)',
+          description: 'E-Mail-Adresse (wird automatisch als E-Mail-Link verknüpft) oder Web-Link.',
+        }),
         fussballWidget: fields.text({ 
           label: 'Fussball.de Widget (HTML-Code)', 
           multiline: true,
@@ -133,7 +141,14 @@ export default config({
         training: fields.text({ label: 'Trainingszeiten (z.B. Mo & Mi 18:00 Uhr)' }),
         trainer: fields.text({ label: 'Trainer-Team / Ansprechpartner' }),
         description: fields.text({ label: 'Beschreibung / Infos zum Team', multiline: true }),
-        liveCenterId: fields.text({ label: 'Live-Center Anker (optional, z.B. #live-a-junioren)' }),
+        buttonText: fields.text({
+          label: 'Optionaler Kontakt-/Button-Text (z.B. Probetraining anfragen)',
+          description: 'Wird auf der Mannschafts-Unterseite als Kontakt-Button angezeigt, sobald unten eine E-Mail oder ein Link eingetragen ist.',
+        }),
+        buttonLink: fields.text({
+          label: 'Optionaler Kontakt-Link oder E-Mail (z.B. bvbrambauer-gf@gmx.de)',
+          description: 'E-Mail-Adresse (wird automatisch als E-Mail-Link verknüpft) oder Link (z.B. /kontakt).',
+        }),
         fussballWidget: fields.text({ 
           label: 'Fussball.de Widget (HTML-Code)', 
           multiline: true,

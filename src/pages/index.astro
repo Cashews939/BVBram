@@ -3,15 +3,12 @@ import MainLayout from '../layouts/MainLayout.astro';
 import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 
-// 1. Hier importierst du deine statischen Bilder aus deinem Assets-Ordner
 import stadionBild from '../assets/images/stadion.jpeg'; 
-// import vereinsLogo from '../assets/images/logo.png'; // Falls du das Logo hier nutzen willst
-import bildVersammlung from '../assets/images/logogarage.jpeg'; // Fallback Bild 1
-import bildCamp from '../assets/images/kinder-feld.jpeg'; // Fallback Bild 2
+import fallbackVerein from '../assets/images/logogarage.jpeg';
+import fallbackJunioren from '../assets/images/kinder-feld.jpeg';
 
-// 2. News dynamisch aus dem CMS (Keystatic) laden
+// News dynamisch aus dem CMS (Keystatic) laden
 const allNews = await getCollection('aktuelles');
-// Nach Datum absteigend sortieren und die neuesten 2 Beiträge nehmen
 const latestNews = allNews
   .filter(n => n.data.draft !== true)
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
@@ -20,12 +17,12 @@ const latestNews = allNews
 // Termine dynamisch aus dem CMS laden
 const allTermine = await getCollection('termine');
 const today = new Date();
-today.setHours(0, 0, 0, 0); // Nur Datum vergleichen
+today.setHours(0, 0, 0, 0);
 
 const upcomingTermine = allTermine
-  .filter(t => t.data.date >= today) // Keine veralteten Termine anzeigen
-  .sort((a, b) => a.data.date.getTime() - b.data.date.getTime()) // Nächster Termin zuerst
-  .slice(0, 5); // Max. 5 anzeigen
+  .filter(t => t.data.date >= today)
+  .sort((a, b) => a.data.date.getTime() - b.data.date.getTime())
+  .slice(0, 5);
 ---
 
 <MainLayout 
@@ -33,9 +30,8 @@ const upcomingTermine = allTermine
     description="Willkommen beim BV Brambauer 13/45 e.V. – Alle News, Spielberichte, Teams der Senioren & Junioren sowie Termine aus der Glückauf-Arena Lünen."
 >
 
-    <!-- HEADER / HERO: Jetzt mit echtem Stadion-Hintergrundbild -->
+    <!-- HEADER / HERO -->
     <header class="relative bg-black text-white py-14 sm:py-20 md:py-24 px-4 overflow-hidden">
-        <!-- Das Stadionbild absolut im Hintergrund positioniert -->
         <div class="absolute inset-0 z-0">
             <Image 
                 src={stadionBild} 
@@ -48,19 +44,11 @@ const upcomingTermine = allTermine
                 loading="eager"
                 fetchpriority="high"
             />
-            <!-- Subtiler Farbverlauf über dem Bild für bessere Lesbarkeit des Textes -->
             <div class="absolute inset-0 bg-gradient-to-r from-black via-transparent to-gray-900 opacity-80"></div>
-            <!-- Dein bestehendes Punkt-Muster -->
             <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]"></div>
         </div>
         
-        <!-- Inhalt über dem Hintergrund (z-10 stellt sicher, dass der Text oben liegt) -->
         <div class="relative z-10 max-w-4xl mx-auto text-center">
-            <!-- Optionales Vereinslogo über dem Titel -->
-            <!-- <div class="flex justify-center mb-4">
-                <Image src={vereinsLogo} alt="BV Brambauer Logo" class="h-20 w-auto" />
-            </div> -->
-            
             <span class="inline-block bg-zinc-900/80 text-red-500 border border-red-600/30 text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full backdrop-blur-sm">
                 Kreisliga A2 Dortmund
             </span>
@@ -71,7 +59,6 @@ const upcomingTermine = allTermine
                 Willkommen auf der neuen Heimat des BV Brambauer 13/45. Hier schlägt das fußballerische Herz von Lünen.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <!-- Der Mannschafts-Button: Mobil rot, ab Desktop (md:) anthrazit -->
                 <a 
                     href="/senioren" 
                     class="bg-red-600 md:bg-zinc-900 hover:bg-red-700 md:hover:bg-red-600 text-white border border-red-600 md:border-zinc-800 md:hover:border-red-600 font-bold px-6 py-3 rounded shadow-lg transition duration-300 text-center uppercase tracking-wider text-sm"
@@ -79,7 +66,6 @@ const upcomingTermine = allTermine
                     Zu den Mannschaften
                 </a>
                 
-                <!-- Der News-Button: Passt sich dezent an -->
                 <a 
                     href="/aktuelles" 
                     class="bg-transparent border-2 border-white/80 hover:bg-white hover:text-black font-bold px-6 py-3 rounded transition duration-300 text-center uppercase tracking-wider text-sm"
@@ -108,35 +94,34 @@ const upcomingTermine = allTermine
     </section>
 
     <main id="news" class="max-w-6xl mx-auto px-4 py-16">
-        <div class="flex justify-between items-end mb-10">
+        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-3 mb-10">
             <div>
                 <h2 class="text-3xl font-black tracking-tight uppercase">Letzte Updates</h2>
                 <p class="text-gray-600 mt-1">Direkt vom Platz und aus dem Vereinsleben</p>
             </div>
-            <a href="/aktuelles" class="text-red-600 hover:text-red-700 font-bold text-sm uppercase tracking-wider hidden sm:block">Alle News ansehen →</a>
+            <a href="/aktuelles" class="text-red-600 hover:text-red-700 font-bold text-sm uppercase tracking-wider inline-block">Alle News ansehen →</a>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
             {latestNews.map((news) => {
-                // Datumsformatierung
                 const dateString = new Intl.DateTimeFormat('de-DE', {
                     day: '2-digit',
                     month: 'long',
                     year: 'numeric'
                 }).format(news.data.date);
                 
-                // Wir nehmen abwechselnd die Bilder als Platzhalter (da noch kein Bild im CMS)
-                const fallbackImage = news.data.category === 'Junioren' ? bildCamp : bildVersammlung;
+                const fallbackImage = news.data.category === 'Junioren' ? fallbackJunioren : fallbackVerein;
                 const hasCustomImage = !!news.data.coverImage;
 
                 return (
                     <article class="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-200 flex flex-col group">
-                        <div class="h-48 relative overflow-hidden bg-gray-100">
+                        <a href={`/aktuelles/${news.id}`} class="h-48 relative overflow-hidden bg-gray-100 block">
                             {hasCustomImage ? (
                                 <img 
                                     src={news.data.coverImage} 
                                     alt={news.data.title} 
                                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                    loading="lazy"
                                 />
                             ) : (
                                 <Image 
@@ -147,7 +132,7 @@ const upcomingTermine = allTermine
                                     height={300}
                                 />
                             )}
-                        </div>
+                        </a>
                         <div class="p-6 flex-1 flex flex-col justify-between">
                             <div>
                                 <div class="flex gap-2 text-xs font-semibold text-gray-500 mb-2">
@@ -158,7 +143,7 @@ const upcomingTermine = allTermine
                                     <span>{dateString}</span>
                                 </div>
                                 <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-red-600 transition">
-                                    {news.data.title}
+                                    <a href={`/aktuelles/${news.id}`}>{news.data.title}</a>
                                 </h3>
                                 {news.data.teaser && (
                                     <p class="text-gray-600 text-sm line-clamp-2">
@@ -180,9 +165,8 @@ const upcomingTermine = allTermine
                     Egal ob aktiver Kicker, Senior oder Fan – beim BV Brambauer 13/45 ist jeder willkommen.
                 </p>
                 <div class="mt-8 flex flex-col sm:flex-row justify-center gap-4">
-                    <!-- Der Button wird jetzt zum roten Hingucker -->
                     <a href="/aufnahmeantrag.pdf" target="_blank" class="bg-red-600 hover:bg-red-700 text-white font-bold px-8 py-4 rounded-xl shadow-lg transition flex items-center justify-center gap-2 uppercase tracking-wider text-sm group">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:-translate-y-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:-translate-y-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                         </svg>
                         Aufnahmeantrag (PDF)
@@ -195,11 +179,11 @@ const upcomingTermine = allTermine
 
     <section id="spiele" class="bg-gray-900 text-white py-16">
         <div class="max-w-4xl mx-auto px-4">
-            <div class="flex justify-between items-end mb-12">
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-3 mb-12">
                 <div>
                     <h2 class="text-3xl font-black tracking-tight uppercase">Die nächsten Termine</h2>
                 </div>
-                <a href="/termine" class="text-red-600 hover:text-red-700 font-bold text-sm uppercase tracking-wider hidden sm:block">Alle Termine & Archiv →</a>
+                <a href="/termine" class="text-red-500 hover:text-red-400 font-bold text-sm uppercase tracking-wider inline-block">Alle Termine & Archiv →</a>
             </div>
             
             <div class="space-y-4">
@@ -214,10 +198,10 @@ const upcomingTermine = allTermine
                             year: 'numeric'
                         }).format(termin.data.date);
                         return (
-                            <div class="bg-zinc-800 border border-zinc-700 rounded-lg p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                            <div class="bg-zinc-800 border border-zinc-700 rounded-lg p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                                 <div>
                                     <h3 class="text-xl font-bold text-white">{termin.data.title}</h3>
-                                    <div class="text-gray-400 text-sm mt-1 flex gap-3">
+                                    <div class="text-gray-400 text-sm mt-1 flex flex-wrap gap-3">
                                         <span>📅 {terminDate}</span>
                                         {termin.data.time && <span>⏰ {termin.data.time}</span>}
                                         <span>📍 {termin.data.location || 'Glückauf-Arena'}</span>

@@ -11,6 +11,15 @@ export async function getStaticPaths() {
 }
 
 const { team } = Astro.props;
+
+const rawLink = team.data.buttonLink?.trim() || '';
+const hasActionLink = rawLink.length > 0 && !rawLink.startsWith('#live-');
+const resolvedHref = hasActionLink
+  ? (rawLink.includes('@') && !rawLink.startsWith('mailto:') && !rawLink.startsWith('http')
+      ? `mailto:${rawLink}`
+      : rawLink)
+  : '';
+const resolvedButtonText = team.data.buttonText?.trim() || 'Kontakt aufnehmen';
 ---
 
 <MainLayout title={`${team.data.name} - Tabelle & Spielplan`} description={team.data.description || ''}>
@@ -78,6 +87,16 @@ const { team } = Astro.props;
                         <div>
                             <p class="text-xs uppercase font-bold text-gray-400 tracking-wider mb-1">Beschreibung</p>
                             <p class="text-sm text-gray-700">{team.data.description}</p>
+                        </div>
+                    )}
+                    {hasActionLink && (
+                        <div class="pt-3 border-t border-gray-200">
+                            <a 
+                                href={resolvedHref}
+                                class="block w-full text-center bg-red-600 hover:bg-red-700 text-white font-bold py-2.5 px-4 rounded-lg transition uppercase tracking-wider text-xs"
+                            >
+                                ✉️ {resolvedButtonText}
+                            </a>
                         </div>
                     )}
                 </div>
